@@ -97,6 +97,21 @@ const canonicalUrl = siteConfig.siteUrl;
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="Content-Language" content="pt-BR" />
     
+    <!-- ========== CRITICAL CSS (Inline for faster FCP) ========== -->
+    <style>
+      /* Critical CSS - Above the fold */
+      *,*::before,*::after{box-sizing:border-box}
+      body{margin:0;font-family:'Outfit',sans-serif;background:#0a0a0a;color:#fff;-webkit-font-smoothing:antialiased}
+      img{max-width:100%;height:auto;display:block}
+      #header{position:fixed;top:0;left:0;right:0;z-index:40;padding:.75rem 0}
+      #hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:#0a0a0a}
+      .font-playfair{font-family:'Bodoni Moda',serif}
+      .font-montserrat{font-family:'Outfit',sans-serif}
+      .text-gold{color:#D4A853}
+      .bg-dark{background:#0a0a0a}
+      .text-white{color:#fff}
+    </style>
+    
     <!-- ========== PRIMARY SEO META TAGS ========== -->
     <title>{title}</title>
     <meta name="title" content={title} />
@@ -196,8 +211,9 @@ const canonicalUrl = siteConfig.siteUrl;
     <link rel="dns-prefetch" href="//fonts.gstatic.com" />
     <link rel="dns-prefetch" href="//wa.me" />
     
-    <!-- ========== PRELOAD LCP IMAGE (Critical for Performance) ========== -->
-    <link rel="preload" as="image" href="/images/baner.webp" type="image/webp" fetchpriority="high" />
+    <!-- ========== PRELOAD LCP IMAGES (Critical for Performance) ========== -->
+    <link rel="preload" as="image" href="/images/logo-branco-500-transparente-visagismo.png" type="image/png" fetchpriority="high" />
+    <link rel="preload" as="image" href="/images/baner.webp" type="image/webp" />
     
     <!-- ========== GOOGLE FONTS (Non-blocking) ========== -->
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400;1,6..96,500&family=Outfit:wght@300;400;500;600;700&display=swap" />
