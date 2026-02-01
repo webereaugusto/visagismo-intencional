@@ -43,9 +43,9 @@ const benefits = [
           </span>
           <span class="w-12 h-[1px] bg-gold animate-line"></span>
         </div>
-        <h3 class="font-playfair text-3xl md:text-4xl lg:text-5xl font-medium text-white animate-on-scroll animate-delay-100">
+        <h2 class="font-playfair text-3xl md:text-4xl lg:text-5xl font-medium text-white animate-on-scroll animate-delay-100">
           Por que escolher o <span class="text-gradient-gold italic">Visagismo?</span>
-        </h3>
+        </h2>
       </div>
       
       <!-- Benefits Grid -->
@@ -61,9 +61,9 @@ const benefits = [
             <div class="w-8 h-[2px] bg-gold mb-6 group-hover:w-16 transition-all duration-500"></div>
             
             <!-- Title -->
-            <h4 class="font-playfair text-xl text-white mb-4 group-hover:text-gold transition-colors">
+            <h3 class="font-playfair text-xl text-white mb-4 group-hover:text-gold transition-colors">
               {benefit.title}
-            </h4>
+            </h3>
             
             <!-- Description -->
             <p class="font-montserrat text-sm text-gray leading-relaxed">
@@ -85,10 +85,11 @@ const benefits = [
           href={whatsappLink}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Fale com Ery Junior via WhatsApp sobre visagismo"
           class="inline-flex items-center gap-3 border-2 border-gold text-gold px-10 py-4 font-montserrat text-sm font-semibold tracking-wider uppercase hover:bg-gold hover:text-dark transition-all duration-300"
         >
           <span>Fale com Ery Junior</span>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
         </a>

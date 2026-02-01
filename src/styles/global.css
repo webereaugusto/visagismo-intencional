@@ -18,11 +18,11 @@
   --color-accent-light: #E8C17A;
   --color-accent-dark: #B8923F;
   
-  /* Textos */
+  /* Textos - Melhorado para contraste WCAG AA */
   --color-white: #FFFFFF;
-  --color-gray: #9CA3AF;
-  --color-gray-light: #E5E5E5;
-  --color-gray-dark: #4B5563;
+  --color-gray: #B8BCC4;
+  --color-gray-light: #E5E7EB;
+  --color-gray-dark: #6B7280;
   
   /* Dourado */
   --color-charcoal: #1E1E1E;

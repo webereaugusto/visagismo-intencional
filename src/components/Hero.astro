@@ -73,31 +73,33 @@ const whatsappLink = "https://wa.me/5519991103018?text=Olá, gostaria de agendar
       </p>
       
       <!-- CTA Buttons -->
-      <div class="flex flex-col sm:flex-row gap-4 hero-animate" style="--delay: 1s">
+      <nav class="flex flex-col sm:flex-row gap-4 hero-animate" style="--delay: 1s" aria-label="Ações principais">
         <a 
           href={whatsappLink}
           target="_blank"
           rel="noopener noreferrer"
-          class="bg-gradient-to-r from-gold to-gold-dark text-dark px-10 py-5 text-sm font-semibold tracking-wider uppercase hover:shadow-lg hover:shadow-gold/30 transition-all duration-300 animate-shine"
+          aria-label="Agendar consultoria de visagismo via WhatsApp"
+          class="bg-gradient-to-r from-gold to-gold-dark text-dark px-10 py-5 text-sm font-semibold tracking-wider uppercase hover:shadow-lg hover:shadow-gold/30 transition-all duration-300 animate-shine text-center"
         >
           Agende sua Consultoria
         </a>
         
         <a 
-          href="#visagismo" 
-          class="border border-gold/30 text-white px-10 py-5 text-sm tracking-wider uppercase hover:bg-gold/10 hover:border-gold/50 transition-all duration-300 text-center"
+          href="#visagismo"
+          aria-label="Saiba mais sobre visagismo"
+          class="border border-gold/50 text-white px-10 py-5 text-sm tracking-wider uppercase hover:bg-gold/10 hover:border-gold transition-all duration-300 text-center"
         >
           Saiba Mais
         </a>
-      </div>
+      </nav>
     </div>
   </div>
   
   <!-- Scroll Indicator -->
   <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10">
-    <a href="#visagismo" class="block">
-      <div class="w-10 h-10 rounded-full border border-gold/40 flex items-center justify-center hover:border-gold hover:bg-gold/10 transition-all">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gold animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <a href="#essencia" aria-label="Rolar para próxima seção" class="block">
+      <div class="w-10 h-10 rounded-full border border-gold/50 flex items-center justify-center hover:border-gold hover:bg-gold/10 transition-all" role="presentation">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gold animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
       </div>

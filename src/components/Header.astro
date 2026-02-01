@@ -13,10 +13,10 @@ const menuItems = [
   <nav class="max-w-7xl mx-auto px-6">
     <div class="flex items-center justify-between">
       <!-- Logo -->
-      <a href="/" class="group">
+      <a href="/" class="group" aria-label="Visagismo Intencional - Página inicial">
         <img 
           src="/images/logo-branco-500-transparente-visagismo.png" 
-          alt="Visagismo - Ery Junior" 
+          alt="Visagismo Intencional by Ery Junior - Logo" 
           class="h-14 md:h-16 lg:h-20 w-auto transition-transform group-hover:scale-105"
           fetchpriority="high"
           decoding="sync"
@@ -46,6 +46,7 @@ const menuItems = [
           href={whatsappLink}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Agendar consultoria via WhatsApp"
           class="group relative bg-gradient-to-r from-gold to-gold-dark text-dark px-7 py-3 text-sm font-semibold tracking-wider rounded-full overflow-hidden transition-all hover:shadow-lg hover:shadow-gold/30"
         >
           <span class="relative z-10">Agendar</span>
