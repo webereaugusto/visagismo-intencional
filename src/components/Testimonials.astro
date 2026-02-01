@@ -1,0 +1,184 @@
+---
+const testimonials = [
+  {
+    name: "Carolina Mendes",
+    avatar: null,
+    rating: 5,
+    timeAgo: "há 2 semanas",
+    text: "Nunca imaginei que um corte de cabelo pudesse fazer tanta diferença na minha imagem profissional. O visagismo transformou minha autoconfiança. Profissional excepcional, ambiente agradável e resultado impecável. Super recomendo!",
+    likes: 12,
+    localGuide: true,
+    reviews: 47,
+    photos: 23
+  },
+  {
+    name: "Beatriz Oliveira",
+    avatar: null,
+    rating: 5,
+    timeAgo: "há 1 mês",
+    text: "Finalmente encontrei um profissional que entende que cada rosto é único. O resultado foi além das minhas expectativas. O Ery Junior é um verdadeiro artista!",
+    likes: 8,
+    localGuide: false,
+    reviews: 15,
+    photos: 5
+  },
+  {
+    name: "Fernanda Costa",
+    avatar: null,
+    rating: 5,
+    timeAgo: "há 3 semanas",
+    text: "A análise foi tão detalhada e precisa. Descobri cores e cortes que nunca havia considerado, mas que valorizam meu rosto perfeitamente. Melhor investimento que fiz em mim mesma.",
+    likes: 15,
+    localGuide: true,
+    reviews: 89,
+    photos: 156
+  },
+  {
+    name: "Roberto Silva",
+    avatar: null,
+    rating: 5,
+    timeAgo: "há 2 meses",
+    text: "O visagismo elevou minha presença executiva. Cada detalhe foi pensado para transmitir autoridade e credibilidade. Atendimento de primeira classe.",
+    likes: 6,
+    localGuide: false,
+    reviews: 12,
+    photos: 0
+  },
+  {
+    name: "Mariana Lima",
+    avatar: null,
+    rating: 5,
+    timeAgo: "há 1 semana",
+    text: "Anos buscando o corte ideal e finalmente encontrei através do visagismo. A diferença é notável. Todas as minhas amigas perguntaram onde fiz o cabelo!",
+    likes: 21,
+    localGuide: true,
+    reviews: 234,
+    photos: 89
+  },
+  {
+    name: "Patricia Santos",
+    avatar: null,
+    rating: 5,
+    timeAgo: "há 3 meses",
+    text: "Uma experiência transformadora. O Ery Junior entende de imagem pessoal como ninguém em Campinas. Ambiente sofisticado e atendimento personalizado.",
+    likes: 9,
+    localGuide: false,
+    reviews: 28,
+    photos: 12
+  }
+];
+
+const overallRating = 5.0;
+const totalReviews = 127;
+---
+
+<section class="py-16 md:py-24 bg-white" id="avaliacoes">
+  <div class="max-w-6xl mx-auto px-4">
+    
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <span class="inline-flex items-center gap-3 text-[#D4A853] text-xs tracking-[0.3em] uppercase font-medium mb-4">
+        <span class="w-8 h-[1px] bg-[#D4A853]"></span>
+        Depoimentos
+        <span class="w-8 h-[1px] bg-[#D4A853]"></span>
+      </span>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 mb-4" style="font-family: 'Bodoni Moda', serif;">
+        O Que Nossas <span class="text-[#D4A853] italic">Clientes</span> Dizem
+      </h2>
+      <p class="text-gray-500 max-w-2xl mx-auto">
+        Histórias reais de transformação. Veja como o visagismo tem impactado a vida e a autoestima de quem nos escolheu.
+      </p>
+      
+      <!-- Rating Summary -->
+      <div class="flex items-center justify-center gap-3 mt-6">
+        <div class="flex items-center gap-1">
+          {[1,2,3,4,5].map(() => (
+            <svg class="w-5 h-5 text-[#FBBC05]" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+            </svg>
+          ))}
+        </div>
+        <span class="text-2xl font-medium text-gray-900">{overallRating.toFixed(1)}</span>
+        <span class="text-gray-400">•</span>
+        <span class="text-gray-500">{totalReviews} avaliações</span>
+      </div>
+    </div>
+    
+    <!-- Reviews Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {testimonials.map((review) => (
+        <article class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+          
+          <!-- Header -->
+          <div class="flex items-start gap-3 mb-3">
+            <!-- Avatar -->
+            <div class="w-10 h-10 rounded-full bg-[#1a73e8] flex items-center justify-center text-white font-medium text-sm flex-shrink-0">
+              {review.name.charAt(0)}
+            </div>
+            
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2">
+                <span class="font-medium text-sm text-gray-900 truncate">{review.name}</span>
+                {review.localGuide && (
+                  <span class="inline-flex items-center gap-1 text-xs text-gray-500">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#34A853"/>
+                    </svg>
+                    Guia Local
+                  </span>
+                )}
+              </div>
+              <div class="text-xs text-gray-500">
+                {review.reviews} avaliações · {review.photos} fotos
+              </div>
+            </div>
+          </div>
+          
+          <!-- Rating & Time -->
+          <div class="flex items-center gap-2 mb-2">
+            <div class="flex items-center">
+              {[1,2,3,4,5].map((star) => (
+                <svg class={`w-3.5 h-3.5 ${star <= review.rating ? 'text-[#FBBC05]' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+              ))}
+            </div>
+            <span class="text-xs text-gray-500">{review.timeAgo}</span>
+          </div>
+          
+          <!-- Review Text -->
+          <p class="text-sm text-gray-700 leading-relaxed mb-3 line-clamp-4">
+            {review.text}
+          </p>
+          
+          <!-- Footer -->
+          <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+            <button class="flex items-center gap-2 text-xs text-gray-500 hover:text-gray-700 transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/>
+              </svg>
+              <span>Útil ({review.likes})</span>
+            </button>
+            
+            <button class="text-xs text-gray-400 hover:text-gray-600 transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+              </svg>
+            </button>
+          </div>
+        </article>
+      ))}
+    </div>
+    
+    
+  </div>
+</section>
+
+<style>
+  .line-clamp-4 {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

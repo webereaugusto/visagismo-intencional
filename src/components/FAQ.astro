@@ -1,0 +1,119 @@
+---
+const faqs = [
+  {
+    question: "O que é visagismo e como funciona?",
+    answer: "Visagismo é a arte de harmonizar a imagem pessoal com as características físicas e psicológicas de cada indivíduo. Analisamos o formato do seu rosto, proporções faciais, tom de pele, cor dos olhos, estilo de vida e personalidade para criar um visual que comunique quem você realmente é."
+  },
+  {
+    question: "Quanto tempo dura uma consultoria de visagismo?",
+    answer: "A primeira consultoria completa dura em média 1h30 a 2 horas. Nela, fazemos uma análise detalhada do seu rosto, discutimos seus objetivos, estilo de vida e criamos juntos um plano de imagem personalizado."
+  },
+  {
+    question: "Preciso agendar com antecedência?",
+    answer: "Sim, recomendamos agendar com pelo menos 3 a 5 dias de antecedência. Para dias da noiva e ocasiões especiais, sugerimos agendar com 2 a 4 semanas de antecedência."
+  },
+  {
+    question: "Qual a diferença entre um corte normal e visagismo?",
+    answer: "Um corte normal geralmente segue tendências ou preferências superficiais. O visagismo considera a geometria do seu rosto, sua personalidade, objetivos de vida e profissão para criar um visual estratégico."
+  },
+  {
+    question: "O visagismo funciona para homens também?",
+    answer: "Absolutamente! O visagismo masculino é uma das nossas especialidades. Trabalhamos corte de cabelo, barba, bigode e sobrancelhas de forma harmônica para transmitir autoridade e credibilidade."
+  },
+  {
+    question: "Como funciona o serviço de Dia da Noiva?",
+    answer: "O Dia da Noiva é uma experiência completa e exclusiva. Inclui teste prévio, consultoria de visagismo para definir o visual ideal, e no grande dia: penteado, maquiagem e todos os ajustes necessários."
+  }
+];
+
+const whatsappLink = "https://wa.me/5519991103018?text=Olá, tenho uma dúvida sobre visagismo";
+---
+
+<section class="py-28 md:py-36 bg-dark-light" id="faq">
+  <div class="max-w-4xl mx-auto px-6">
+    
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <span class="inline-flex items-center gap-2 text-gold text-xs tracking-[0.3em] uppercase font-montserrat font-medium justify-center">
+        <span class="w-8 h-[1px] bg-gradient-to-r from-transparent to-gold"></span>
+        Dúvidas
+        <span class="w-8 h-[1px] bg-gradient-to-l from-transparent to-gold"></span>
+      </span>
+      <h2 class="font-playfair text-4xl md:text-5xl lg:text-6xl font-medium mt-6 mb-6">
+        <span class="text-white">Perguntas</span>
+        <span class="text-gradient-gold italic"> Frequentes</span>
+      </h2>
+    </div>
+    
+    <!-- FAQ Accordion -->
+    <div class="space-y-4" id="faq-accordion">
+      {faqs.map((faq, index) => (
+        <div class="card-glow rounded-2xl overflow-hidden faq-item">
+          <button 
+            class="w-full px-8 py-6 flex items-center justify-between text-left group faq-trigger"
+            data-index={index}
+            aria-expanded="false"
+          >
+            <span class="font-montserrat font-medium text-white pr-8 group-hover:text-gold transition-colors text-lg">
+              {faq.question}
+            </span>
+            <span class="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-gold/20 to-gold/5 flex items-center justify-center faq-icon transition-all duration-300 group-hover:from-gold/30 group-hover:to-gold/10">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gold transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+              </svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-8 pb-6">
+            <div class="w-full h-[1px] bg-gradient-to-r from-gold/30 via-gold/10 to-transparent mb-6"></div>
+            <p class="font-montserrat text-gray leading-relaxed">
+              {faq.answer}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <!-- Bottom CTA -->
+    <div class="mt-16 text-center">
+      <p class="font-montserrat text-gray text-base mb-8">
+        Ainda tem dúvidas? Estamos prontos para ajudar.
+      </p>
+      <a 
+        href={whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group inline-flex items-center gap-3 bg-gradient-to-r from-gold via-gold-light to-gold text-dark px-10 py-5 text-sm font-semibold tracking-wider uppercase hover:shadow-lg hover:shadow-gold/30 transition-all rounded-full"
+      >
+        <span>Fale Conosco</span>
+      </a>
+    </div>
+    
+  </div>
+</section>
+
+<script>
+  const faqItems = document.querySelectorAll('.faq-item');
+  
+  faqItems.forEach(item => {
+    const trigger = item.querySelector('.faq-trigger');
+    const content = item.querySelector('.faq-content');
+    const icon = item.querySelector('.faq-icon svg');
+    
+    trigger?.addEventListener('click', () => {
+      const isOpen = !content?.classList.contains('hidden');
+      
+      faqItems.forEach(otherItem => {
+        otherItem.querySelector('.faq-content')?.classList.add('hidden');
+        otherItem.querySelector('.faq-trigger')?.setAttribute('aria-expanded', 'false');
+        const otherIcon = otherItem.querySelector('.faq-icon svg');
+        otherIcon?.classList.remove('rotate-45');
+      });
+      
+      if (!isOpen) {
+        content?.classList.remove('hidden');
+        trigger?.setAttribute('aria-expanded', 'true');
+        icon?.classList.add('rotate-45');
+      }
+    });
+  });
+</script>

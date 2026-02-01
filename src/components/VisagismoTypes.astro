@@ -1,0 +1,120 @@
+---
+const whatsappLink = "https://wa.me/5519991103018?text=Olá, gostaria de agendar uma consultoria de visagismo";
+---
+
+<!-- Fundo claro -->
+<section class="py-28 md:py-36 bg-light">
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="inline-flex items-center gap-3 text-accent text-xs tracking-[0.3em] uppercase font-montserrat font-medium justify-center">
+        <span class="w-8 h-[1px] bg-accent"></span>
+        Para Todos
+        <span class="w-8 h-[1px] bg-accent"></span>
+      </span>
+      <h2 class="font-playfair text-4xl md:text-5xl font-medium mt-6 mb-6 text-dark">
+        Visagismo <span class="text-accent italic">Masculino</span> e <span class="text-accent italic">Feminino</span>
+      </h2>
+      <p class="font-montserrat text-gray-dark text-base leading-relaxed">
+        Tanto homens quanto mulheres podem se beneficiar dessa poderosa ferramenta para elevar sua autoestima.
+      </p>
+    </div>
+    
+    <!-- Two Columns -->
+    <div class="grid md:grid-cols-2 gap-8">
+      
+      <!-- Masculino -->
+      <article class="group relative overflow-hidden">
+        <div class="aspect-[3/4] overflow-hidden">
+          <img 
+            src="/images/gallery-1.jpg" 
+            alt="Visagismo Masculino"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
+        </div>
+        
+        <div class="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
+          <span class="inline-block text-accent text-xs tracking-[0.2em] uppercase font-montserrat mb-4 border border-accent/50 px-4 py-1">
+            Para Ele
+          </span>
+          
+          <h3 class="font-playfair text-3xl text-white font-medium mb-4">
+            Visagismo Masculino
+          </h3>
+          
+          <p class="font-montserrat text-gray text-sm leading-relaxed mb-6 max-w-md">
+            Valorize sua masculinidade. Destacamos os traços marcantes do seu rosto 
+            para uma imagem de autoridade e credibilidade.
+          </p>
+          
+          <ul class="space-y-2 mb-6">
+            {["Corte ideal para cada tipo de rosto", "Design de barba e bigode", "Harmonização de sobrancelhas", "Imagem executiva"].map(item => (
+              <li class="flex items-center gap-2 text-gray font-montserrat text-sm">
+                <span class="w-1 h-1 bg-accent rounded-full"></span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          
+          <a 
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 bg-accent text-white px-6 py-3 text-sm font-medium tracking-wider uppercase hover:bg-accent-light transition-all"
+          >
+            <span>Agendar</span>
+          </a>
+        </div>
+      </article>
+      
+      <!-- Feminino -->
+      <article class="group relative overflow-hidden">
+        <div class="aspect-[3/4] overflow-hidden">
+          <img 
+            src="/images/gallery-5.jpg" 
+            alt="Visagismo Feminino"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
+        </div>
+        
+        <div class="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
+          <span class="inline-block text-accent text-xs tracking-[0.2em] uppercase font-montserrat mb-4 border border-accent/50 px-4 py-1">
+            Para Ela
+          </span>
+          
+          <h3 class="font-playfair text-3xl text-white font-medium mb-4">
+            Visagismo Feminino
+          </h3>
+          
+          <p class="font-montserrat text-gray text-sm leading-relaxed mb-6 max-w-md">
+            Revele sua beleza única. Criamos o visual perfeito 
+            que expressa sua essência e feminilidade.
+          </p>
+          
+          <ul class="space-y-2 mb-6">
+            {["Análise do formato de rosto", "Coloração que valoriza o tom de pele", "Cortes que realçam a cor dos olhos", "Penteados para ocasiões especiais"].map(item => (
+              <li class="flex items-center gap-2 text-gray font-montserrat text-sm">
+                <span class="w-1 h-1 bg-accent rounded-full"></span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          
+          <a 
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 bg-accent text-white px-6 py-3 text-sm font-medium tracking-wider uppercase hover:bg-accent-light transition-all"
+          >
+            <span>Agendar</span>
+          </a>
+        </div>
+      </article>
+      
+    </div>
+    
+  </div>
+</section>

@@ -1,0 +1,57 @@
+---
+const whatsappLink = "https://wa.me/5519991103018?text=Olá, quero dar o primeiro passo para minha transformação";
+---
+
+<section class="relative py-40 md:py-52 overflow-hidden bg-dark">
+  <!-- Background Image -->
+  <div class="absolute inset-0 z-0">
+    <img 
+      src="/images/hero-2.jpg" 
+      alt="Transformação de beleza" 
+      class="w-full h-full object-cover opacity-30"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-dark via-dark/80 to-dark"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-dark/50"></div>
+  </div>
+  
+  <!-- Decorative elements -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-gold/10"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-gold/5"></div>
+  
+  <!-- Content -->
+  <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+    
+    <!-- Pre-headline -->
+    <span class="inline-flex items-center gap-2 text-gold text-sm tracking-[0.3em] uppercase font-montserrat font-medium mb-8">
+      <span class="w-8 h-[1px] bg-gradient-to-r from-transparent to-gold"></span>
+      Pronto para a mudança?
+      <span class="w-8 h-[1px] bg-gradient-to-l from-transparent to-gold"></span>
+    </span>
+    
+    <!-- Main Headline -->
+    <h2 class="font-playfair text-4xl md:text-6xl lg:text-7xl font-medium leading-tight mb-8">
+      <span class="text-white">Revele sua</span>
+      <span class="block text-gradient-gold italic text-5xl md:text-7xl lg:text-8xl mt-2">melhor versão</span>
+    </h2>
+    
+    <!-- Subheadline -->
+    <p class="font-montserrat text-gray text-lg md:text-xl leading-relaxed mb-14 max-w-2xl mx-auto">
+      Dê o primeiro passo em direção à beleza plena. 
+      Descubra a <span class="text-white font-medium">beleza autêntica</span> que reside em você.
+    </p>
+    
+    <!-- CTA -->
+    <a 
+      href={whatsappLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group inline-flex items-center gap-4 bg-gradient-to-r from-gold via-gold-light to-gold text-dark px-14 py-6 text-sm font-semibold tracking-[0.2em] uppercase hover:shadow-2xl hover:shadow-gold/30 transition-all duration-500 rounded-full"
+    >
+      <span>Agendar Consultoria</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+      </svg>
+    </a>
+    
+  </div>
+</section>

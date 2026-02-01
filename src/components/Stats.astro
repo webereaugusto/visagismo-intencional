@@ -1,0 +1,75 @@
+---
+const stats = [
+  { 
+    number: "30+", 
+    label: "Anos de Experiência",
+    description: "Dedicados à arte do visagismo"
+  },
+  { 
+    number: "10.000+", 
+    label: "Clientes Satisfeitos",
+    description: "Transformações realizadas"
+  },
+  { 
+    number: "3", 
+    label: "Continentes",
+    description: "Formação internacional"
+  },
+  { 
+    number: "1º", 
+    label: "Pioneiro",
+    description: "Visagista em Campinas"
+  },
+];
+---
+
+<section class="py-20 bg-black text-white">
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <span class="text-white/50 text-xs tracking-[0.3em] uppercase font-montserrat font-light">
+        Nossos Números
+      </span>
+      <h2 class="font-playfair text-2xl md:text-3xl font-medium mt-4">
+        Uma Trajetória de <span class="italic">Excelência</span>
+      </h2>
+    </div>
+    
+    <!-- Stats Grid -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      {stats.map((stat, index) => (
+        <div class="text-center group">
+          <div class="relative">
+            <!-- Number -->
+            <span class="font-playfair text-5xl md:text-6xl lg:text-7xl font-medium text-white block transition-transform duration-300 group-hover:scale-110">
+              {stat.number}
+            </span>
+            
+            <!-- Decorative line -->
+            <div class="w-12 h-[1px] bg-white/30 mx-auto mt-4 mb-4 group-hover:w-20 transition-all duration-300"></div>
+          </div>
+          
+          <!-- Label -->
+          <h3 class="font-montserrat text-sm md:text-base font-medium tracking-wider uppercase mb-2">
+            {stat.label}
+          </h3>
+          
+          <!-- Description -->
+          <p class="font-montserrat text-xs text-white/60">
+            {stat.description}
+          </p>
+        </div>
+      ))}
+    </div>
+    
+    <!-- Bottom tagline -->
+    <div class="text-center mt-16 pt-12 border-t border-white/10">
+      <p class="font-montserrat text-white/70 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+        Três décadas transformando vidas através da ciência do visagismo. 
+        <span class="text-white font-medium">Sua imagem merece um especialista.</span>
+      </p>
+    </div>
+    
+  </div>
+</section>

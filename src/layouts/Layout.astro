@@ -1,0 +1,209 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "Visagismo Intencional | Ery Junior - Cabeleireiro de Luxo no Cambuí, Campinas",
+  description = "Descubra sua melhor versão com Ery Junior, pioneiro em Visagismo em Campinas. Localizado no coração do Cambuí, oferecemos cortes e consultoria de imagem para o público mais exigente."
+} = Astro.props;
+
+const siteUrl = "https://visagismointencional.com.br";
+const keywords = "Visagismo Campinas, Cabeleireiro Cambuí, Ery Junior Visagista, Salão de Beleza Luxo Campinas, Consultoria de Imagem Campinas, Corte de Cabelo Visagista SP";
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="Ery Junior" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${siteUrl}/images/hero-1.jpg`} />
+    <meta property="og:locale" content="pt_BR" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={siteUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}/images/hero-1.jpg`} />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={siteUrl} />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.ico" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;1,6..96,400;1,6..96,500;1,6..96,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Schema.org LocalBusiness -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "HairSalon",
+        "name": "Visagismo Intencional - Ery Junior",
+        "description": "Pioneiro em Visagismo em Campinas. Cortes de autoridade e consultoria de imagem para o público mais exigente.",
+        "image": "https://visagismointencional.com.br/images/hero-1.jpg",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Rua Cel. Quirino, 41",
+          "addressLocality": "Campinas",
+          "addressRegion": "SP",
+          "postalCode": "13025-000",
+          "addressCountry": "BR",
+          "areaServed": "Cambuí"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -22.8983,
+          "longitude": -47.0603
+        },
+        "url": "https://visagismointencional.com.br",
+        "telephone": "+55-19-99110-3018",
+        "priceRange": "$$$",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "19:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Saturday",
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "sameAs": [
+          "https://www.instagram.com/eryjunior"
+        ],
+        "founder": {
+          "@type": "Person",
+          "name": "Ery Junior",
+          "jobTitle": "Visagista"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Campinas"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Serviços de Visagismo",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Consultoria de Visagismo"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Corte de Autoridade"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Coloração Premium"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Dia da Noiva Cambuí"
+              }
+            }
+          ]
+        }
+      }
+    </script>
+    
+    <title>{title}</title>
+  </head>
+  <body class="antialiased">
+    <slot />
+    
+    <!-- WhatsApp Floating Button -->
+    <a 
+      href="https://wa.me/5519991103018?text=Olá, gostaria de agendar uma consultoria"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="fixed bottom-6 right-6 z-50 group animate-float"
+      aria-label="Contato via WhatsApp"
+    >
+      <div class="relative">
+        <div class="absolute inset-0 bg-gold/30 rounded-full blur-xl group-hover:bg-gold/50 transition-all animate-pulse-subtle"></div>
+        <div class="relative bg-gradient-to-br from-gold via-gold-light to-gold text-dark p-4 rounded-full shadow-2xl transition-all duration-300 group-hover:scale-110 group-hover:shadow-gold/40">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+    
+    <!-- Animation Script - Intersection Observer -->
+    <script>
+      // Intersection Observer para animações de scroll
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -50px 0px',
+        threshold: 0.1
+      };
+      
+      const animationObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            // Opcional: parar de observar após animar
+            // animationObserver.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      // Observar todos os elementos com classe de animação
+      document.addEventListener('DOMContentLoaded', () => {
+        const animatedElements = document.querySelectorAll('.animate-on-scroll, .animate-line, .animate-counter');
+        animatedElements.forEach(el => animationObserver.observe(el));
+      });
+      
+      // Smooth scroll para links internos
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+          e.preventDefault();
+          const href = anchor.getAttribute('href');
+          if (href) {
+            const target = document.querySelector(href);
+            if (target) {
+              target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

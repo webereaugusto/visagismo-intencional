@@ -1,0 +1,129 @@
+---
+const whatsappLink = "https://wa.me/5519991103018?text=Olá, gostaria de agendar uma consultoria exclusiva";
+---
+
+<section class="relative min-h-screen flex items-center overflow-hidden bg-dark" id="hero">
+  <!-- Background Image with Parallax -->
+  <div class="absolute inset-0 z-0 overflow-hidden">
+    <div 
+      class="absolute inset-0 w-full h-[130%] -top-[15%] bg-cover bg-right opacity-70 will-change-transform"
+      style="background-image: url('/images/baner.webp');"
+      id="parallax-bg"
+    ></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-dark/80 via-dark/50 to-transparent"></div>
+  </div>
+  
+  <!-- Content -->
+  <div class="relative z-10 max-w-7xl mx-auto px-6 py-32 w-full">
+    <div class="max-w-3xl">
+      <!-- Label -->
+      <div class="flex items-center gap-3 mb-8 hero-animate" style="--delay: 0.2s">
+        <span class="w-12 h-[1px] bg-gold animate-line-hero"></span>
+        <span class="text-gold text-xs md:text-sm tracking-[0.3em] uppercase font-montserrat font-medium">
+          Cambuí • Campinas
+        </span>
+      </div>
+      
+      <!-- Main Title -->
+      <h1 class="font-playfair leading-[0.9] mb-10">
+        <span class="text-gradient-gold block text-6xl md:text-8xl lg:text-9xl xl:text-[10rem] font-medium tracking-tight hero-animate" style="--delay: 0.4s">Visagismo</span>
+        <span class="text-white block italic text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-light -mt-2 hero-animate" style="--delay: 0.6s">Intencional</span>
+      </h1>
+      
+      <!-- Subtitle -->
+      <p class="font-montserrat text-gray-light text-base md:text-lg max-w-xl leading-relaxed mb-12 hero-animate" style="--delay: 0.8s">
+        Visagismo em Campinas é no novíssimo <strong class="text-gold">Visagismo Intencional</strong> do Ery Junior. 
+        No coração pulsante do Cambuí, onde ciência e arte se encontram para revelar sua melhor versão.
+      </p>
+      
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 hero-animate" style="--delay: 1s">
+        <a 
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-gradient-to-r from-gold to-gold-dark text-dark px-10 py-5 text-sm font-semibold tracking-wider uppercase hover:shadow-lg hover:shadow-gold/30 transition-all duration-300 animate-shine"
+        >
+          Agende sua Consultoria
+        </a>
+        
+        <a 
+          href="#visagismo" 
+          class="border border-gold/30 text-white px-10 py-5 text-sm tracking-wider uppercase hover:bg-gold/10 hover:border-gold/50 transition-all duration-300 text-center"
+        >
+          Saiba Mais
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10">
+    <a href="#visagismo" class="block">
+      <div class="w-10 h-10 rounded-full border border-gold/40 flex items-center justify-center hover:border-gold hover:bg-gold/10 transition-all">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gold animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
+    </a>
+  </div>
+</section>
+
+<style>
+  .hero-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: var(--delay, 0s);
+  }
+  
+  @keyframes heroFadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-line-hero {
+    width: 0;
+    animation: lineGrow 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.3s;
+  }
+  
+  @keyframes lineGrow {
+    to {
+      width: 3rem;
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .hero-animate {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+    .animate-line-hero {
+      width: 3rem;
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  // Parallax effect
+  const parallaxBg = document.getElementById('parallax-bg');
+  const heroSection = document.getElementById('hero');
+  
+  if (parallaxBg && heroSection) {
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const heroHeight = heroSection.offsetHeight;
+      
+      // Only apply parallax while hero is visible
+      if (scrolled < heroHeight) {
+        const speed = 0.4;
+        parallaxBg.style.transform = `translateY(${scrolled * speed}px)`;
+      }
+    }, { passive: true });
+  }
+</script>

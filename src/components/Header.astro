@@ -1,0 +1,118 @@
+---
+const whatsappLink = "https://wa.me/5519991103018?text=Olá, gostaria de agendar uma consultoria";
+
+const menuItems = [
+  { label: "Sobre", href: "#sobre" },
+  { label: "Benefícios", href: "#visagismo" },
+  { label: "Serviços", href: "#servicos" },
+  { label: "Contato", href: "#contato" },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-40 transition-all duration-500" id="header">
+  <nav class="max-w-7xl mx-auto px-6 py-3">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="group">
+        <img 
+          src="/images/logo-branco-500-transparente-visagismo.png" 
+          alt="Visagismo - Ery Junior" 
+          class="h-14 md:h-16 lg:h-20 w-auto transition-transform group-hover:scale-105"
+        />
+      </a>
+      
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center gap-10">
+        <ul class="flex items-center gap-8">
+          {menuItems.map((item) => (
+            <li>
+              <a 
+                href={item.href} 
+                class="font-montserrat text-sm font-medium text-gray hover:text-gold transition-colors relative group"
+              >
+                {item.label}
+                <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-gradient-to-r from-gold to-gold-dark group-hover:w-full transition-all duration-300"></span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        
+        <!-- CTA Button -->
+        <a 
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group relative bg-gradient-to-r from-gold to-gold-dark text-dark px-7 py-3 text-sm font-semibold tracking-wider rounded-full overflow-hidden transition-all hover:shadow-lg hover:shadow-gold/30"
+        >
+          <span class="relative z-10">Agendar</span>
+        </a>
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <button 
+        class="md:hidden p-2 text-white"
+        id="mobile-menu-btn"
+        aria-label="Abrir menu"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div class="md:hidden hidden bg-dark-light/95 backdrop-blur-lg mt-4 rounded-2xl border border-dark-lighter" id="mobile-menu">
+      <ul class="flex flex-col gap-2 p-6">
+        {menuItems.map((item) => (
+          <li>
+            <a 
+              href={item.href} 
+              class="block font-montserrat text-base text-gray hover:text-gold transition-colors py-3 border-b border-dark-lighter"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+        <li class="pt-4">
+          <a 
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block bg-gradient-to-r from-gold to-gold-dark text-dark px-6 py-4 text-center text-sm font-semibold tracking-wider rounded-full"
+          >
+            Agendar Consultoria
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const header = document.getElementById('header');
+  
+  menuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+  
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+    });
+  });
+  
+  // Header scroll effect
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > 50) {
+      header?.classList.add('bg-dark/95', 'backdrop-blur-lg', 'py-2', 'shadow-xl', 'shadow-dark/50');
+      header?.classList.remove('py-3');
+    } else {
+      header?.classList.remove('bg-dark/95', 'backdrop-blur-lg', 'py-2', 'shadow-xl', 'shadow-dark/50');
+      header?.classList.add('py-3');
+    }
+  });
+</script>

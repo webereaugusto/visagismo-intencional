@@ -1,0 +1,140 @@
+---
+const images = [
+  { src: "/images/galeria/051320_celebrity_bangs_emrata_embed-7eccc72055d04c528c6789bf.jpg", alt: "Transformação com franja" },
+  { src: "/images/galeria/6-short-hairstyles-lob.jpg", alt: "Corte lob elegante" },
+  { src: "/images/galeria/6026349b21666-24-602404cda7f1b__700.jpg", alt: "Transformação feminina" },
+  { src: "/images/galeria/6026349dc1415-before-after-women-cutting-hair-coverimage2.jpg", alt: "Antes e depois" },
+  { src: "/images/galeria/86d8492f0a06a0a2419ca1b22428fdcd.jpg", alt: "Corte moderno" },
+  { src: "/images/galeria/8ca82c0d659804192252b035461cd488.jpg", alt: "Estilo sofisticado" },
+  { src: "/images/galeria/abb22558f0f4ff90468b1ae59cb2fea3.jpg", alt: "Visual renovado" },
+  { src: "/images/galeria/d65c11e64083c2e45003c35a93b0bc36.jpg", alt: "Coloração premium" },
+  { src: "/images/galeria/d8628b58411c0757f90614d525924e56.jpg", alt: "Corte personalizado" },
+  { src: "/images/galeria/haircuts-for-women-over-30.jpg", alt: "Corte elegante" },
+  { src: "/images/galeria/main-qimg-b7424614ae07cbc5a915d0499fa36dc4-lq.jpg", alt: "Transformação completa" },
+  { src: "/images/galeria/women-short-haircut-with-blonde-highlights.webp", alt: "Mechas iluminadas" },
+];
+---
+
+<!-- Fundo escuro -->
+<section class="py-28 md:py-36 bg-dark" id="galeria">
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="inline-flex items-center gap-3 text-accent text-xs tracking-[0.3em] uppercase font-montserrat font-medium justify-center">
+        <span class="w-8 h-[1px] bg-accent"></span>
+        Portfólio
+        <span class="w-8 h-[1px] bg-accent"></span>
+      </span>
+      <h2 class="font-playfair text-4xl md:text-5xl font-medium mt-6 mb-6 text-white">
+        Galeria de <span class="text-accent italic">Transformações</span>
+      </h2>
+    </div>
+    
+    <!-- Gallery Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3" id="gallery-grid">
+      {images.map((image, index) => (
+        <div 
+          class="gallery-item group relative overflow-hidden cursor-pointer aspect-square"
+          data-index={index}
+        >
+          <img 
+            src={image.src} 
+            alt={image.alt}
+            class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+            loading="lazy"
+          />
+          
+          <!-- Hover Overlay -->
+          <div class="absolute inset-0 bg-accent/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <div class="text-center text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+              </svg>
+              <span class="font-montserrat text-xs tracking-wider">{image.alt}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" class="fixed inset-0 z-50 bg-dark/98 hidden items-center justify-center">
+  <button id="lightbox-close" class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center text-gray hover:text-white transition-colors">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+  
+  <button id="lightbox-prev" class="absolute left-6 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center text-gray hover:text-white transition-colors">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+  
+  <button id="lightbox-next" class="absolute right-6 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center text-gray hover:text-white transition-colors">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+  
+  <img id="lightbox-img" src="" alt="" class="max-w-[85vw] max-h-[80vh] object-contain" />
+  
+  <p id="lightbox-caption" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white font-montserrat text-sm tracking-wider"></p>
+</div>
+
+<script>
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxClose = document.getElementById('lightbox-close');
+  const lightboxPrev = document.getElementById('lightbox-prev');
+  const lightboxNext = document.getElementById('lightbox-next');
+  
+  let currentIndex = 0;
+  const images = Array.from(galleryItems).map(item => ({
+    src: item.querySelector('img')?.src || '',
+    alt: item.querySelector('img')?.alt || ''
+  }));
+  
+  function showImage(index: number) {
+    if (index < 0) index = images.length - 1;
+    if (index >= images.length) index = 0;
+    currentIndex = index;
+    if (lightboxImg) lightboxImg.src = images[index].src;
+    if (lightboxCaption) lightboxCaption.textContent = images[index].alt;
+  }
+  
+  galleryItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      currentIndex = index;
+      showImage(currentIndex);
+      lightbox?.classList.remove('hidden');
+      lightbox?.classList.add('flex');
+    });
+  });
+  
+  lightboxClose?.addEventListener('click', () => {
+    lightbox?.classList.add('hidden');
+    lightbox?.classList.remove('flex');
+  });
+  
+  lightboxPrev?.addEventListener('click', () => showImage(currentIndex - 1));
+  lightboxNext?.addEventListener('click', () => showImage(currentIndex + 1));
+  
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox?.classList.contains('hidden')) {
+      if (e.key === 'Escape') lightboxClose?.click();
+      if (e.key === 'ArrowLeft') lightboxPrev?.click();
+      if (e.key === 'ArrowRight') lightboxNext?.click();
+    }
+  });
+  
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) lightboxClose?.click();
+  });
+</script>
