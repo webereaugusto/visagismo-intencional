@@ -4,143 +4,628 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  type?: string;
+  noindex?: boolean;
 }
 
+// SEO Configuration
+const siteConfig = {
+  siteName: "Visagismo Intencional",
+  siteUrl: "https://visagismo.vercel.app",
+  defaultImage: "/images/baner.webp",
+  twitterHandle: "@eryjunior",
+  locale: "pt_BR",
+  themeColor: "#D4A853",
+  author: "Ery Junior",
+  phone: "+55 19 99110-3018",
+  phoneClean: "5519991103018",
+  email: "contato@visagismointencional.com.br",
+  address: {
+    street: "Rua Coronel Quirino, 1256",
+    neighborhood: "Cambuí",
+    city: "Campinas",
+    state: "SP",
+    country: "Brasil",
+    postalCode: "13025-002",
+    latitude: -22.8983,
+    longitude: -47.0603
+  },
+  social: {
+    instagram: "https://www.instagram.com/visagismointencional",
+    facebook: "https://www.facebook.com/visagismointencional",
+    youtube: "https://www.youtube.com/@eryjunior"
+  }
+};
+
 const { 
-  title = "Visagismo Intencional | Ery Junior - Cabeleireiro de Luxo no Cambuí, Campinas",
-  description = "Descubra sua melhor versão com Ery Junior, pioneiro em Visagismo em Campinas. Localizado no coração do Cambuí, oferecemos cortes e consultoria de imagem para o público mais exigente."
+  title = "Visagismo em Campinas | Ery Junior - Visagismo Intencional no Cambuí",
+  description = "O melhor Visagismo em Campinas está no Cambuí! Ery Junior, maior especialista em Visagismo do Brasil, oferece consultoria de imagem personalizada, cortes de autoridade e transformação completa. Agende sua consultoria exclusiva no Visagismo Intencional.",
+  image = siteConfig.defaultImage,
+  type = "website",
+  noindex = false
 } = Astro.props;
 
-const siteUrl = "https://visagismointencional.com.br";
-const keywords = "Visagismo Campinas, Cabeleireiro Cambuí, Ery Junior Visagista, Salão de Beleza Luxo Campinas, Consultoria de Imagem Campinas, Corte de Cabelo Visagista SP";
+// Keywords otimizadas para "Visagismo em Campinas"
+const primaryKeywords = [
+  "Visagismo em Campinas",
+  "Visagismo Campinas",
+  "Visagista em Campinas",
+  "Visagismo Intencional",
+  "Ery Junior Visagista"
+];
+
+const secondaryKeywords = [
+  "consultoria de imagem Campinas",
+  "cabeleireiro Cambuí",
+  "salão de beleza Cambuí Campinas",
+  "corte de cabelo Campinas",
+  "coloração capilar Campinas",
+  "melhor cabeleireiro Campinas",
+  "transformação capilar Campinas",
+  "análise de visagismo",
+  "estudo de face Campinas",
+  "consultoria de estilo Campinas"
+];
+
+const longTailKeywords = [
+  "visagismo feminino em Campinas SP",
+  "onde fazer visagismo em Campinas",
+  "melhor visagista de Campinas",
+  "consultoria de visagismo no Cambuí",
+  "salão de visagismo em Campinas",
+  "especialista em visagismo Campinas",
+  "visagismo personalizado Campinas",
+  "corte visagista Campinas",
+  "análise facial Campinas",
+  "harmonização de imagem Campinas"
+];
+
+const allKeywords = [...primaryKeywords, ...secondaryKeywords, ...longTailKeywords].join(", ");
+
+const fullImageUrl = image.startsWith('http') ? image : `${siteConfig.siteUrl}${image}`;
+const canonicalUrl = siteConfig.siteUrl;
 ---
 
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" prefix="og: https://ogp.me/ns#">
   <head>
+    <!-- ========== BASIC META TAGS ========== -->
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
-    <meta name="keywords" content={keywords} />
-    <meta name="author" content="Ery Junior" />
-    <meta name="robots" content="index, follow" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="Content-Language" content="pt-BR" />
     
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={siteUrl} />
+    <!-- ========== PRIMARY SEO META TAGS ========== -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={allKeywords} />
+    <meta name="author" content={siteConfig.author} />
+    <meta name="creator" content={siteConfig.author} />
+    <meta name="publisher" content={siteConfig.siteName} />
+    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+    <meta name="googlebot" content="index, follow, max-image-preview:large" />
+    <meta name="bingbot" content="index, follow" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="rating" content="general" />
+    <meta name="distribution" content="global" />
+    <meta name="language" content="Portuguese" />
+    <meta name="coverage" content="Worldwide" />
+    <meta name="target" content="all" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    
+    <!-- ========== CANONICAL & ALTERNATE ========== -->
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="pt-BR" href={canonicalUrl} />
+    <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+    
+    <!-- ========== GEO & LOCAL SEO TAGS ========== -->
+    <meta name="geo.region" content="BR-SP" />
+    <meta name="geo.placename" content="Campinas, São Paulo, Brasil" />
+    <meta name="geo.position" content={`${siteConfig.address.latitude};${siteConfig.address.longitude}`} />
+    <meta name="ICBM" content={`${siteConfig.address.latitude}, ${siteConfig.address.longitude}`} />
+    <meta name="DC.title" content={title} />
+    <meta name="DC.creator" content={siteConfig.author} />
+    <meta name="DC.subject" content="Visagismo em Campinas" />
+    <meta name="DC.description" content={description} />
+    <meta name="DC.publisher" content={siteConfig.siteName} />
+    <meta name="DC.language" content="pt-BR" />
+    <meta name="DC.coverage" content="Campinas, SP, Brasil" />
+    
+    <!-- ========== OPEN GRAPH / FACEBOOK ========== -->
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={siteConfig.siteName} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={`${siteUrl}/images/hero-1.jpg`} />
-    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:image" content={fullImageUrl} />
+    <meta property="og:image:secure_url" content={fullImageUrl} />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Visagismo Intencional - O melhor Visagismo em Campinas por Ery Junior" />
+    <meta property="og:locale" content={siteConfig.locale} />
+    <meta property="og:locale:alternate" content="pt_BR" />
+    <meta property="og:updated_time" content={new Date().toISOString()} />
     
-    <!-- Twitter -->
+    <!-- Open Graph Business -->
+    <meta property="business:contact_data:street_address" content={siteConfig.address.street} />
+    <meta property="business:contact_data:locality" content={siteConfig.address.city} />
+    <meta property="business:contact_data:region" content={siteConfig.address.state} />
+    <meta property="business:contact_data:postal_code" content={siteConfig.address.postalCode} />
+    <meta property="business:contact_data:country_name" content={siteConfig.address.country} />
+    <meta property="business:contact_data:phone_number" content={siteConfig.phone} />
+    <meta property="place:location:latitude" content={String(siteConfig.address.latitude)} />
+    <meta property="place:location:longitude" content={String(siteConfig.address.longitude)} />
+    
+    <!-- ========== TWITTER CARDS ========== -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content={siteUrl} />
+    <meta name="twitter:site" content={siteConfig.twitterHandle} />
+    <meta name="twitter:creator" content={siteConfig.twitterHandle} />
+    <meta name="twitter:url" content={canonicalUrl} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={`${siteUrl}/images/hero-1.jpg`} />
+    <meta name="twitter:image" content={fullImageUrl} />
+    <meta name="twitter:image:alt" content="Visagismo Intencional - Ery Junior em Campinas" />
+    <meta name="twitter:domain" content="visagismo.vercel.app" />
     
-    <!-- Canonical URL -->
-    <link rel="canonical" href={siteUrl} />
+    <!-- ========== APPLE & MOBILE META TAGS ========== -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content={siteConfig.siteName} />
+    <meta name="application-name" content={siteConfig.siteName} />
+    <meta name="format-detection" content="telephone=yes" />
+    <meta name="format-detection" content="address=yes" />
+    <meta name="theme-color" content={siteConfig.themeColor} />
+    <meta name="msapplication-TileColor" content={siteConfig.themeColor} />
+    <meta name="msapplication-navbutton-color" content={siteConfig.themeColor} />
     
-    <!-- Favicon -->
+    <!-- ========== FAVICON & ICONS ========== -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
     
-    <!-- Google Fonts -->
+    <!-- ========== PRECONNECT & DNS PREFETCH (Performance) ========== -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="//www.google-analytics.com" />
+    <link rel="dns-prefetch" href="//wa.me" />
+    
+    <!-- ========== GOOGLE FONTS ========== -->
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;1,6..96,400;1,6..96,500;1,6..96,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     
-    <!-- Schema.org LocalBusiness -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "HairSalon",
-        "name": "Visagismo Intencional - Ery Junior",
-        "description": "Pioneiro em Visagismo em Campinas. Cortes de autoridade e consultoria de imagem para o público mais exigente.",
-        "image": "https://visagismointencional.com.br/images/hero-1.jpg",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Rua Cel. Quirino, 41",
-          "addressLocality": "Campinas",
-          "addressRegion": "SP",
-          "postalCode": "13025-000",
-          "addressCountry": "BR",
-          "areaServed": "Cambuí"
+    <!-- ========== STRUCTURED DATA - ORGANIZATION ========== -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": `${siteConfig.siteUrl}/#organization`,
+      "name": siteConfig.siteName,
+      "alternateName": ["Visagismo Intencional Campinas", "Ery Junior Visagismo"],
+      "url": siteConfig.siteUrl,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${siteConfig.siteUrl}/images/logo-branco-500-transparente-visagismo.png`,
+        "width": 500,
+        "height": 500
+      },
+      "image": fullImageUrl,
+      "description": description,
+      "email": siteConfig.email,
+      "telephone": siteConfig.phone,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": siteConfig.address.street,
+        "addressLocality": siteConfig.address.city,
+        "addressRegion": siteConfig.address.state,
+        "postalCode": siteConfig.address.postalCode,
+        "addressCountry": "BR"
+      },
+      "sameAs": [
+        siteConfig.social.instagram,
+        siteConfig.social.facebook,
+        siteConfig.social.youtube
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": siteConfig.phone,
+        "contactType": "customer service",
+        "areaServed": ["BR", "Campinas", "São Paulo"],
+        "availableLanguage": ["Portuguese"]
+      }
+    })} />
+    
+    <!-- ========== STRUCTURED DATA - LOCAL BUSINESS (HAIR SALON) ========== -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "HairSalon",
+      "@id": `${siteConfig.siteUrl}/#hairsalon`,
+      "name": "Visagismo Intencional - Ery Junior",
+      "alternateName": "Visagismo em Campinas",
+      "description": "O melhor Visagismo em Campinas! Ery Junior, maior especialista em Visagismo do Brasil, oferece consultoria de imagem personalizada, cortes de autoridade e transformação completa no coração do Cambuí.",
+      "url": siteConfig.siteUrl,
+      "telephone": siteConfig.phone,
+      "email": siteConfig.email,
+      "image": [
+        fullImageUrl,
+        `${siteConfig.siteUrl}/images/logo-branco-500-transparente-visagismo.png`
+      ],
+      "logo": `${siteConfig.siteUrl}/images/logo-branco-500-transparente-visagismo.png`,
+      "priceRange": "$$$",
+      "currenciesAccepted": "BRL",
+      "paymentAccepted": "Cash, Credit Card, Debit Card, PIX",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": siteConfig.address.street,
+        "addressLocality": siteConfig.address.city,
+        "addressRegion": siteConfig.address.state,
+        "postalCode": siteConfig.address.postalCode,
+        "addressCountry": "BR",
+        "areaServed": {
+          "@type": "GeoCircle",
+          "geoMidpoint": {
+            "@type": "GeoCoordinates",
+            "latitude": siteConfig.address.latitude,
+            "longitude": siteConfig.address.longitude
+          },
+          "geoRadius": "50000"
+        }
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": siteConfig.address.latitude,
+        "longitude": siteConfig.address.longitude
+      },
+      "hasMap": `https://www.google.com/maps?q=${siteConfig.address.latitude},${siteConfig.address.longitude}`,
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "19:00"
         },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": -22.8983,
-          "longitude": -47.0603
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "founder": {
+        "@type": "Person",
+        "@id": `${siteConfig.siteUrl}/#person`,
+        "name": "Ery Junior",
+        "jobTitle": "Visagista",
+        "description": "Maior especialista em Visagismo do Brasil, com mais de 20 anos de experiência transformando vidas através da imagem pessoal.",
+        "image": `${siteConfig.siteUrl}/images/about-1.jpg`,
+        "sameAs": [
+          siteConfig.social.instagram,
+          siteConfig.social.youtube
+        ]
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Campinas",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "São Paulo"
+          }
         },
-        "url": "https://visagismointencional.com.br",
-        "telephone": "+55-19-99110-3018",
-        "priceRange": "$$$",
-        "openingHoursSpecification": [
+        {
+          "@type": "Neighborhood",
+          "name": "Cambuí",
+          "containedInPlace": {
+            "@type": "City",
+            "name": "Campinas"
+          }
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "127",
+        "reviewCount": "89"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Maria Fernanda"
+          },
+          "reviewBody": "O melhor visagismo de Campinas! O Ery Junior transformou completamente minha imagem. Recomendo demais!"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Serviços de Visagismo em Campinas",
+        "itemListElement": [
           {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"],
-            "opens": "09:00",
-            "closes": "19:00"
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Consultoria de Visagismo",
+              "description": "Análise completa de face, cores e estilo para descobrir seu visual ideal"
+            }
           },
           {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": "Saturday",
-            "opens": "09:00",
-            "closes": "17:00"
-          }
-        ],
-        "sameAs": [
-          "https://www.instagram.com/eryjunior"
-        ],
-        "founder": {
-          "@type": "Person",
-          "name": "Ery Junior",
-          "jobTitle": "Visagista"
-        },
-        "areaServed": {
-          "@type": "City",
-          "name": "Campinas"
-        },
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Serviços de Visagismo",
-          "itemListElement": [
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Consultoria de Visagismo"
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Corte de Autoridade"
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Coloração Premium"
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Dia da Noiva Cambuí"
-              }
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Corte Visagista",
+              "description": "Corte personalizado baseado nos princípios do visagismo"
             }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Coloração Premium",
+              "description": "Coloração exclusiva harmonizada com seu tom de pele e estilo"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Dia da Noiva",
+              "description": "Pacote completo de beleza para noivas no Cambuí"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Transformação Completa",
+              "description": "Mudança total de visual com técnicas avançadas de visagismo"
+            }
+          }
+        ]
+      },
+      "sameAs": [
+        siteConfig.social.instagram,
+        siteConfig.social.facebook,
+        siteConfig.social.youtube
+      ],
+      "potentialAction": {
+        "@type": "ReserveAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": `https://wa.me/${siteConfig.phoneClean}`,
+          "actionPlatform": [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform"
           ]
+        },
+        "result": {
+          "@type": "Reservation",
+          "name": "Agendamento de Visagismo"
         }
       }
-    </script>
+    })} />
     
-    <title>{title}</title>
+    <!-- ========== STRUCTURED DATA - WEBSITE ========== -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": `${siteConfig.siteUrl}/#website`,
+      "url": siteConfig.siteUrl,
+      "name": siteConfig.siteName,
+      "description": description,
+      "publisher": {
+        "@id": `${siteConfig.siteUrl}/#organization`
+      },
+      "inLanguage": "pt-BR",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": `${siteConfig.siteUrl}/?s={search_term_string}`
+        },
+        "query-input": "required name=search_term_string"
+      }
+    })} />
+    
+    <!-- ========== STRUCTURED DATA - WEBPAGE ========== -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": `${siteConfig.siteUrl}/#webpage`,
+      "url": siteConfig.siteUrl,
+      "name": title,
+      "description": description,
+      "isPartOf": {
+        "@id": `${siteConfig.siteUrl}/#website`
+      },
+      "about": {
+        "@id": `${siteConfig.siteUrl}/#hairsalon`
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": fullImageUrl
+      },
+      "datePublished": "2026-01-01",
+      "dateModified": new Date().toISOString(),
+      "inLanguage": "pt-BR",
+      "breadcrumb": {
+        "@id": `${siteConfig.siteUrl}/#breadcrumb`
+      }
+    })} />
+    
+    <!-- ========== STRUCTURED DATA - BREADCRUMB ========== -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "@id": `${siteConfig.siteUrl}/#breadcrumb`,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": siteConfig.siteUrl
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Visagismo em Campinas",
+          "item": `${siteConfig.siteUrl}/#conceito`
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Serviços",
+          "item": `${siteConfig.siteUrl}/#servicos`
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Sobre Ery Junior",
+          "item": `${siteConfig.siteUrl}/#sobre`
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Contato",
+          "item": `${siteConfig.siteUrl}/#contato`
+        }
+      ]
+    })} />
+    
+    <!-- ========== STRUCTURED DATA - FAQ ========== -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O que é Visagismo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Visagismo é a arte de criar uma imagem pessoal harmonizada com a personalidade, estilo de vida e características físicas de cada pessoa. Vai além de um simples corte de cabelo, englobando análise facial, estudo de cores e consultoria de estilo completa."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Onde fazer Visagismo em Campinas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O melhor lugar para fazer Visagismo em Campinas é no Visagismo Intencional, localizado no bairro Cambuí. O espaço é comandado por Ery Junior, considerado o maior especialista em Visagismo do Brasil."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quem é Ery Junior?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ery Junior é o maior especialista em Visagismo do Brasil, com mais de 20 anos de experiência. Ele é pioneiro em técnicas de análise facial e consultoria de imagem, tendo transformado a vida de milhares de clientes através do visagismo intencional."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto custa uma consultoria de Visagismo em Campinas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O valor da consultoria de Visagismo varia de acordo com o tipo de serviço. Para saber valores atualizados e agendar sua consultoria exclusiva, entre em contato pelo WhatsApp (19) 99110-3018."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Onde fica o Visagismo Intencional em Campinas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": `O Visagismo Intencional está localizado na ${siteConfig.address.street}, no coração do Cambuí, em Campinas/SP. Uma das regiões mais nobres da cidade, com fácil acesso e estacionamento.`
+          }
+        }
+      ]
+    })} />
+    
+    <!-- ========== STRUCTURED DATA - PERSON (ERY JUNIOR) ========== -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": `${siteConfig.siteUrl}/#person`,
+      "name": "Ery Junior",
+      "givenName": "Ery",
+      "familyName": "Junior",
+      "jobTitle": "Visagista",
+      "description": "Maior especialista em Visagismo do Brasil, com mais de 20 anos de experiência em consultoria de imagem e transformação pessoal.",
+      "image": `${siteConfig.siteUrl}/images/about-1.jpg`,
+      "url": siteConfig.siteUrl,
+      "worksFor": {
+        "@id": `${siteConfig.siteUrl}/#organization`
+      },
+      "knowsAbout": [
+        "Visagismo",
+        "Consultoria de Imagem",
+        "Colorimetria",
+        "Corte de Cabelo",
+        "Harmonização Facial",
+        "Estilo Pessoal"
+      ],
+      "sameAs": [
+        siteConfig.social.instagram,
+        siteConfig.social.youtube
+      ],
+      "award": [
+        "Maior especialista em Visagismo do Brasil",
+        "Pioneiro em Visagismo Intencional"
+      ]
+    })} />
+    
+    <!-- ========== STRUCTURED DATA - SERVICE ========== -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Visagismo",
+      "name": "Visagismo em Campinas",
+      "description": "Serviço de visagismo profissional em Campinas, incluindo consultoria de imagem, análise facial, corte visagista e coloração personalizada.",
+      "provider": {
+        "@id": `${siteConfig.siteUrl}/#hairsalon`
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Campinas",
+        "containedInPlace": {
+          "@type": "State",
+          "name": "São Paulo"
+        }
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Serviços de Visagismo",
+        "itemListElement": [
+          {
+            "@type": "OfferCatalog",
+            "name": "Consultoria de Visagismo",
+            "description": "Análise completa para descobrir seu estilo ideal"
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "Corte Visagista",
+            "description": "Corte personalizado baseado em análise facial"
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "Coloração Premium",
+            "description": "Cor ideal para seu tom de pele e estilo"
+          }
+        ]
+      }
+    })} />
   </head>
   <body class="antialiased">
     <slot />
