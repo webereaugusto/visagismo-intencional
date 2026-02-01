@@ -191,15 +191,19 @@ const canonicalUrl = siteConfig.siteUrl;
     <!-- ========== PRECONNECT & DNS PREFETCH (Performance) ========== -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://www.google-analytics.com" />
-    <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-    <link rel="dns-prefetch" href="//www.google-analytics.com" />
     <link rel="dns-prefetch" href="//wa.me" />
     
-    <!-- ========== GOOGLE FONTS ========== -->
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;1,6..96,400;1,6..96,500;1,6..96,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- ========== PRELOAD LCP IMAGE (Critical for Performance) ========== -->
+    <link rel="preload" as="image" href="/images/baner.webp" type="image/webp" fetchpriority="high" />
+    
+    <!-- ========== GOOGLE FONTS (Non-blocking) ========== -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400;1,6..96,500&family=Outfit:wght@300;400;500;600;700&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400;1,6..96,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400;1,6..96,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    </noscript>
     
     <!-- ========== STRUCTURED DATA - ORGANIZATION ========== -->
     <script type="application/ld+json" set:html={JSON.stringify({
