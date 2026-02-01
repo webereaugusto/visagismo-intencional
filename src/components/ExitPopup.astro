@@ -1,0 +1,193 @@
+---
+const whatsappLink = "https://wa.me/5519991103018?text=Olá! Vi o novo endereço no Cambuí e gostaria de agendar uma consultoria";
+---
+
+<!-- Exit Intent Popup -->
+<div id="exit-popup" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+  <!-- Backdrop with blur -->
+  <div class="absolute inset-0 bg-dark/60 backdrop-blur-sm" id="exit-popup-backdrop"></div>
+  
+  <!-- Popup Card - Glassmorphism -->
+  <div class="relative w-full max-w-lg transform scale-95 opacity-0 transition-all duration-500" id="exit-popup-card">
+    <!-- Glass Container -->
+    <div class="relative overflow-hidden rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl shadow-2xl">
+      
+      <!-- Decorative gradient -->
+      <div class="absolute -top-24 -right-24 w-48 h-48 bg-gold/30 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-gold/20 rounded-full blur-3xl"></div>
+      
+      <!-- Close Button -->
+      <button 
+        id="exit-popup-close" 
+        class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-all duration-300"
+        aria-label="Fechar"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      
+      <!-- Content -->
+      <div class="relative p-8 md:p-10">
+        
+        <!-- Icon/Badge -->
+        <div class="flex justify-center mb-6">
+          <div class="relative">
+            <div class="absolute inset-0 bg-gold/30 rounded-full blur-xl animate-pulse"></div>
+            <div class="relative w-16 h-16 rounded-full bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Title -->
+        <h3 class="text-center font-playfair text-2xl md:text-3xl text-white font-medium mb-3">
+          Espere! <span class="text-gradient-gold italic">Novidade</span>
+        </h3>
+        
+        <!-- Subtitle -->
+        <p class="text-center text-white/80 font-montserrat text-sm mb-6">
+          Estamos em um novo endereço exclusivo no coração do Cambuí!
+        </p>
+        
+        <!-- Address Card -->
+        <div class="relative bg-white/5 border border-white/10 rounded-xl p-5 mb-6">
+          <!-- Corner accents -->
+          <div class="absolute top-0 left-0 w-4 h-4 border-t border-l border-gold/60"></div>
+          <div class="absolute top-0 right-0 w-4 h-4 border-t border-r border-gold/60"></div>
+          <div class="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-gold/60"></div>
+          <div class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-gold/60"></div>
+          
+          <div class="text-center">
+            <p class="font-playfair text-xl text-gold mb-2">Visagismo Intencional</p>
+            <p class="font-montserrat text-white text-base font-medium">
+              Rua Cel. Quirino, 41
+            </p>
+            <p class="font-montserrat text-white/70 text-sm">
+              Cambuí - Campinas, SP
+            </p>
+          </div>
+        </div>
+        
+        <!-- Message -->
+        <p class="text-center text-white/60 font-montserrat text-xs mb-8 leading-relaxed">
+          Venha conhecer nosso novo espaço e viva uma experiência única de transformação com o maior especialista em Visagismo do Brasil.
+        </p>
+        
+        <!-- CTA Button -->
+        <a 
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group flex items-center justify-center gap-3 w-full bg-gradient-to-r from-gold to-gold-dark text-dark px-8 py-4 rounded-xl font-montserrat text-sm font-bold tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:shadow-gold/30 hover:scale-[1.02]"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          <span>Agendar Consultoria</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+        
+        <!-- Skip link -->
+        <button 
+          id="exit-popup-skip"
+          class="w-full mt-4 text-white/40 hover:text-white/70 font-montserrat text-xs tracking-wider transition-colors"
+        >
+          Continuar navegando
+        </button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #exit-popup.show {
+    display: flex;
+  }
+  
+  #exit-popup.show #exit-popup-card {
+    transform: scale(1);
+    opacity: 1;
+  }
+  
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #E8C17A 0%, #D4A853 50%, #B8923F 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+</style>
+
+<script>
+  const exitPopup = document.getElementById('exit-popup');
+  const exitPopupCard = document.getElementById('exit-popup-card');
+  const exitPopupClose = document.getElementById('exit-popup-close');
+  const exitPopupBackdrop = document.getElementById('exit-popup-backdrop');
+  const exitPopupSkip = document.getElementById('exit-popup-skip');
+  
+  let hasShown = false;
+  
+  // Check if popup was already shown in this session
+  const popupShown = sessionStorage.getItem('exitPopupShown');
+  
+  function showPopup() {
+    if (hasShown || popupShown) return;
+    hasShown = true;
+    sessionStorage.setItem('exitPopupShown', 'true');
+    
+    if (exitPopup) {
+      exitPopup.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+  
+  function hidePopup() {
+    if (exitPopup) {
+      exitPopup.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+  }
+  
+  // Exit Intent Detection (Desktop)
+  document.addEventListener('mouseout', (e: MouseEvent) => {
+    // Check if mouse left through the top of the page
+    if (e.clientY <= 0 && !hasShown && !popupShown) {
+      showPopup();
+    }
+  });
+  
+  // Mobile: Show after 30 seconds of inactivity or scroll up
+  let lastScrollY = window.scrollY;
+  let scrollUpCount = 0;
+  
+  window.addEventListener('scroll', () => {
+    if (window.scrollY < lastScrollY) {
+      scrollUpCount++;
+      // Show popup after user scrolls up 3 times (indicating exit intent)
+      if (scrollUpCount >= 5 && window.scrollY < 200 && !hasShown && !popupShown) {
+        showPopup();
+      }
+    } else {
+      scrollUpCount = 0;
+    }
+    lastScrollY = window.scrollY;
+  }, { passive: true });
+  
+  // Close handlers
+  exitPopupClose?.addEventListener('click', hidePopup);
+  exitPopupBackdrop?.addEventListener('click', hidePopup);
+  exitPopupSkip?.addEventListener('click', hidePopup);
+  
+  // ESC key to close
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && exitPopup?.classList.contains('show')) {
+      hidePopup();
+    }
+  });
+</script>
