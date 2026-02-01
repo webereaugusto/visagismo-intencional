@@ -20,12 +20,7 @@ const highlights = [
 ];
 ---
 
-<section class="relative py-20 md:py-28 lg:py-36 bg-dark overflow-hidden" id="visagismo-campinas">
-  <!-- Background Elements -->
-  <div class="absolute inset-0">
-    <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gold/5 to-transparent"></div>
-    <div class="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2"></div>
-  </div>
+<section class="relative py-20 md:py-28 lg:py-36 bg-light overflow-hidden" id="visagismo-campinas">
   
   <div class="relative max-w-7xl mx-auto px-5 md:px-6">
     
@@ -40,13 +35,13 @@ const highlights = [
       </div>
       
       <h2 class="font-playfair text-3xl md:text-5xl lg:text-6xl font-medium leading-tight mb-6 animate-on-scroll animate-delay-100">
-        <span class="text-white">Visagismo em</span>
+        <span class="text-dark">Visagismo em</span>
         <span class="text-gradient-gold italic"> Campinas</span>
       </h2>
       
-      <p class="font-montserrat text-gray-light text-sm md:text-base lg:text-lg leading-relaxed animate-on-scroll animate-delay-200">
+      <p class="font-montserrat text-gray-dark text-sm md:text-base lg:text-lg leading-relaxed animate-on-scroll animate-delay-200">
         Descubra por que <strong class="text-gold">Campinas</strong> se tornou referência nacional em 
-        <strong class="text-white">visagismo de alta performance</strong> e como o bairro 
+        <strong class="text-dark">visagismo de alta performance</strong> e como o bairro 
         <strong class="text-gold">Cambuí</strong> abriga o mais exclusivo espaço de consultoria de imagem do Brasil.
       </p>
     </div>
@@ -56,27 +51,27 @@ const highlights = [
       
       <!-- Left - Rich Text Content -->
       <div class="animate-on-scroll animate-fade-right">
-        <h3 class="font-playfair text-2xl md:text-3xl text-white font-medium mb-6">
+        <h3 class="font-playfair text-2xl md:text-3xl text-dark font-medium mb-6">
           A História do Visagismo em Campinas
         </h3>
         
-        <div class="space-y-5 font-montserrat text-sm md:text-base text-gray-light leading-relaxed">
+        <div class="space-y-5 font-montserrat text-sm md:text-base text-gray-dark leading-relaxed">
           <p>
-            <strong class="text-white">Campinas</strong>, conhecida como a capital tecnológica do interior paulista, 
+            <strong class="text-dark">Campinas</strong>, conhecida como a capital tecnológica do interior paulista, 
             sempre foi berço de inovação. No universo da beleza, não seria diferente. A cidade foi pioneira em 
             receber as técnicas de <strong class="text-gold">visagismo profissional</strong> no interior de São Paulo, 
             consolidando-se como referência para quem busca muito mais que um simples corte de cabelo.
           </p>
           
           <p>
-            O <strong class="text-white">visagismo em Campinas</strong> ganhou notoriedade especialmente através do 
+            O <strong class="text-dark">visagismo em Campinas</strong> ganhou notoriedade especialmente através do 
             trabalho de <strong class="text-gold">Ery Junior</strong>, que trouxe para a região as técnicas mais 
             avançadas aprendidas em academias renomadas como a <em>Vidal Sassoon de Londres</em>, além de 
             especializações em Nova York e certificações pela L'Oréal em Paris.
           </p>
           
           <p>
-            Hoje, o <strong class="text-white">Cambuí</strong> — bairro mais nobre e sofisticado de Campinas — 
+            Hoje, o <strong class="text-dark">Cambuí</strong> — bairro mais nobre e sofisticado de Campinas — 
             é endereço do <strong class="text-gold">Visagismo Intencional</strong>, um espaço criado para 
             oferecer a experiência mais completa de consultoria de imagem da região, unindo ciência, arte e 
             autoconhecimento em cada atendimento.
@@ -102,17 +97,17 @@ const highlights = [
       <!-- Right - Stats/Highlights -->
       <div class="space-y-6">
         {highlights.map((item, index) => (
-          <div class={`group relative p-6 md:p-8 border border-gold/20 hover:border-gold/40 bg-dark-light/30 backdrop-blur-sm transition-all duration-500 animate-on-scroll animate-delay-${(index + 1) * 100}`}>
+          <div class={`group relative p-6 md:p-8 border border-gold/30 hover:border-gold bg-light-dark transition-all duration-500 animate-on-scroll animate-delay-${(index + 1) * 100}`}>
             <!-- Number -->
-            <span class="absolute top-4 right-4 font-playfair text-3xl md:text-4xl text-gold/20 group-hover:text-gold/40 transition-colors">
+            <span class="absolute top-4 right-4 font-playfair text-3xl md:text-4xl text-gold/30 group-hover:text-gold/50 transition-colors">
               {item.number}
             </span>
             
             <!-- Content -->
-            <h4 class="font-playfair text-lg md:text-xl text-white mb-3 group-hover:text-gold transition-colors">
+            <h4 class="font-playfair text-lg md:text-xl text-dark mb-3 group-hover:text-gold transition-colors">
               {item.title}
             </h4>
-            <p class="font-montserrat text-sm text-gray leading-relaxed pr-8">
+            <p class="font-montserrat text-sm text-gray-dark leading-relaxed pr-8">
               {item.description}
             </p>
           </div>
@@ -121,44 +116,44 @@ const highlights = [
     </div>
     
     <!-- Bottom Section - Why Campinas -->
-    <div class="border-t border-gold/20 pt-16 md:pt-20">
+    <div class="border-t border-gold/30 pt-16 md:pt-20">
       <div class="grid md:grid-cols-3 gap-8 md:gap-12">
         
         <div class="text-center animate-on-scroll">
-          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-gold/20 to-gold/5 flex items-center justify-center">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-gold/10 flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
           </div>
-          <h4 class="font-playfair text-xl text-white mb-3">Localização Privilegiada</h4>
-          <p class="font-montserrat text-sm text-gray leading-relaxed">
+          <h4 class="font-playfair text-xl text-dark mb-3">Localização Privilegiada</h4>
+          <p class="font-montserrat text-sm text-gray-dark leading-relaxed">
             No coração do <strong class="text-gold">Cambuí</strong>, o bairro mais sofisticado de Campinas, 
             com fácil acesso e estacionamento nas proximidades.
           </p>
         </div>
         
         <div class="text-center animate-on-scroll animate-delay-100">
-          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-gold/20 to-gold/5 flex items-center justify-center">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-gold/10 flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
             </svg>
           </div>
-          <h4 class="font-playfair text-xl text-white mb-3">Expertise Internacional</h4>
-          <p class="font-montserrat text-sm text-gray leading-relaxed">
+          <h4 class="font-playfair text-xl text-dark mb-3">Expertise Internacional</h4>
+          <p class="font-montserrat text-sm text-gray-dark leading-relaxed">
             Técnicas aprendidas em <strong class="text-gold">Londres, Nova York e Paris</strong>, 
             aplicadas com a excelência que Campinas merece.
           </p>
         </div>
         
         <div class="text-center animate-on-scroll animate-delay-200">
-          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-gold/20 to-gold/5 flex items-center justify-center">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-gold/10 flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
             </svg>
           </div>
-          <h4 class="font-playfair text-xl text-white mb-3">Atendimento Exclusivo</h4>
-          <p class="font-montserrat text-sm text-gray leading-relaxed">
+          <h4 class="font-playfair text-xl text-dark mb-3">Atendimento Exclusivo</h4>
+          <p class="font-montserrat text-sm text-gray-dark leading-relaxed">
             Ambiente intimista com atendimento personalizado, sem filas, 
             focado 100% em <strong class="text-gold">sua transformação</strong>.
           </p>

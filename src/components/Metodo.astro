@@ -35,9 +35,7 @@ const steps = [
 ];
 ---
 
-<section class="relative py-20 md:py-28 lg:py-36 bg-light overflow-hidden" id="metodo">
-  <!-- Background Elements -->
-  <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-dark to-transparent"></div>
+<section class="relative py-20 md:py-28 lg:py-36 bg-dark-light overflow-hidden" id="metodo">
   
   <div class="relative max-w-7xl mx-auto px-5 md:px-6">
     
@@ -51,12 +49,12 @@ const steps = [
         <span class="w-10 md:w-12 h-[1px] bg-gold"></span>
       </div>
       
-      <h2 class="font-playfair text-3xl md:text-5xl lg:text-6xl font-medium leading-tight mb-6 text-dark animate-on-scroll animate-delay-100">
+      <h2 class="font-playfair text-3xl md:text-5xl lg:text-6xl font-medium leading-tight mb-6 text-white animate-on-scroll animate-delay-100">
         O Método <span class="text-gradient-gold italic">Ery Junior</span>
       </h2>
       
-      <p class="font-montserrat text-gray-dark text-sm md:text-base lg:text-lg leading-relaxed animate-on-scroll animate-delay-200">
-        Uma metodologia única desenvolvida ao longo de <strong class="text-dark">30 anos de experiência</strong>, 
+      <p class="font-montserrat text-gray-light text-sm md:text-base lg:text-lg leading-relaxed animate-on-scroll animate-delay-200">
+        Uma metodologia única desenvolvida ao longo de <strong class="text-white">30 anos de experiência</strong>, 
         combinando técnicas internacionais com sensibilidade artística brasileira para criar 
         <strong class="text-gold">sua melhor versão</strong>.
       </p>
@@ -65,7 +63,7 @@ const steps = [
     <!-- Method Steps -->
     <div class="relative">
       <!-- Connection Line (Desktop) -->
-      <div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-gold/40 via-gold/20 to-transparent -translate-x-1/2"></div>
+      <div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-[2px] bg-gold/30 -translate-x-1/2"></div>
       
       <div class="space-y-8 lg:space-y-0">
         {steps.map((step, index) => (
@@ -77,7 +75,7 @@ const steps = [
             </div>
             
             <!-- Content Card -->
-            <div class={`relative p-6 md:p-8 bg-white border border-gray-100 shadow-sm hover:shadow-lg hover:border-gold/30 transition-all duration-500 ${index % 2 === 0 ? 'lg:mr-8' : 'lg:ml-8 lg:col-start-2'}`}>
+            <div class={`relative p-6 md:p-8 bg-dark border border-gold/20 hover:border-gold/40 transition-all duration-500 ${index % 2 === 0 ? 'lg:mr-8' : 'lg:ml-8 lg:col-start-2'}`}>
               <!-- Mobile Number -->
               <div class="lg:hidden flex items-center gap-4 mb-4">
                 <span class="w-10 h-10 rounded-full bg-gold text-dark flex items-center justify-center font-playfair font-medium">
@@ -91,11 +89,11 @@ const steps = [
                 <span class="text-gold/60 text-xs font-montserrat uppercase tracking-wider">{step.duration}</span>
               </div>
               
-              <h3 class="font-playfair text-xl md:text-2xl text-dark font-medium mb-3">
+              <h3 class="font-playfair text-xl md:text-2xl text-white font-medium mb-3">
                 {step.title}
               </h3>
               
-              <p class="font-montserrat text-sm md:text-base text-gray-dark leading-relaxed">
+              <p class="font-montserrat text-sm md:text-base text-gray leading-relaxed">
                 {step.description}
               </p>
               
