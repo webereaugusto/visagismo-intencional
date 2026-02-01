@@ -113,13 +113,55 @@ const whatsappLink = "https://wa.me/5519991103018?text=Olá, gostaria de agendar
       
       <!-- Feminino -->
       <article class="group relative overflow-hidden">
-        <div class="aspect-[3/4] overflow-hidden">
-          <img 
-            src="/images/gallery-5.jpg" 
-            alt="Visagismo Feminino"
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
+        <div class="aspect-[3/4] overflow-hidden relative" id="feminino-slider">
+          <!-- Slider de Antes/Depois -->
+          <div class="relative w-full h-full">
+            <!-- Imagem Antes -->
+            <img 
+              src="/images/visagismo-feminino-antes.webp" 
+              alt="Visagismo Feminino Antes - Ery Junior Campinas"
+              class="feminino-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100"
+              data-slide="0"
+              loading="lazy"
+              decoding="async"
+            />
+            <!-- Imagem Depois -->
+            <img 
+              src="/images/visagismo-feminino-depois.webp" 
+              alt="Visagismo Feminino Depois - Transformação Ery Junior"
+              class="feminino-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0"
+              data-slide="1"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          
+          <!-- Indicador Antes/Depois -->
+          <div class="absolute top-4 left-4 z-20">
+            <span id="feminino-label" class="bg-gold text-dark px-3 py-1 text-xs font-montserrat font-semibold uppercase tracking-wider">
+              Antes
+            </span>
+          </div>
+          
+          <!-- Controles do Slider -->
+          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
+            <button id="feminino-prev" class="w-8 h-8 flex items-center justify-center border border-gold/50 text-gold hover:bg-gold hover:text-dark transition-all" aria-label="Imagem anterior">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <div class="flex gap-2">
+              <span class="feminino-dot w-2 h-2 rounded-full bg-gold cursor-pointer" data-index="0"></span>
+              <span class="feminino-dot w-2 h-2 rounded-full bg-gold/40 cursor-pointer" data-index="1"></span>
+            </div>
+            <button id="feminino-next" class="w-8 h-8 flex items-center justify-center border border-gold/50 text-gold hover:bg-gold hover:text-dark transition-all" aria-label="Próxima imagem">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+          
+          <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent pointer-events-none"></div>
         </div>
         
         <div class="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
@@ -220,4 +262,65 @@ const whatsappLink = "https://wa.me/5519991103018?text=Olá, gostaria de agendar
   
   // Auto-rotate every 5 seconds
   setInterval(nextMasculinoSlide, 5000);
+  
+  // Slider Feminino - Antes/Depois
+  const femininoSlides = document.querySelectorAll('.feminino-slide');
+  const femininoDots = document.querySelectorAll('.feminino-dot');
+  const femininoLabel = document.getElementById('feminino-label');
+  const femininoPrev = document.getElementById('feminino-prev');
+  const femininoNext = document.getElementById('feminino-next');
+  
+  let femininoCurrentSlide = 0;
+  const femininoLabels = ['Antes', 'Depois'];
+  
+  function showFemininoSlide(index: number) {
+    femininoSlides.forEach((slide, i) => {
+      if (i === index) {
+        slide.classList.remove('opacity-0');
+        slide.classList.add('opacity-100');
+      } else {
+        slide.classList.remove('opacity-100');
+        slide.classList.add('opacity-0');
+      }
+    });
+    
+    femininoDots.forEach((dot, i) => {
+      if (i === index) {
+        dot.classList.remove('bg-gold/40');
+        dot.classList.add('bg-gold');
+      } else {
+        dot.classList.remove('bg-gold');
+        dot.classList.add('bg-gold/40');
+      }
+    });
+    
+    if (femininoLabel) {
+      femininoLabel.textContent = femininoLabels[index];
+    }
+    
+    femininoCurrentSlide = index;
+  }
+  
+  function nextFemininoSlide() {
+    const next = (femininoCurrentSlide + 1) % 2;
+    showFemininoSlide(next);
+  }
+  
+  function prevFemininoSlide() {
+    const prev = (femininoCurrentSlide - 1 + 2) % 2;
+    showFemininoSlide(prev);
+  }
+  
+  // Event listeners
+  femininoPrev?.addEventListener('click', prevFemininoSlide);
+  femininoNext?.addEventListener('click', nextFemininoSlide);
+  
+  femininoDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => showFemininoSlide(index));
+  });
+  
+  // Auto-rotate every 5 seconds (offset by 2.5s from masculino for visual interest)
+  setTimeout(() => {
+    setInterval(nextFemininoSlide, 5000);
+  }, 2500);
 </script>
