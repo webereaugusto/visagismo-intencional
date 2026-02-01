@@ -13,10 +13,10 @@ const whatsappLink = "https://wa.me/5519991103018?text=Olá, gostaria de agendar
   <div class="max-w-7xl mx-auto px-6">
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-screen py-20">
       
-      <!-- Left Side - Image with Minimal Corner Frame -->
+      <!-- Left Side - Before/After Slider with Minimal Corner Frame -->
       <div class="relative order-2 lg:order-1 animate-on-scroll animate-fade-left max-w-md mx-auto lg:mx-0">
         <!-- Corner-only Frame - Elegant & Minimal -->
-        <div class="absolute -inset-4 md:-inset-6 pointer-events-none">
+        <div class="absolute -inset-4 md:-inset-6 pointer-events-none z-20">
           <!-- Top Left Corner -->
           <div class="absolute top-0 left-0 w-14 md:w-16 h-14 md:h-16">
             <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-gold to-transparent"></div>
@@ -42,26 +42,110 @@ const whatsappLink = "https://wa.me/5519991103018?text=Olá, gostaria de agendar
           </div>
         </div>
         
-        <!-- Image -->
-        <div class="relative z-10 hover-zoom">
-          <img 
-            src="/images/galeria/6026349dc1415-before-after-women-cutting-hair-coverimage2.jpg" 
-            alt="Visagismo - Transformação" 
-            class="w-full aspect-[3/4] object-cover"
-            loading="lazy"
-            decoding="async"
-            width="400"
-            height="533"
-          />
+        <!-- Slider Container -->
+        <div class="relative z-10" id="essence-slider">
+          <!-- Slides -->
+          <div class="relative aspect-[3/4] overflow-hidden">
+            <!-- Slide 1 - Antes -->
+            <div class="slider-slide absolute inset-0 opacity-100 transition-opacity duration-1000" data-slide="0">
+              <img 
+                src="/images/antes2.webp" 
+                alt="Visagismo - Antes da Transformação" 
+                class="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
+                width="400"
+                height="533"
+              />
+              <!-- Label -->
+              <div class="absolute top-4 left-4 z-10">
+                <span class="bg-dark/80 backdrop-blur-sm text-gold text-[10px] tracking-[0.2em] uppercase font-montserrat font-medium px-3 py-1.5 border border-gold/30">
+                  Antes
+                </span>
+              </div>
+            </div>
+            
+            <!-- Slide 2 - Depois -->
+            <div class="slider-slide absolute inset-0 opacity-0 transition-opacity duration-1000" data-slide="1">
+              <img 
+                src="/images/depois2.webp" 
+                alt="Visagismo - Depois da Transformação" 
+                class="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
+                width="400"
+                height="533"
+              />
+              <!-- Label -->
+              <div class="absolute top-4 left-4 z-10">
+                <span class="bg-gold text-dark text-[10px] tracking-[0.2em] uppercase font-montserrat font-bold px-3 py-1.5">
+                  Depois
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Elegant Controls -->
+          <div class="flex items-center justify-between mt-6">
+            <!-- Navigation Arrows -->
+            <div class="flex items-center gap-3">
+              <!-- Prev Button -->
+              <button 
+                class="slider-prev group relative w-10 h-10 flex items-center justify-center"
+                aria-label="Imagem anterior"
+              >
+                <!-- Line frame -->
+                <div class="absolute inset-0">
+                  <div class="absolute top-0 left-0 w-3 h-[1px] bg-gold/50 group-hover:bg-gold transition-colors"></div>
+                  <div class="absolute top-0 left-0 h-3 w-[1px] bg-gold/50 group-hover:bg-gold transition-colors"></div>
+                  <div class="absolute bottom-0 left-0 w-3 h-[1px] bg-gold/50 group-hover:bg-gold transition-colors"></div>
+                  <div class="absolute bottom-0 left-0 h-3 w-[1px] bg-gold/50 group-hover:bg-gold transition-colors"></div>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gold/70 group-hover:text-gold transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              
+              <!-- Next Button -->
+              <button 
+                class="slider-next group relative w-10 h-10 flex items-center justify-center"
+                aria-label="Próxima imagem"
+              >
+                <!-- Line frame -->
+                <div class="absolute inset-0">
+                  <div class="absolute top-0 right-0 w-3 h-[1px] bg-gold/50 group-hover:bg-gold transition-colors"></div>
+                  <div class="absolute top-0 right-0 h-3 w-[1px] bg-gold/50 group-hover:bg-gold transition-colors"></div>
+                  <div class="absolute bottom-0 right-0 w-3 h-[1px] bg-gold/50 group-hover:bg-gold transition-colors"></div>
+                  <div class="absolute bottom-0 right-0 h-3 w-[1px] bg-gold/50 group-hover:bg-gold transition-colors"></div>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gold/70 group-hover:text-gold transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+            
+            <!-- Dots Indicator -->
+            <div class="flex items-center gap-3">
+              <button class="slider-dot w-8 h-[2px] bg-gold transition-all duration-300" data-dot="0" aria-label="Ver imagem 1"></button>
+              <button class="slider-dot w-4 h-[1px] bg-gold/30 hover:bg-gold/50 transition-all duration-300" data-dot="1" aria-label="Ver imagem 2"></button>
+            </div>
+            
+            <!-- Progress Label -->
+            <div class="font-montserrat text-[10px] tracking-[0.2em] text-gold/50 uppercase">
+              <span class="slider-current">01</span>
+              <span class="text-gold/30 mx-1">/</span>
+              <span>02</span>
+            </div>
+          </div>
         </div>
         
-        <!-- Label below image -->
-        <p class="text-center lg:text-left mt-8 text-[10px] tracking-[0.3em] text-gold/50 uppercase font-montserrat">
+        <!-- Label below slider -->
+        <p class="text-center lg:text-left mt-6 text-[10px] tracking-[0.3em] text-gold/50 uppercase font-montserrat">
           High Definition Aesthetic
         </p>
         
         <!-- Decorative vertical text -->
-        <div class="absolute -left-10 top-1/2 -translate-y-1/2 hidden xl:block">
+        <div class="absolute -left-10 top-1/2 -translate-y-1/2 hidden xl:block z-30">
           <span class="writing-vertical text-gold/30 text-[10px] tracking-[0.5em] font-montserrat uppercase font-medium">
             Visagismo
           </span>
@@ -204,4 +288,144 @@ const whatsappLink = "https://wa.me/5519991103018?text=Olá, gostaria de agendar
   .marquee-container:hover .marquee-content {
     animation-play-state: paused;
   }
+  
+  /* Slider styles */
+  .slider-slide {
+    will-change: opacity;
+  }
+  
+  .slider-dot.active {
+    width: 2rem;
+    height: 2px;
+    background-color: var(--color-gold);
+  }
+  
+  .slider-dot:not(.active) {
+    width: 1rem;
+    height: 1px;
+  }
 </style>
+
+<script>
+  // Essence Slider
+  const slider = document.getElementById('essence-slider');
+  
+  if (slider) {
+    const slides = slider.querySelectorAll('.slider-slide') as NodeListOf<HTMLElement>;
+    const dots = slider.querySelectorAll('.slider-dot') as NodeListOf<HTMLElement>;
+    const prevBtn = slider.querySelector('.slider-prev');
+    const nextBtn = slider.querySelector('.slider-next');
+    const currentLabel = slider.querySelector('.slider-current');
+    
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+    let autoplayInterval: ReturnType<typeof setInterval>;
+    
+    function goToSlide(index: number) {
+      // Normalize index
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+      
+      // Update slides
+      slides.forEach((slide, i) => {
+        if (i === index) {
+          slide.style.opacity = '1';
+          slide.style.zIndex = '1';
+        } else {
+          slide.style.opacity = '0';
+          slide.style.zIndex = '0';
+        }
+      });
+      
+      // Update dots
+      dots.forEach((dot, i) => {
+        if (i === index) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+      
+      // Update label
+      if (currentLabel) {
+        currentLabel.textContent = String(index + 1).padStart(2, '0');
+      }
+      
+      currentSlide = index;
+    }
+    
+    function nextSlide() {
+      goToSlide(currentSlide + 1);
+    }
+    
+    function prevSlide() {
+      goToSlide(currentSlide - 1);
+    }
+    
+    // Start autoplay
+    function startAutoplay() {
+      autoplayInterval = setInterval(nextSlide, 4000);
+    }
+    
+    function stopAutoplay() {
+      clearInterval(autoplayInterval);
+    }
+    
+    // Event listeners
+    prevBtn?.addEventListener('click', () => {
+      prevSlide();
+      stopAutoplay();
+      startAutoplay();
+    });
+    
+    nextBtn?.addEventListener('click', () => {
+      nextSlide();
+      stopAutoplay();
+      startAutoplay();
+    });
+    
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        goToSlide(index);
+        stopAutoplay();
+        startAutoplay();
+      });
+    });
+    
+    // Pause on hover
+    slider.addEventListener('mouseenter', stopAutoplay);
+    slider.addEventListener('mouseleave', startAutoplay);
+    
+    // Touch support
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    slider.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    slider.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+    
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = touchStartX - touchEndX;
+      
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+        stopAutoplay();
+        startAutoplay();
+      }
+    }
+    
+    // Initialize
+    goToSlide(0);
+    startAutoplay();
+  }
+</script>
