@@ -1,0 +1,137 @@
+---
+const whatsappLink = "https://wa.me/5519991103018?text=Olá, quero conhecer o Método Ery Junior";
+
+const steps = [
+  {
+    number: "01",
+    title: "Análise Facial Completa",
+    description: "Estudo detalhado do formato do rosto, proporções, linhas e ângulos faciais. Identificamos os pontos a valorizar e os que podem ser harmonizados.",
+    duration: "20 min"
+  },
+  {
+    number: "02",
+    title: "Mapeamento de Personalidade",
+    description: "Compreendemos seu estilo de vida, objetivos pessoais e profissionais, preferências estéticas e a imagem que deseja projetar ao mundo.",
+    duration: "15 min"
+  },
+  {
+    number: "03",
+    title: "Colorimetria Personalizada",
+    description: "Análise do tom de pele, cor dos olhos e características naturais para definir a paleta de cores que mais valoriza sua beleza única.",
+    duration: "15 min"
+  },
+  {
+    number: "04",
+    title: "Projeto de Imagem",
+    description: "Criação do plano completo de transformação: corte ideal, coloração estratégica e orientações para manutenção do visual.",
+    duration: "20 min"
+  },
+  {
+    number: "05",
+    title: "Execução Artística",
+    description: "Aplicação das técnicas exclusivas desenvolvidas ao longo de 30 anos, com atenção a cada detalhe para um resultado impecável.",
+    duration: "40-60 min"
+  }
+];
+---
+
+<section class="relative py-20 md:py-28 lg:py-36 bg-light overflow-hidden" id="metodo">
+  <!-- Background Elements -->
+  <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-dark to-transparent"></div>
+  
+  <div class="relative max-w-7xl mx-auto px-5 md:px-6">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 md:mb-20">
+      <div class="flex items-center justify-center gap-3 mb-6 animate-on-scroll">
+        <span class="w-10 md:w-12 h-[1px] bg-gold"></span>
+        <span class="text-gold text-[10px] md:text-xs tracking-[0.2em] md:tracking-[0.3em] uppercase font-montserrat font-medium">
+          Exclusivo
+        </span>
+        <span class="w-10 md:w-12 h-[1px] bg-gold"></span>
+      </div>
+      
+      <h2 class="font-playfair text-3xl md:text-5xl lg:text-6xl font-medium leading-tight mb-6 text-dark animate-on-scroll animate-delay-100">
+        O Método <span class="text-gradient-gold italic">Ery Junior</span>
+      </h2>
+      
+      <p class="font-montserrat text-gray-dark text-sm md:text-base lg:text-lg leading-relaxed animate-on-scroll animate-delay-200">
+        Uma metodologia única desenvolvida ao longo de <strong class="text-dark">30 anos de experiência</strong>, 
+        combinando técnicas internacionais com sensibilidade artística brasileira para criar 
+        <strong class="text-gold">sua melhor versão</strong>.
+      </p>
+    </div>
+    
+    <!-- Method Steps -->
+    <div class="relative">
+      <!-- Connection Line (Desktop) -->
+      <div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-gold/40 via-gold/20 to-transparent -translate-x-1/2"></div>
+      
+      <div class="space-y-8 lg:space-y-0">
+        {steps.map((step, index) => (
+          <div class={`relative lg:grid lg:grid-cols-2 lg:gap-16 ${index % 2 === 0 ? '' : 'lg:direction-rtl'} animate-on-scroll animate-delay-${(index + 1) * 100}`}>
+            
+            <!-- Step Number (Desktop Center) -->
+            <div class="hidden lg:flex absolute left-1/2 top-8 -translate-x-1/2 w-14 h-14 rounded-full bg-gold text-dark items-center justify-center z-10 shadow-lg shadow-gold/30">
+              <span class="font-playfair text-xl font-medium">{step.number}</span>
+            </div>
+            
+            <!-- Content Card -->
+            <div class={`relative p-6 md:p-8 bg-white border border-gray-100 shadow-sm hover:shadow-lg hover:border-gold/30 transition-all duration-500 ${index % 2 === 0 ? 'lg:mr-8' : 'lg:ml-8 lg:col-start-2'}`}>
+              <!-- Mobile Number -->
+              <div class="lg:hidden flex items-center gap-4 mb-4">
+                <span class="w-10 h-10 rounded-full bg-gold text-dark flex items-center justify-center font-playfair font-medium">
+                  {step.number}
+                </span>
+                <span class="text-gold/60 text-xs font-montserrat uppercase tracking-wider">{step.duration}</span>
+              </div>
+              
+              <!-- Duration Badge (Desktop) -->
+              <div class="hidden lg:block absolute top-4 right-4">
+                <span class="text-gold/60 text-xs font-montserrat uppercase tracking-wider">{step.duration}</span>
+              </div>
+              
+              <h3 class="font-playfair text-xl md:text-2xl text-dark font-medium mb-3">
+                {step.title}
+              </h3>
+              
+              <p class="font-montserrat text-sm md:text-base text-gray-dark leading-relaxed">
+                {step.description}
+              </p>
+              
+              <!-- Gold accent -->
+              <div class="absolute bottom-0 left-0 w-16 h-[3px] bg-gradient-to-r from-gold to-transparent"></div>
+            </div>
+            
+            <!-- Empty space for alternating layout -->
+            {index % 2 === 0 ? <div class="hidden lg:block"></div> : null}
+          </div>
+        ))}
+      </div>
+    </div>
+    
+    <!-- Bottom CTA -->
+    <div class="mt-16 md:mt-20 text-center animate-on-scroll">
+      <div class="inline-block p-8 md:p-10 bg-gradient-to-br from-dark via-dark-light to-dark border border-gold/20">
+        <h3 class="font-playfair text-2xl md:text-3xl text-white font-medium mb-4">
+          Experimente o <span class="text-gradient-gold">Método Completo</span>
+        </h3>
+        <p class="font-montserrat text-gray text-sm md:text-base mb-6 max-w-md mx-auto">
+          Agende sua consultoria e viva a experiência de uma transformação que vai além do visual.
+        </p>
+        <a 
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-3 bg-gradient-to-r from-gold to-gold-dark text-dark px-8 md:px-10 py-4 md:py-5 font-montserrat text-xs md:text-sm font-bold tracking-wider uppercase hover:shadow-lg hover:shadow-gold/30 transition-all"
+        >
+          <span>Quero Conhecer o Método</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+    
+  </div>
+</section>
