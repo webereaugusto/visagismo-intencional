@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import ExitPopup from '../components/ExitPopup.astro';
+import CoursePopup from '../components/CoursePopup.astro';
 
 interface Props {
   title?: string;
@@ -671,6 +672,9 @@ const canonicalUrl = siteConfig.siteUrl;
     
     <!-- Exit Intent Popup -->
     <ExitPopup />
+    
+    <!-- Course Popup (5 seconds) -->
+    <CoursePopup />
     
     <!-- Animation Script - Intersection Observer -->
     <script>

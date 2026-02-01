@@ -1,0 +1,191 @@
+---
+const whatsappLink = "https://wa.me/5519991103018?text=Olá, tenho interesse no Curso de Visagismo dos dias 15 e 16 de março!";
+---
+
+<!-- Course Popup Overlay -->
+<div id="course-popup" class="fixed inset-0 z-[100] hidden opacity-0 transition-opacity duration-500">
+  <!-- Backdrop -->
+  <div class="absolute inset-0 bg-dark/80 backdrop-blur-sm" id="popup-backdrop"></div>
+  
+  <!-- Popup Container -->
+  <div class="absolute inset-0 flex items-center justify-center p-4">
+    <div class="relative max-w-lg w-full bg-gradient-to-br from-[#0a0f1a] via-[#0d1424] to-[#0a1628] border border-gold/30 shadow-2xl shadow-gold/10 transform scale-95 opacity-0 transition-all duration-500" id="popup-content">
+      
+      <!-- Corner Decorations -->
+      <div class="absolute -inset-px pointer-events-none">
+        <!-- Top Left -->
+        <div class="absolute top-0 left-0 w-12 h-12">
+          <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-gold to-transparent"></div>
+          <div class="absolute top-0 left-0 h-full w-[1px] bg-gradient-to-b from-gold to-transparent"></div>
+        </div>
+        <!-- Top Right -->
+        <div class="absolute top-0 right-0 w-12 h-12">
+          <div class="absolute top-0 right-0 w-full h-[1px] bg-gradient-to-l from-gold to-transparent"></div>
+          <div class="absolute top-0 right-0 h-full w-[1px] bg-gradient-to-b from-gold to-transparent"></div>
+        </div>
+        <!-- Bottom Left -->
+        <div class="absolute bottom-0 left-0 w-12 h-12">
+          <div class="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-gold to-transparent"></div>
+          <div class="absolute bottom-0 left-0 h-full w-[1px] bg-gradient-to-t from-gold to-transparent"></div>
+        </div>
+        <!-- Bottom Right -->
+        <div class="absolute bottom-0 right-0 w-12 h-12">
+          <div class="absolute bottom-0 right-0 w-full h-[1px] bg-gradient-to-l from-gold to-transparent"></div>
+          <div class="absolute bottom-0 right-0 h-full w-[1px] bg-gradient-to-t from-gold to-transparent"></div>
+        </div>
+      </div>
+      
+      <!-- Close Button -->
+      <button 
+        id="popup-close" 
+        class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-gray hover:text-gold transition-colors z-10"
+        aria-label="Fechar popup"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      
+      <!-- Content -->
+      <div class="p-8 md:p-10">
+        <!-- Badge -->
+        <div class="flex items-center gap-2 mb-6">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-gold"></span>
+          </span>
+          <span class="text-gold text-[10px] md:text-xs tracking-[0.2em] uppercase font-montserrat font-medium">
+            Vagas Limitadas
+          </span>
+        </div>
+        
+        <!-- Title -->
+        <h3 class="font-playfair text-2xl md:text-3xl lg:text-4xl text-white font-medium leading-tight mb-4">
+          Curso de <span class="text-gradient-gold italic">Visagismo</span>
+        </h3>
+        
+        <!-- Subtitle -->
+        <p class="font-montserrat text-gray-light text-sm md:text-base leading-relaxed mb-6">
+          Um curso pensado para profissionais que desejam criar imagem com propósito, unir técnica, identidade e estratégia.
+        </p>
+        
+        <!-- Date Highlight -->
+        <div class="bg-white/5 border border-gold/20 p-4 md:p-5 mb-6">
+          <div class="flex items-center gap-4">
+            <div class="text-center">
+              <span class="block font-playfair text-3xl md:text-4xl text-gold font-medium">15-16</span>
+              <span class="block font-montserrat text-[10px] md:text-xs text-gray uppercase tracking-wider">Março</span>
+            </div>
+            <div class="w-[1px] h-12 bg-gold/30"></div>
+            <div>
+              <span class="block font-playfair text-xl md:text-2xl text-white">2026</span>
+              <span class="block font-montserrat text-[10px] md:text-xs text-gray">Save the Date</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Features -->
+        <ul class="grid grid-cols-2 gap-2 mb-8">
+          <li class="flex items-center gap-2 font-montserrat text-[11px] md:text-xs text-gray-light">
+            <span class="w-1 h-1 bg-gold rounded-full flex-shrink-0"></span>
+            <span>Visagismo aplicado</span>
+          </li>
+          <li class="flex items-center gap-2 font-montserrat text-[11px] md:text-xs text-gray-light">
+            <span class="w-1 h-1 bg-gold rounded-full flex-shrink-0"></span>
+            <span>Leitura de imagem</span>
+          </li>
+          <li class="flex items-center gap-2 font-montserrat text-[11px] md:text-xs text-gray-light">
+            <span class="w-1 h-1 bg-gold rounded-full flex-shrink-0"></span>
+            <span>Intenção e forma</span>
+          </li>
+          <li class="flex items-center gap-2 font-montserrat text-[11px] md:text-xs text-gray-light">
+            <span class="w-1 h-1 bg-gold rounded-full flex-shrink-0"></span>
+            <span>Método autoral</span>
+          </li>
+        </ul>
+        
+        <!-- CTA -->
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a 
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex-1 bg-gradient-to-r from-gold to-gold-dark text-dark px-6 py-4 font-montserrat text-xs md:text-sm font-bold tracking-wider uppercase text-center hover:shadow-lg hover:shadow-gold/30 transition-all"
+          >
+            Quero Participar
+          </a>
+          <button 
+            id="popup-later"
+            class="px-6 py-4 border border-gold/30 text-gold font-montserrat text-xs md:text-sm tracking-wider uppercase hover:bg-gold/10 hover:border-gold transition-all"
+          >
+            Mais Tarde
+          </button>
+        </div>
+        
+        <!-- Instructor -->
+        <p class="text-center mt-6 font-montserrat text-[10px] md:text-xs text-gold/60">
+          Por <span class="text-gold">Ery Junior</span> • Visagismo Intencional
+        </p>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<script>
+  const popup = document.getElementById('course-popup');
+  const popupContent = document.getElementById('popup-content');
+  const closeBtn = document.getElementById('popup-close');
+  const laterBtn = document.getElementById('popup-later');
+  const backdrop = document.getElementById('popup-backdrop');
+  
+  // Check if popup was already shown in this session
+  const popupShown = sessionStorage.getItem('coursePopupShown');
+  
+  function showPopup() {
+    if (popup && popupContent) {
+      popup.classList.remove('hidden');
+      // Trigger reflow for animation
+      void popup.offsetWidth;
+      popup.classList.remove('opacity-0');
+      popup.classList.add('opacity-100');
+      popupContent.classList.remove('scale-95', 'opacity-0');
+      popupContent.classList.add('scale-100', 'opacity-100');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+  
+  function hidePopup() {
+    if (popup && popupContent) {
+      popup.classList.remove('opacity-100');
+      popup.classList.add('opacity-0');
+      popupContent.classList.remove('scale-100', 'opacity-100');
+      popupContent.classList.add('scale-95', 'opacity-0');
+      
+      setTimeout(() => {
+        popup.classList.add('hidden');
+        document.body.style.overflow = '';
+      }, 500);
+      
+      // Mark as shown
+      sessionStorage.setItem('coursePopupShown', 'true');
+    }
+  }
+  
+  // Show popup after 5 seconds if not shown before
+  if (!popupShown) {
+    setTimeout(showPopup, 5000);
+  }
+  
+  // Close handlers
+  closeBtn?.addEventListener('click', hidePopup);
+  laterBtn?.addEventListener('click', hidePopup);
+  backdrop?.addEventListener('click', hidePopup);
+  
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && popup && !popup.classList.contains('hidden')) {
+      hidePopup();
+    }
+  });
+</script>
