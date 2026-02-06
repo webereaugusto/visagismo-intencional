@@ -1,0 +1,36 @@
+# robots.txt para Visagismo Intencional - www.visagismocampinas.com.br
+
+# Permitir todos os bots de busca principais
+User-agent: *
+Allow: /
+
+# Permitir especificamente o Google
+User-agent: Googlebot
+Allow: /
+
+# Permitir o Googlebot para imagens
+User-agent: Googlebot-Image
+Allow: /
+
+# Permitir Bing
+User-agent: Bingbot
+Allow: /
+
+# Bloquear crawlers de conteúdo indesejado
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Sitemap
+Sitemap: https://www.visagismocampinas.com.br/sitemap.xml
+
+# Crawl-delay (opcional, para evitar sobrecarga)
+# Crawl-delay: 10

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Página Principal -->
+  <url>
+    <loc>https://www.visagismocampinas.com.br/</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.visagismocampinas.com.br/images/baner.webp</image:loc>
+      <image:title>Visagismo Intencional - Ery Junior em Campinas</image:title>
+      <image:caption>O melhor visagismo em Campinas no Cambuí</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visagismocampinas.com.br/images/logo-branco-500-transparente-visagismo.png</image:loc>
+      <image:title>Logo Visagismo Intencional</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Seção: O Que é Visagismo -->
+  <url>
+    <loc>https://www.visagismocampinas.com.br/#conceito</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Seção: Sobre Ery Junior -->
+  <url>
+    <loc>https://www.visagismocampinas.com.br/#sobre</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.visagismocampinas.com.br/images/ery-junior-hero.webp</image:loc>
+      <image:title>Ery Junior - Maior especialista em visagismo do Brasil</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Seção: Serviços -->
+  <url>
+    <loc>https://www.visagismocampinas.com.br/#servicos</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.visagismocampinas.com.br/images/coloracao.webp</image:loc>
+      <image:title>Coloração Premium - Visagismo Campinas</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visagismocampinas.com.br/images/noiva.webp</image:loc>
+      <image:title>Dia da Noiva - Visagismo Campinas</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visagismocampinas.com.br/images/autoridade.webp</image:loc>
+      <image:title>Corte de Autoridade - Visagismo Campinas</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Seção: Galeria -->
+  <url>
+    <loc>https://www.visagismocampinas.com.br/#galeria</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.visagismocampinas.com.br/images/galeria/visagismo-campinas-ery-junior-03.webp</image:loc>
+      <image:title>Transformação Visagismo Campinas - Ery Junior</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visagismocampinas.com.br/images/galeria/visagismo-campinas-ery-junior-04.webp</image:loc>
+      <image:title>Antes e Depois Visagismo - Ery Junior Campinas</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.visagismocampinas.com.br/images/galeria/visagismo-campinas-ery-junior-05.webp</image:loc>
+      <image:title>Resultado Visagismo Campinas - Ery Junior</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Seção: Depoimentos -->
+  <url>
+    <loc>https://www.visagismocampinas.com.br/#depoimentos</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Seção: FAQ -->
+  <url>
+    <loc>https://www.visagismocampinas.com.br/#faq</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Seção: Contato -->
+  <url>
+    <loc>https://www.visagismocampinas.com.br/#contato</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Seção: Visagismo em Campinas (SEO) -->
+  <url>
+    <loc>https://www.visagismocampinas.com.br/#visagismo-campinas</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Seção: Método Ery Junior -->
+  <url>
+    <loc>https://www.visagismocampinas.com.br/#metodo</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Seção: Diferenciais -->
+  <url>
+    <loc>https://www.visagismocampinas.com.br/#diferenciais</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Seção: Instagram -->
+  <url>
+    <loc>https://www.visagismocampinas.com.br/#instagram</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Imagens principais para indexação -->
+  <url>
+    <loc>https://www.visagismocampinas.com.br/images/antes.webp</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.visagismocampinas.com.br/images/depois.webp</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.visagismocampinas.com.br/images/antes2.webp</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.visagismocampinas.com.br/images/depois2.webp</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+</urlset>
