@@ -51,6 +51,48 @@ export const siteConfig = {
   ],
 } as const;
 
+/** Place ID do Google Business Profile — defina PUBLIC_GBP_PLACE_ID na Vercel após verificar o perfil. */
+export function getGbpPlaceId(): string | null {
+  const id = import.meta.env.PUBLIC_GBP_PLACE_ID;
+  return typeof id === 'string' && id.trim().length > 0 ? id.trim() : null;
+}
+
+/** URL canônica do listing no Google Maps — defina PUBLIC_GBP_PROFILE_URL na Vercel. */
+export function getGbpProfileUrl(): string | null {
+  const url = import.meta.env.PUBLIC_GBP_PROFILE_URL;
+  return typeof url === 'string' && url.trim().length > 0 ? url.trim() : null;
+}
+
+export function hasGoogleBusinessProfile(): boolean {
+  return Boolean(getGbpPlaceId() || getGbpProfileUrl());
+}
+
+export function googleBusinessProfileUrl(): string {
+  const profile = getGbpProfileUrl();
+  if (profile) return profile;
+  const placeId = getGbpPlaceId();
+  if (placeId) return `https://www.google.com/maps/place/?q=place_id:${placeId}`;
+  return mapsSearchUrl();
+}
+
+/** Link direto para avaliação no Google — só disponível com Place ID configurado. */
+export function googleReviewUrl(): string | null {
+  const placeId = getGbpPlaceId();
+  if (!placeId) return null;
+  return `https://search.google.com/local/writereview?placeid=${placeId}`;
+}
+
+export function getSameAsLinks(): string[] {
+  const links: string[] = [
+    siteConfig.social.instagram,
+    siteConfig.social.facebook,
+    siteConfig.social.youtube,
+  ];
+  const gbp = getGbpProfileUrl() ?? (getGbpPlaceId() ? googleBusinessProfileUrl() : null);
+  if (gbp) links.push(gbp);
+  return links;
+}
+
 export function whatsappLink(message: string) {
   return `${siteConfig.whatsappBase}?text=${encodeURIComponent(message)}`;
 }

@@ -1,7 +1,10 @@
 ---
-import { siteConfig, whatsappLink } from '../config/site';
+import { siteConfig, whatsappLink, googleReviewUrl, googleBusinessProfileUrl, hasGoogleBusinessProfile } from '../config/site';
 
 const reviewMessage = 'Olá! Fiz meu atendimento no Visagismo Intencional e gostaria de compartilhar minha experiência.';
+const reviewUrl = googleReviewUrl();
+const profileUrl = googleBusinessProfileUrl();
+const hasGbp = hasGoogleBusinessProfile();
 ---
 
 <section class="py-16 md:py-24 bg-light" id="avaliacoes">
@@ -27,9 +30,19 @@ const reviewMessage = 'Olá! Fiz meu atendimento no Visagismo Intencional e gost
         Como avaliar
       </h3>
       <ol class="space-y-3 text-gray-600 text-sm md:text-base list-decimal list-inside">
-        <li>Após seu atendimento, acesse o Perfil da Empresa no Google do Visagismo Intencional.</li>
-        <li>Compartilhe sua experiência com detalhes sobre consultoria, resultado e atendimento.</li>
-        <li>Se preferir, envie seu feedback pelo WhatsApp para que possamos acompanhar sua satisfação.</li>
+        {hasGbp ? (
+          <>
+            <li>Após seu atendimento, acesse o perfil verificado do Visagismo Intencional no Google.</li>
+            <li>Compartilhe sua experiência com detalhes sobre consultoria, resultado e atendimento.</li>
+            <li>Se preferir, envie seu feedback pelo WhatsApp para que possamos acompanhar sua satisfação.</li>
+          </>
+        ) : (
+          <>
+            <li>Após seu atendimento, busque "Visagismo Intencional Cambuí" no Google Maps.</li>
+            <li>Quando o perfil estiver verificado, usaremos o link direto de avaliação nesta página.</li>
+            <li>Enquanto isso, envie seu feedback pelo WhatsApp para acompanharmos sua satisfação.</li>
+          </>
+        )}
       </ol>
       <p class="mt-6 text-sm text-gray-500">
         Exibimos no site apenas avaliações reais e verificáveis. Não utilizamos depoimentos fictícios.
@@ -37,6 +50,25 @@ const reviewMessage = 'Olá! Fiz meu atendimento no Visagismo Intencional e gost
     </div>
 
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      {reviewUrl ? (
+        <a
+          href={reviewUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 bg-[#4285F4] text-white px-8 py-4 text-sm font-semibold tracking-wider uppercase rounded-full hover:opacity-90 transition-opacity"
+        >
+          Avaliar no Google
+        </a>
+      ) : (
+        <a
+          href={profileUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 bg-[#4285F4] text-white px-8 py-4 text-sm font-semibold tracking-wider uppercase rounded-full hover:opacity-90 transition-opacity"
+        >
+          Encontrar no Google Maps
+        </a>
+      )}
       <a
         href={whatsappLink(reviewMessage)}
         target="_blank"
@@ -46,7 +78,7 @@ const reviewMessage = 'Olá! Fiz meu atendimento no Visagismo Intencional e gost
         Enviar feedback no WhatsApp
       </a>
       <a
-        href="/#localizacao"
+        href="/#localizacao-maps"
         class="inline-flex items-center justify-center gap-2 border border-[#D4A853] text-gray-800 px-8 py-4 text-sm font-medium tracking-wider uppercase rounded-full hover:bg-[#D4A853]/10 transition-colors"
       >
         Ver localização

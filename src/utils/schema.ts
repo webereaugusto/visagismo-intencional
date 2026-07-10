@@ -1,4 +1,4 @@
-import { siteConfig, absoluteUrl } from '../config/site';
+import { siteConfig, absoluteUrl, getSameAsLinks, googleBusinessProfileUrl } from '../config/site';
 import type { FaqItem } from '../config/faq';
 
 type SchemaPage = {
@@ -27,11 +27,7 @@ export function buildOrganizationSchema() {
       postalCode: siteConfig.address.postalCode,
       addressCountry: 'BR',
     },
-    sameAs: [
-      siteConfig.social.instagram,
-      siteConfig.social.facebook,
-      siteConfig.social.youtube,
-    ],
+    sameAs: getSameAsLinks(),
   };
 }
 
@@ -66,7 +62,7 @@ export function buildHairSalonSchema(description: string) {
       latitude: siteConfig.address.latitude,
       longitude: siteConfig.address.longitude,
     },
-    hasMap: `https://www.google.com/maps?q=${siteConfig.address.latitude},${siteConfig.address.longitude}`,
+    hasMap: googleBusinessProfileUrl(),
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
@@ -100,11 +96,7 @@ export function buildHairSalonSchema(description: string) {
         containedInPlace: { '@type': 'City', name: 'Campinas' },
       },
     ],
-    sameAs: [
-      siteConfig.social.instagram,
-      siteConfig.social.facebook,
-      siteConfig.social.youtube,
-    ],
+    sameAs: getSameAsLinks(),
   };
 }
 

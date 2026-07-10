@@ -7,6 +7,25 @@ import { siteConfig } from '../config/site';
 const path = '/visagismo-feminino-campinas/';
 const title = 'Visagismo Feminino em Campinas | Visagismo Intencional';
 const description = 'Visagismo feminino em Campinas com análise facial, colorimetria e corte personalizado no Cambuí. Agende com Ery Junior.';
+
+const faqs = [
+  {
+    question: 'O visagismo feminino inclui coloração?',
+    answer: 'Pode incluir. A colorimetria faz parte do diagnóstico quando a cor atual não harmoniza com o tom de pele. Corte e cor são planejados juntos, não separadamente.',
+  },
+  {
+    question: 'Atendem noivas em Campinas?',
+    answer: 'Sim. Oferecemos o pacote Dia da Noiva com teste prévio, penteado e atendimento exclusivo. Veja a página dedicada em /dia-da-noiva-campinas/.',
+  },
+  {
+    question: 'Como saber qual corte valoriza meu rosto?',
+    answer: 'Na consultoria, analisamos formato de rosto, proporções e estilo de vida antes de sugerir comprimento, camadas e movimento. Nada é baseado apenas em tendência.',
+  },
+  {
+    question: 'Quanto tempo dura o atendimento feminino?',
+    answer: 'Consultoria completa leva de 1h30 a 2 horas. Corte isolado, de 45 minutos a 1 hora. Coloração pode exigir retorno ou sessão mais longa.',
+  },
+];
 ---
 
 <PageLayout
@@ -18,6 +37,7 @@ const description = 'Visagismo feminino em Campinas com análise facial, colorim
   image="/images/visagismo-feminino-depois.webp"
   breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Visagismo Feminino', path }]}
   serviceSchema={{ name: 'Visagismo Feminino', description, path }}
+  faqs={faqs}
 >
   <section class="py-16 bg-dark-light">
     <div class="max-w-3xl mx-auto px-5 font-montserrat text-gray-light leading-relaxed space-y-6">
@@ -29,18 +49,33 @@ const description = 'Visagismo feminino em Campinas com análise facial, colorim
         {siteConfig.address.neighborhood}, Campinas.
       </p>
 
+      <p>
+        Muitas mulheres chegam ao estúdio após experiências frustradas: cores que apagam o rosto, cortes que não
+        combinam com o formato facial ou penteados difíceis de manter no dia a dia. O visagismo resolve isso com
+        diagnóstico antes da execução.
+      </p>
+
       <h2 class="font-playfair text-2xl text-white">Benefícios</h2>
       <ul class="list-disc pl-5 space-y-2">
-        <li>Corte que valoriza o formato do rosto</li>
-        <li>Coloração harmonizada com o tom de pele</li>
-        <li>Penteados para ocasiões especiais</li>
-        <li>Consultoria de imagem completa</li>
+        <li>Corte que valoriza o formato do rosto e facilita a rotina</li>
+        <li>Coloração harmonizada com o tom de pele e subtom</li>
+        <li>Penteados para ocasiões especiais e eventos</li>
+        <li>Consultoria de imagem completa com plano de manutenção</li>
+        <li>Orientação de produtos e cuidados em casa</li>
       </ul>
 
       <h2 class="font-playfair text-2xl text-white">Para quem é indicado</h2>
       <p>
         Para mulheres que buscam mudança intencional de imagem — profissional, pessoal, noivas ou momentos especiais —
-        com diagnóstico facial e colorimetria antes de qualquer execução.
+        com diagnóstico facial e colorimetria antes de qualquer execução. Também para quem deseja manter um visual
+        atualizado com critério técnico em retornos periódicos.
+      </p>
+
+      <h2 class="font-playfair text-2xl text-white">Caso real: harmonização com colorimetria</h2>
+      <p>
+        Cliente com rosto oval buscava renovar a imagem profissional. O diagnóstico revelou subtom quente com cor
+        desalinhada que apagava os olhos. A solução combinou camadas estratégicas, iluminação na região facial
+        e paleta de cor alinhada ao biotipo.
       </p>
 
       <div class="grid sm:grid-cols-2 gap-4 pt-4">
@@ -48,10 +83,26 @@ const description = 'Visagismo feminino em Campinas com análise facial, colorim
         <img src="/images/visagismo-feminino-depois.webp" alt="Depois - visagismo feminino Campinas" class="rounded-xl" loading="lazy" width="600" height="750" />
       </div>
 
+      <blockquote class="border-l-2 border-gold pl-4 italic text-gray">
+        "Pela primeira vez senti que a cor do cabelo conversava com meu rosto — não era só bonito, era meu."
+        <span class="block mt-2 text-xs not-italic text-gray/70">— Cliente atendida no Cambuí (com consentimento)</span>
+      </blockquote>
+
       <p>
-        Conheça a <a href="/colorimetria-campinas/" class="text-gold hover:underline">colorimetria em Campinas</a> e veja
+        Conheça a <a href="/colorimetria-campinas/" class="text-gold hover:underline">colorimetria em Campinas</a>,
+        o <a href="/dia-da-noiva-campinas/" class="text-gold hover:underline">dia da noiva</a> e veja
         <a href="/resultados/" class="text-gold hover:underline">resultados documentados</a> no estúdio.
       </p>
+
+      <h2 class="font-playfair text-2xl text-white">Perguntas frequentes</h2>
+      <dl class="space-y-4 text-sm">
+        {faqs.map((item) => (
+          <div>
+            <dt class="text-white font-medium">{item.question}</dt>
+            <dd>{item.answer}</dd>
+          </div>
+        ))}
+      </dl>
     </div>
   </section>
   <PageCta message="Olá, quero agendar visagismo feminino em Campinas" />

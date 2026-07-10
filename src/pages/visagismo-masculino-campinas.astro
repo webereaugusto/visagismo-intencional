@@ -7,6 +7,25 @@ import { siteConfig } from '../config/site';
 const path = '/visagismo-masculino-campinas/';
 const title = 'Visagismo Masculino em Campinas | Ery Junior';
 const description = 'Visagismo masculino em Campinas no Cambuí. Corte, barba e imagem executiva com análise facial personalizada. Agende com Ery Junior.';
+
+const faqs = [
+  {
+    question: 'O visagismo masculino inclui barba?',
+    answer: 'Sim. Quando indicado, o projeto integra corte, barba e sobrancelhas como um único desenho facial — não como serviços isolados.',
+  },
+  {
+    question: 'Preciso de consultoria antes do corte masculino?',
+    answer: 'Recomendamos a consultoria na primeira visita ou em mudanças significativas de imagem. Para manutenção de um projeto já definido, o retorno pode ser direto.',
+  },
+  {
+    question: 'Atendem executivos e profissionais liberais?',
+    answer: 'Sim. Muitos clientes buscam transmitir autoridade e credibilidade no ambiente corporativo. O diagnóstico considera contexto profissional e rotina.',
+  },
+  {
+    question: 'Quanto tempo dura o atendimento masculino?',
+    answer: 'Corte visagista leva de 45 minutos a 1 hora. Com barba e consultoria completa, reserve de 1h30 a 2 horas.',
+  },
+];
 ---
 
 <PageLayout
@@ -18,6 +37,7 @@ const description = 'Visagismo masculino em Campinas no Cambuí. Corte, barba e 
   image="/images/visagismo-masculino-depois.webp"
   breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Visagismo Masculino', path }]}
   serviceSchema={{ name: 'Visagismo Masculino', description, path }}
+  faqs={faqs}
 >
   <section class="py-16 bg-dark-light">
     <div class="max-w-3xl mx-auto px-5 font-montserrat text-gray-light leading-relaxed space-y-6">
@@ -29,18 +49,32 @@ const description = 'Visagismo masculino em Campinas no Cambuí. Corte, barba e 
         {siteConfig.address.neighborhood}, Campinas.
       </p>
 
+      <p>
+        Diferente de um barbeiro que replica o mesmo degradê para todos, o visagista masculino analisa proporções faciais
+        antes de qualquer tesoura ou máquina. Cada ângulo do corte e cada linha da barba são calculados para o seu biotipo.
+      </p>
+
       <h2 class="font-playfair text-2xl text-white">Serviços masculinos</h2>
       <ul class="list-disc pl-5 space-y-2">
-        <li>Corte visagista personalizado</li>
-        <li>Design de barba e bigode</li>
-        <li>Harmonização de sobrancelhas</li>
-        <li>Consultoria de imagem executiva</li>
+        <li>Corte visagista personalizado com técnicas internacionais</li>
+        <li>Design de barba e bigode integrado ao formato do rosto</li>
+        <li>Harmonização de sobrancelhas para abrir o olhar</li>
+        <li>Consultoria de imagem executiva e reposicionamento profissional</li>
+        <li>Plano de manutenção para intervalos entre visitas</li>
       </ul>
 
       <h2 class="font-playfair text-2xl text-white">Quando procurar</h2>
       <p>
         Ideal para profissionais que precisam transmitir autoridade, homens em transição de carreira ou quem deseja
-        renovar a imagem com critério técnico. A consultoria pode incluir análise facial completa antes da execução.
+        renovar a imagem com critério técnico. Também atendemos noivos, formaturas e momentos em que a presença visual
+        precisa estar alinhada à ocasião.
+      </p>
+
+      <h2 class="font-playfair text-2xl text-white">Caso real: presença executiva</h2>
+      <p>
+        Cliente com rosto retangular e barba de densidade irregular buscava imagem mais madura para o ambiente corporativo.
+        O diagnóstico identificou que o corte anterior alongava o rosto. A solução integrou barba com transição gradual,
+        corte com proporções para suavizar ângulos e harmonização de sobrancelhas.
       </p>
 
       <div class="grid sm:grid-cols-2 gap-4 pt-4">
@@ -48,10 +82,26 @@ const description = 'Visagismo masculino em Campinas no Cambuí. Corte, barba e 
         <img src="/images/visagismo-masculino-depois.webp" alt="Depois - visagismo masculino Campinas" class="rounded-xl" loading="lazy" width="600" height="750" />
       </div>
 
+      <blockquote class="border-l-2 border-gold pl-4 italic text-gray">
+        "O Ery explicou cada decisão antes de cortar. Saí com um visual que faz sentido para quem sou no trabalho."
+        <span class="block mt-2 text-xs not-italic text-gray/70">— Cliente atendido no Cambuí (com consentimento)</span>
+      </blockquote>
+
       <p>
-        Veja mais transformações na página de <a href="/resultados/" class="text-gold hover:underline">resultados</a> ou
-        agende uma <a href="/consultoria-de-visagismo-campinas/" class="text-gold hover:underline">consultoria de visagismo</a>.
+        Veja mais transformações na página de <a href="/resultados/" class="text-gold hover:underline">resultados</a>,
+        agende uma <a href="/consultoria-de-visagismo-campinas/" class="text-gold hover:underline">consultoria de visagismo</a> ou
+        conheça o <a href="/corte-visagista-campinas/" class="text-gold hover:underline">corte visagista</a>.
       </p>
+
+      <h2 class="font-playfair text-2xl text-white">Perguntas frequentes</h2>
+      <dl class="space-y-4 text-sm">
+        {faqs.map((item) => (
+          <div>
+            <dt class="text-white font-medium">{item.question}</dt>
+            <dd>{item.answer}</dd>
+          </div>
+        ))}
+      </dl>
     </div>
   </section>
   <PageCta message="Olá, quero agendar visagismo masculino em Campinas" />

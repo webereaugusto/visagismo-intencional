@@ -1,5 +1,16 @@
 ---
-import { siteConfig, mapsSearchUrl } from '../config/site';
+import {
+  siteConfig,
+  googleBusinessProfileUrl,
+  googleReviewUrl,
+  hasGoogleBusinessProfile,
+  mapsEmbedUrl,
+} from '../config/site';
+import { seoLaunchConfig } from '../config/seo-launch';
+
+const profileUrl = googleBusinessProfileUrl();
+const reviewUrl = googleReviewUrl();
+const hasGbp = hasGoogleBusinessProfile();
 ---
 
 <section class="py-16 md:py-24 bg-dark" id="localizacao-maps">
@@ -23,15 +34,56 @@ import { siteConfig, mapsSearchUrl } from '../config/site';
       <p><strong class="text-white">Endereço:</strong> {siteConfig.address.full}</p>
       <p><strong class="text-white">Telefone:</strong> {siteConfig.phoneDisplay}</p>
       <p><strong class="text-white">Horários:</strong> {siteConfig.hours.weekdays}; {siteConfig.hours.saturday}</p>
+      {hasGbp && (
+        <p><strong class="text-white">Google:</strong> Perfil verificado — mesmo NAP do site.</p>
+      )}
     </div>
 
-    <a
-      href={mapsSearchUrl()}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="inline-flex items-center justify-center bg-gradient-to-r from-gold to-gold-dark text-dark px-8 py-4 text-sm font-semibold tracking-wider uppercase rounded-full"
-    >
-      Abrir no Google Maps
-    </a>
+  {!hasGbp && (
+    <div class="card-glow rounded-2xl p-6 md:p-8 text-left mb-8 border border-gold/20">
+      <h3 class="font-playfair text-xl text-white mb-4">Checklist: Google Business Profile</h3>
+      <p class="font-montserrat text-sm text-gray-light mb-4">
+        O perfil no Google é o principal fator para aparecer no Local Pack de "visagismo Campinas".
+        Após criar e verificar, configure as variáveis na Vercel para o site exibir o link correto.
+      </p>
+      <ol class="space-y-2 font-montserrat text-sm text-gray-light list-decimal list-inside">
+        {seoLaunchConfig.gbpChecklist.map((step) => (
+          <li>{step}</li>
+        ))}
+      </ol>
+    </div>
+  )}
+
+    <div class="rounded-2xl overflow-hidden mb-8 aspect-video">
+      <iframe
+        src={mapsEmbedUrl()}
+        title="Mapa — Visagismo Intencional no Cambuí, Campinas"
+        class="w-full h-full border-0"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a
+        href={profileUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center bg-gradient-to-r from-gold to-gold-dark text-dark px-8 py-4 text-sm font-semibold tracking-wider uppercase rounded-full"
+      >
+        {hasGbp ? 'Ver perfil no Google' : 'Abrir no Google Maps'}
+      </a>
+      {reviewUrl && (
+        <a
+          href={reviewUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center border border-gold text-gold px-8 py-4 text-sm font-semibold tracking-wider uppercase rounded-full hover:bg-gold/10 transition-colors"
+        >
+          Avaliar no Google
+        </a>
+      )}
+    </div>
   </div>
 </section>

@@ -7,6 +7,21 @@ import { caseStudies } from '../config/cases';
 const path = '/resultados/';
 const title = 'Antes e Depois Visagismo Campinas | Estudos de Caso';
 const description = 'Veja resultados reais de visagismo em Campinas: estudos de caso com análise, abordagem e transformações do Visagismo Intencional no Cambuí.';
+
+const faqs = [
+  {
+    question: 'As fotos de antes e depois são reais?',
+    answer: 'Sim. Todas as transformações documentadas nesta página foram realizadas no estúdio do Cambuí. Depoimentos só são publicados com consentimento do cliente.',
+  },
+  {
+    question: 'Posso ver mais resultados antes de agendar?',
+    answer: 'Além desta página, compartilhamos trabalhos no Instagram @eryjuniorhair. Para casos específicos ao seu perfil, agende uma consultoria de visagismo.',
+  },
+  {
+    question: 'Quanto tempo leva para ver o resultado final?',
+    answer: 'Cortes e colorações simples mostram resultado imediato. Projetos com mudança de cor podem exigir ajustes em retorno. O plano é explicado na consultoria.',
+  },
+];
 ---
 
 <PageLayout
@@ -14,25 +29,42 @@ const description = 'Veja resultados reais de visagismo em Campinas: estudos de 
   description={description}
   path={path}
   h1="Resultados e estudos de caso"
-  subtitle="Transformações documentadas no estúdio do Cambuí, com objetivo, abordagem técnica e resultado visual."
+  subtitle="Transformações documentadas no estúdio do Cambuí, com objetivo, diagnóstico, abordagem técnica e resultado visual."
   image="/images/depois2.webp"
   breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Resultados', path }]}
+  faqs={faqs}
 >
   <section class="py-16 bg-dark-light">
     <div class="max-w-5xl mx-auto px-5 space-y-12">
       <HubContext />
 
+      <p class="font-montserrat text-gray-light max-w-3xl leading-relaxed">
+        Cada estudo de caso abaixo documenta o processo real de visagismo no Visagismo Intencional: o que a cliente ou
+        cliente buscava, o que identificamos no diagnóstico, como conduzimos a transformação e o resultado obtido.
+        Não publicamos depoimentos fictícios nem fotos de bancos de imagem.
+      </p>
+
       {caseStudies.map((item) => (
         <article class="card-glow rounded-2xl p-6 md:p-8">
           <h2 class="font-playfair text-2xl text-white mb-4">{item.title}</h2>
           <div class="grid md:grid-cols-2 gap-6 mb-6">
-            <img src={item.imageBefore} alt={`Antes - ${item.alt}`} class="rounded-xl" loading="lazy" width="600" height="750" />
-            <img src={item.imageAfter} alt={`Depois - ${item.alt}`} class="rounded-xl" loading="lazy" width="600" height="750" />
+            <figure>
+              <img src={item.imageBefore} alt={`Antes - ${item.alt}`} class="rounded-xl" loading="lazy" width="600" height="750" />
+              <figcaption class="text-xs text-gray mt-2 text-center">Antes</figcaption>
+            </figure>
+            <figure>
+              <img src={item.imageAfter} alt={`Depois - ${item.alt}`} class="rounded-xl" loading="lazy" width="600" height="750" />
+              <figcaption class="text-xs text-gray mt-2 text-center">Depois</figcaption>
+            </figure>
           </div>
           <dl class="space-y-4 font-montserrat text-sm md:text-base">
             <div>
               <dt class="text-gold uppercase tracking-wider text-xs mb-1">Objetivo</dt>
               <dd class="text-gray-light">{item.objective}</dd>
+            </div>
+            <div>
+              <dt class="text-gold uppercase tracking-wider text-xs mb-1">Diagnóstico</dt>
+              <dd class="text-gray-light">{item.diagnosis}</dd>
             </div>
             <div>
               <dt class="text-gold uppercase tracking-wider text-xs mb-1">Abordagem</dt>
@@ -42,9 +74,35 @@ const description = 'Veja resultados reais de visagismo em Campinas: estudos de 
               <dt class="text-gold uppercase tracking-wider text-xs mb-1">Resultado</dt>
               <dd class="text-gray-light">{item.result}</dd>
             </div>
+            {item.clientNote && (
+              <div>
+                <dt class="text-gold uppercase tracking-wider text-xs mb-1">Depoimento</dt>
+                <dd class="text-gray-light italic border-l-2 border-gold/40 pl-4">"{item.clientNote}"</dd>
+              </div>
+            )}
           </dl>
         </article>
       ))}
+
+      <div class="text-center font-montserrat text-gray-light text-sm">
+        <p>
+          Quer um projeto de imagem com o mesmo critério?
+          <a href="/consultoria-de-visagismo-campinas/" class="text-gold hover:underline">Agende uma consultoria de visagismo</a>
+          ou veja nossos serviços de
+          <a href="/visagismo-masculino-campinas/" class="text-gold hover:underline">visagismo masculino</a> e
+          <a href="/visagismo-feminino-campinas/" class="text-gold hover:underline">visagismo feminino</a>.
+        </p>
+      </div>
+
+      <h2 class="font-playfair text-2xl text-white text-center">Perguntas frequentes</h2>
+      <dl class="space-y-4 font-montserrat text-sm max-w-3xl mx-auto">
+        {faqs.map((item) => (
+          <div>
+            <dt class="text-white font-medium">{item.question}</dt>
+            <dd class="text-gray-light">{item.answer}</dd>
+          </div>
+        ))}
+      </dl>
     </div>
   </section>
   <PageCta message="Olá, quero uma consultoria de visagismo em Campinas" label="Quero meu projeto de imagem" />

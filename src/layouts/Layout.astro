@@ -14,6 +14,7 @@ import {
   buildFAQPageSchema,
 } from '../utils/schema';
 import { faqs } from '../config/faq';
+import type { FaqItem } from '../config/faq';
 
 interface Props {
   title?: string;
@@ -24,6 +25,7 @@ interface Props {
   path?: string;
   breadcrumbs?: { name: string; path: string }[];
   serviceSchema?: { name: string; description: string; path: string };
+  faqs?: FaqItem[];
 }
 
 const defaultTitle = 'Visagismo Campinas | Visagismo em Campinas no Cambuí | Ery Junior';
@@ -39,11 +41,14 @@ const {
   path = '/',
   breadcrumbs,
   serviceSchema,
+  faqs: pageFaqs,
 } = Astro.props;
 
 const canonicalUrl = absoluteUrl(path);
 const fullImageUrl = image.startsWith('http') ? image : absoluteUrl(image);
 const breadcrumbItems = breadcrumbs ?? [{ name: 'Home', path: '/' }];
+const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION;
+const faqSchemaItems = pageFaqs ?? (path === '/' ? faqs : undefined);
 ---
 
 <!doctype html>
@@ -78,6 +83,9 @@ const breadcrumbItems = breadcrumbs ?? [{ name: 'Home', path: '/' }];
     <meta name="geo.placename" content="Campinas, São Paulo, Brasil" />
     <meta name="geo.position" content={`${siteConfig.address.latitude};${siteConfig.address.longitude}`} />
     <meta name="ICBM" content={`${siteConfig.address.latitude}, ${siteConfig.address.longitude}`} />
+    {gscVerification && typeof gscVerification === 'string' && gscVerification.trim() && (
+      <meta name="google-site-verification" content={gscVerification.trim()} />
+    )}
 
     <meta property="og:type" content={type} />
     <meta property="og:site_name" content={siteConfig.siteName} />
@@ -116,8 +124,8 @@ const breadcrumbItems = breadcrumbs ?? [{ name: 'Home', path: '/' }];
     {serviceSchema && (
       <script type="application/ld+json" set:html={JSON.stringify(buildServiceSchema(serviceSchema.name, serviceSchema.description, serviceSchema.path))} />
     )}
-    {path === '/' && (
-      <script type="application/ld+json" set:html={JSON.stringify(buildFAQPageSchema(faqs))} />
+    {faqSchemaItems && faqSchemaItems.length > 0 && (
+      <script type="application/ld+json" set:html={JSON.stringify(buildFAQPageSchema(faqSchemaItems))} />
     )}
   </head>
   <body class="antialiased">

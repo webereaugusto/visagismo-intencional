@@ -3,6 +3,7 @@ import Layout from './Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import type { FaqItem } from '../config/faq';
 
 interface Props {
   title: string;
@@ -13,12 +14,13 @@ interface Props {
   image?: string;
   serviceSchema?: { name: string; description: string; path: string };
   breadcrumbs: { name: string; path: string }[];
+  faqs?: FaqItem[];
 }
 
-const { title, description, path, h1, subtitle, image, serviceSchema, breadcrumbs } = Astro.props;
+const { title, description, path, h1, subtitle, image, serviceSchema, breadcrumbs, faqs } = Astro.props;
 ---
 
-<Layout title={title} description={description} path={path} image={image} breadcrumbs={breadcrumbs} serviceSchema={serviceSchema}>
+<Layout title={title} description={description} path={path} image={image} breadcrumbs={breadcrumbs} serviceSchema={serviceSchema} faqs={faqs}>
   <Header />
   <main id="conteudo-principal">
     <section class="pt-32 pb-16 md:pt-40 md:pb-20 bg-dark">

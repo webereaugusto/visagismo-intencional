@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/sitemap_index.xml",
+      "destination": "https://www.visagismocampinas.com.br/sitemap-index.xml",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "visagismocampinas.com.br" }],
       "destination": "https://www.visagismocampinas.com.br/:path*",

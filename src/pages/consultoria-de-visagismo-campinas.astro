@@ -7,6 +7,25 @@ import { siteConfig } from '../config/site';
 const path = '/consultoria-de-visagismo-campinas/';
 const title = 'Consultoria de Visagismo em Campinas | Visagismo Intencional';
 const description = 'Consultoria de visagismo em Campinas no Cambuí com Ery Junior. Análise facial, colorimetria e projeto de imagem personalizado. Agende pelo WhatsApp.';
+
+const faqs = [
+  {
+    question: 'Quanto tempo dura a consultoria de visagismo?',
+    answer: 'A primeira consulta completa leva em média de 1h30 a 2 horas, incluindo análise facial, colorimetria e definição do projeto de imagem.',
+  },
+  {
+    question: 'Preciso agendar com antecedência?',
+    answer: `Sim. Recomendamos agendar com 3 a 5 dias de antecedência pelo WhatsApp ${siteConfig.phoneDisplay} para garantir horário exclusivo no Cambuí.`,
+  },
+  {
+    question: 'A consultoria inclui corte e coloração?',
+    answer: 'A consultoria é o diagnóstico e o plano. Corte, coloração e outros serviços podem ser executados na mesma visita ou em retornos, conforme o projeto definido na análise.',
+  },
+  {
+    question: 'Qual a diferença entre consultoria de visagismo e um corte comum?',
+    answer: 'No corte comum, a decisão parte de uma tendência ou pedido genérico. Na consultoria, cada escolha — comprimento, cor, volume, barba — é justificada pela leitura do rosto, personalidade e objetivos do cliente.',
+  },
+];
 ---
 
 <PageLayout
@@ -25,6 +44,7 @@ const description = 'Consultoria de visagismo em Campinas no Cambuí com Ery Jun
     description,
     path,
   }}
+  faqs={faqs}
 >
   <section class="py-16 bg-dark-light">
     <div class="max-w-3xl mx-auto px-5 font-montserrat text-gray-light leading-relaxed space-y-6">
@@ -33,21 +53,52 @@ const description = 'Consultoria de visagismo em Campinas no Cambuí com Ery Jun
       <p>
         A consultoria de visagismo vai além do corte. No {siteConfig.brandLine}, cada atendimento em Campinas começa
         com leitura do rosto, personalidade, rotina e objetivos para construir um visual estratégico e autêntico.
+        Não aplicamos tendências por inércia: cada decisão tem critério técnico e propósito.
+      </p>
+
+      <p>
+        Com mais de {siteConfig.experienceYears} anos de experiência e formação internacional, Ery Junior conduz
+        a consultoria no estúdio do Cambuí com o Método Ery Junior — um processo estruturado que combina
+        análise facial, colorimetria e projeto de imagem em um único atendimento.
       </p>
 
       <h2 class="font-playfair text-2xl text-white">O que inclui a consultoria</h2>
       <ul class="list-disc pl-5 space-y-2">
-        <li>Análise de formato de rosto e proporções faciais</li>
+        <li>Análise de formato de rosto, proporções e linhas faciais</li>
         <li>Colorimetria personalizada para pele, olhos e cabelo</li>
-        <li>Projeto de imagem com orientações de manutenção</li>
-        <li>Duração média de 1h30 a 2 horas</li>
+        <li>Projeto de imagem com orientações de manutenção em casa</li>
+        <li>Definição de referências visuais realistas para o seu biotipo</li>
+        <li>Plano para corte, cor, barba ou penteado conforme necessidade</li>
+        <li>Duração média de 1h30 a 2 horas na primeira visita</li>
       </ul>
+
+      <h2 class="font-playfair text-2xl text-white">Como funciona o atendimento</h2>
+      <ol class="list-decimal pl-5 space-y-3">
+        <li><strong class="text-white">Conversa inicial:</strong> entendemos seu momento de vida, rotina e o que deseja comunicar com a imagem.</li>
+        <li><strong class="text-white">Diagnóstico facial:</strong> mapeamos formato de rosto, subtom de pele e proporções que orientam corte e cor.</li>
+        <li><strong class="text-white">Projeto de imagem:</strong> definimos o visual com explicação de cada escolha — nada é feito sem critério.</li>
+        <li><strong class="text-white">Execução ou agendamento:</strong> o serviço pode ser feito na mesma visita ou em retorno, conforme complexidade.</li>
+      </ol>
 
       <h2 class="font-playfair text-2xl text-white">Para quem é indicada</h2>
       <p>
         Para quem deseja renovar a imagem com critério técnico, seja por mudança profissional, autoestima ou preparação
-        para um momento especial. Atendemos clientes de Campinas e região no {siteConfig.address.neighborhood}.
+        para um momento especial — casamento, formatura ou reposicionamento de carreira. Atendemos clientes de Campinas
+        e região no {siteConfig.address.neighborhood}, com hora marcada e atendimento exclusivo.
       </p>
+
+      <h2 class="font-playfair text-2xl text-white">Caso real: consultoria completa</h2>
+      <p>
+        Cliente em transição de carreira buscava reposicionamento visual. Após diagnóstico, identificamos desalinhamento
+        entre estilo atual e mensagem desejada. O projeto incluiu nova paleta de cor, corte com proporções para o formato
+        de rosto e plano de manutenção. Veja o antes e depois na página de
+        <a href="/resultados/" class="text-gold hover:underline">resultados</a>.
+      </p>
+
+      <div class="grid sm:grid-cols-2 gap-4 pt-2">
+        <img src="/images/antes2.webp" alt="Antes - consultoria de visagismo Campinas" class="rounded-xl" loading="lazy" width="600" height="750" />
+        <img src="/images/depois2.webp" alt="Depois - consultoria de visagismo Campinas" class="rounded-xl" loading="lazy" width="600" height="750" />
+      </div>
 
       <h2 class="font-playfair text-2xl text-white">Serviços relacionados</h2>
       <ul class="space-y-2">
@@ -55,19 +106,18 @@ const description = 'Consultoria de visagismo em Campinas no Cambuí com Ery Jun
         <li><a href="/corte-visagista-campinas/" class="text-gold hover:underline">Corte visagista</a></li>
         <li><a href="/visagismo-masculino-campinas/" class="text-gold hover:underline">Visagismo masculino</a></li>
         <li><a href="/visagismo-feminino-campinas/" class="text-gold hover:underline">Visagismo feminino</a></li>
+        <li><a href="/dia-da-noiva-campinas/" class="text-gold hover:underline">Dia da noiva</a></li>
         <li><a href="/guia/o-que-e-visagismo/" class="text-gold hover:underline">Guia: o que é visagismo</a></li>
       </ul>
 
       <h2 class="font-playfair text-2xl text-white">Perguntas frequentes</h2>
       <dl class="space-y-4 text-sm">
-        <div>
-          <dt class="text-white font-medium">Quanto tempo dura?</dt>
-          <dd>Em média de 1h30 a 2 horas na primeira consulta completa.</dd>
-        </div>
-        <div>
-          <dt class="text-white font-medium">Preciso agendar?</dt>
-          <dd>Sim, com 3 a 5 dias de antecedência pelo WhatsApp {siteConfig.phoneDisplay}.</dd>
-        </div>
+        {faqs.map((item) => (
+          <div>
+            <dt class="text-white font-medium">{item.question}</dt>
+            <dd>{item.answer}</dd>
+          </div>
+        ))}
       </dl>
     </div>
   </section>
