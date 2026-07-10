@@ -1,0 +1,37 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import PageCta from '../../components/PageCta.astro';
+
+const path = '/guia/o-que-e-visagismo/';
+const title = 'O Que é Visagismo? Guia Completo | Campinas';
+const description = 'Entenda o que é visagismo, como funciona a consultoria e por que é diferente de um corte comum. Guia do Visagismo Intencional em Campinas.';
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  path={path}
+  h1="O que é visagismo?"
+  subtitle="Guia prático para entender a consultoria de imagem que harmoniza rosto, personalidade e estilo de vida."
+  breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Guia', path: '/guia/o-que-e-visagismo/' }, { name: 'O que é visagismo', path }]}
+>
+  <section class="py-16 bg-dark-light">
+    <div class="max-w-3xl mx-auto px-5 font-montserrat text-gray-light leading-relaxed space-y-6">
+      <p>
+        Visagismo é a disciplina que estuda a relação entre traços faciais, personalidade e imagem externa. O objetivo é
+        criar um visual coerente, valorizando proporções naturais e comunicando quem a pessoa realmente é.
+      </p>
+      <h2 class="font-playfair text-2xl text-white">Como funciona na prática</h2>
+      <p>
+        Uma consultoria de visagismo inclui análise do formato do rosto, leitura de estilo de vida, colorimetria e definição
+        de corte, cor e cuidados. Em Campinas, o Visagismo Intencional conduz esse processo com atendimento personalizado no Cambuí.
+      </p>
+      <h2 class="font-playfair text-2xl text-white">Para quem é indicado</h2>
+      <p>
+        Para quem busca mudança intencional de imagem — profissional, pessoal ou para um momento especial — com critério técnico
+        e acompanhamento especializado.
+      </p>
+    </div>
+  </section>
+  <PageCta />
+</PageLayout>

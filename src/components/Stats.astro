@@ -1,24 +1,26 @@
 ---
+import { siteConfig } from '../config/site';
+
 const stats = [
-  { 
-    number: "30+", 
-    label: "Anos de Experiência",
-    description: "Dedicados à arte do visagismo"
+  {
+    number: `${siteConfig.experienceYears}+`,
+    label: 'Anos de Experiência',
+    description: 'Trajetória em visagismo e imagem',
   },
-  { 
-    number: "10.000+", 
-    label: "Clientes Satisfeitos",
-    description: "Transformações realizadas"
+  {
+    number: String(siteConfig.credentials.length),
+    label: 'Formações Internacionais',
+    description: 'Londres, Nova York e Paris',
   },
-  { 
-    number: "3", 
-    label: "Continentes",
-    description: "Formação internacional"
+  {
+    number: 'Cambuí',
+    label: 'Estúdio em Campinas',
+    description: 'Atendimento por hora marcada',
   },
-  { 
-    number: "1º", 
-    label: "Pioneiro",
-    description: "Visagista em Campinas"
+  {
+    number: String(siteConfig.press.length),
+    label: 'Matéria de Imprensa',
+    description: 'Cobertura local verificável',
   },
 ];
 ---
@@ -32,7 +34,7 @@ const stats = [
         Nossos Números
       </span>
       <h2 class="font-playfair text-2xl md:text-3xl font-medium mt-4">
-        Uma Trajetória de <span class="italic">Excelência</span>
+        Trajetória em <span class="italic">visagismo</span>
       </h2>
     </div>
     

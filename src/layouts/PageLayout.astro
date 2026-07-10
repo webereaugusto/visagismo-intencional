@@ -1,0 +1,34 @@
+---
+import Layout from './Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  h1: string;
+  subtitle?: string;
+  image?: string;
+  serviceSchema?: { name: string; description: string; path: string };
+  breadcrumbs: { name: string; path: string }[];
+}
+
+const { title, description, path, h1, subtitle, image, serviceSchema, breadcrumbs } = Astro.props;
+---
+
+<Layout title={title} description={description} path={path} image={image} breadcrumbs={breadcrumbs} serviceSchema={serviceSchema}>
+  <Header />
+  <main id="conteudo-principal">
+    <section class="pt-32 pb-16 md:pt-40 md:pb-20 bg-dark">
+      <div class="max-w-4xl mx-auto px-5 md:px-6">
+        <Breadcrumbs items={breadcrumbs} />
+        <h1 class="font-playfair text-4xl md:text-5xl lg:text-6xl text-white font-medium mt-6 mb-4">{h1}</h1>
+        {subtitle && <p class="font-montserrat text-gray-light text-lg leading-relaxed max-w-3xl">{subtitle}</p>}
+      </div>
+    </section>
+    <slot />
+  </main>
+  <Footer />
+</Layout>

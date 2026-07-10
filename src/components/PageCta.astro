@@ -1,0 +1,29 @@
+---
+import { whatsappLink } from '../config/site';
+
+interface Props {
+  message?: string;
+  label?: string;
+}
+
+const {
+  message = 'Olá, gostaria de agendar uma consultoria de visagismo em Campinas',
+  label = 'Agendar pelo WhatsApp',
+} = Astro.props;
+---
+
+<section class="py-16 bg-dark">
+  <div class="max-w-3xl mx-auto px-5 text-center">
+    <a
+      href={whatsappLink(message)}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center justify-center bg-gradient-to-r from-gold to-gold-dark text-dark px-10 py-5 text-sm font-semibold tracking-wider uppercase rounded-full hover:shadow-lg hover:shadow-gold/30 transition-all"
+    >
+      {label}
+    </a>
+    <p class="mt-4 text-sm text-gray">
+      <a href="/" class="text-gold hover:underline">Visagismo em Campinas</a> • Cambuí
+    </p>
+  </div>
+</section>

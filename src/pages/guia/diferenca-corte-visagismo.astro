@@ -1,0 +1,43 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import PageCta from '../../components/PageCta.astro';
+
+const path = '/guia/diferenca-corte-visagismo/';
+const title = 'Diferença entre Corte Comum e Visagismo | Guia Campinas';
+const description = 'Entenda a diferença entre corte de cabelo comum e visagismo. Guia do Visagismo Intencional em Campinas com Ery Junior.';
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  path={path}
+  h1="Diferença entre corte comum e visagismo"
+  subtitle="Por que uma consultoria de visagismo entrega resultados mais estratégicos do que um corte baseado apenas em tendência."
+  breadcrumbs={[
+    { name: 'Home', path: '/' },
+    { name: 'Guia', path: '/guia/diferenca-corte-visagismo/' },
+    { name: 'Corte vs visagismo', path },
+  ]}
+>
+  <section class="py-16 bg-dark-light">
+    <div class="max-w-3xl mx-auto px-5 font-montserrat text-gray-light leading-relaxed space-y-6">
+      <p>
+        O corte comum geralmente replica uma referência visual da moda. O visagismo parte de um diagnóstico individual:
+        rosto, personalidade, rotina e objetivos de imagem.
+      </p>
+      <h2 class="font-playfair text-2xl text-white">Corte comum</h2>
+      <ul class="list-disc pl-5 space-y-2">
+        <li>Foco na tendência do momento</li>
+        <li>Pouca ou nenhuma análise facial</li>
+        <li>Resultado pode não valorizar proporções pessoais</li>
+      </ul>
+      <h2 class="font-playfair text-2xl text-white">Visagismo</h2>
+      <ul class="list-disc pl-5 space-y-2">
+        <li>Análise facial e colorimetria</li>
+        <li>Projeto de imagem alinhado à personalidade</li>
+        <li>Visual estratégico e sustentável no tempo</li>
+      </ul>
+    </div>
+  </section>
+  <PageCta message="Olá, quero uma consultoria de visagismo em Campinas" />
+</PageLayout>

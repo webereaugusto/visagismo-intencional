@@ -1,0 +1,50 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import PageCta from '../../components/PageCta.astro';
+import { siteConfig } from '../../config/site';
+
+const path = '/sobre/ery-junior/';
+const title = 'Ery Junior Visagista em Campinas | Trajetória e Formação';
+const description = `Conheça Ery Junior, visagista em Campinas com mais de ${siteConfig.experienceYears} anos de experiência, formação internacional e estúdio no Cambuí.`;
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  path={path}
+  h1="Ery Junior"
+  subtitle={`Visagista em Campinas com mais de ${siteConfig.experienceYears} anos de atuação e estúdio dedicado ao visagismo no Cambuí.`}
+  image="/images/about-1.jpg"
+  breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Ery Junior', path }]}
+>
+  <section class="py-16 bg-dark-light">
+    <div class="max-w-3xl mx-auto px-5 font-montserrat text-gray-light leading-relaxed space-y-6">
+      <img src="/images/about-1.jpg" alt="Ery Junior - visagista em Campinas" class="rounded-xl mb-8" loading="lazy" width="800" height="1000" />
+      <p>
+        Ery Junior construiu sua trajetória em Campinas com foco em consultoria de imagem e visagismo, passando pela
+        experiência do Sofisticatto Hair até a inauguração do Visagismo Intencional, estúdio 100% dedicado ao visagismo no Cambuí.
+      </p>
+      <h2 class="font-playfair text-2xl text-white">Formação e credenciais</h2>
+      <ul class="list-disc pl-5 space-y-2">
+        {siteConfig.credentials.map((item) => <li>{item}</li>)}
+      </ul>
+      <h2 class="font-playfair text-2xl text-white">Na imprensa</h2>
+      <ul class="space-y-3">
+        {siteConfig.press.map((item) => (
+          <li>
+            <a href={item.url} target="_blank" rel="noopener noreferrer" class="text-gold hover:underline">
+              {item.title} — {item.outlet}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p>
+        Acompanhe também o Instagram oficial:
+        <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" class="text-gold hover:underline">
+          {siteConfig.social.instagramHandle}
+        </a>
+      </p>
+    </div>
+  </section>
+  <PageCta message="Olá, gostaria de agendar com o Ery Junior em Campinas" />
+</PageLayout>

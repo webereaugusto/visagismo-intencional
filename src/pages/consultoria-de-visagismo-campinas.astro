@@ -1,0 +1,49 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import PageCta from '../components/PageCta.astro';
+import { siteConfig } from '../config/site';
+
+const path = '/consultoria-de-visagismo-campinas/';
+const title = 'Consultoria de Visagismo em Campinas | Visagismo Intencional';
+const description = 'Consultoria de visagismo em Campinas no Cambuí com Ery Junior. Análise facial, colorimetria e projeto de imagem personalizado. Agende pelo WhatsApp.';
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  path={path}
+  h1="Consultoria de Visagismo em Campinas"
+  subtitle="Diagnóstico completo de imagem com análise facial, colorimetria e plano personalizado no Visagismo Intencional, no Cambuí."
+  image="/images/coloracao.webp"
+  breadcrumbs={[
+    { name: 'Home', path: '/' },
+    { name: 'Consultoria de Visagismo', path },
+  ]}
+  serviceSchema={{
+    name: 'Consultoria de Visagismo em Campinas',
+    description,
+    path,
+  }}
+>
+  <section class="py-16 bg-dark-light">
+    <div class="max-w-3xl mx-auto px-5 font-montserrat text-gray-light leading-relaxed space-y-6">
+      <p>
+        A consultoria de visagismo em Campinas vai além do corte. No {siteConfig.brandLine}, cada atendimento começa
+        com leitura do rosto, personalidade, rotina e objetivos para construir um visual estratégico e autêntico.
+      </p>
+      <h2 class="font-playfair text-2xl text-white">O que inclui a consultoria</h2>
+      <ul class="list-disc pl-5 space-y-2">
+        <li>Análise de formato de rosto e proporções faciais</li>
+        <li>Colorimetria personalizada para pele, olhos e cabelo</li>
+        <li>Projeto de imagem com orientações de manutenção</li>
+        <li>Duração média de 1h30 a 2 horas</li>
+      </ul>
+      <h2 class="font-playfair text-2xl text-white">Para quem é indicada</h2>
+      <p>
+        Para quem deseja renovar a imagem com critério técnico, seja por mudança profissional, autoestima ou preparação
+        para um momento especial. Atendemos clientes de Campinas e região no {siteConfig.address.neighborhood}.
+      </p>
+    </div>
+  </section>
+  <PageCta message="Olá, quero agendar uma consultoria de visagismo em Campinas" />
+</PageLayout>

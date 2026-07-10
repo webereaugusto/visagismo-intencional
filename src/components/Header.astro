@@ -1,22 +1,22 @@
 ---
-const whatsappLink = "https://wa.me/5519991103018?text=Olá, gostaria de agendar uma consultoria";
+import { siteConfig, whatsappLink } from '../config/site';
 
 const menuItems = [
-  { label: "Sobre", href: "#sobre" },
-  { label: "Benefícios", href: "#visagismo" },
-  { label: "Serviços", href: "#servicos" },
-  { label: "Contato", href: "#contato" },
+  { label: 'Visagismo Campinas', href: '/#resposta-local' },
+  { label: 'Serviços', href: '/#servicos' },
+  { label: 'Sobre', href: '/sobre/ery-junior/' },
+  { label: 'Resultados', href: '/resultados/' },
+  { label: 'Contato', href: '/#contato' },
 ];
 ---
 
 <header class="fixed top-0 left-0 right-0 z-40 transition-all duration-300" id="header">
-  <nav class="max-w-7xl mx-auto px-6">
+  <nav class="max-w-7xl mx-auto px-6" aria-label="Navegação principal">
     <div class="flex items-center justify-between">
-      <!-- Logo -->
       <a href="/" class="group" aria-label="Visagismo Intencional - Página inicial">
-        <img 
-          src="/images/logo-branco-500-transparente-visagismo.png" 
-          alt="Visagismo Intencional by Ery Junior - Logo" 
+        <img
+          src="/images/logo-branco-500-transparente-visagismo.png"
+          alt="Visagismo Intencional by Ery Junior - Logo"
           class="h-14 md:h-16 lg:h-20 w-auto transition-transform group-hover:scale-105"
           fetchpriority="high"
           decoding="sync"
@@ -24,67 +24,45 @@ const menuItems = [
           height="80"
         />
       </a>
-      
-      <!-- Desktop Menu -->
+
       <div class="hidden md:flex items-center gap-10">
         <ul class="flex items-center gap-8">
           {menuItems.map((item) => (
             <li>
-              <a 
-                href={item.href} 
-                class="font-montserrat text-sm font-medium text-gray hover:text-gold transition-colors relative group"
-              >
+              <a href={item.href} class="font-montserrat text-sm font-medium text-gray hover:text-gold transition-colors relative group">
                 {item.label}
                 <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-gradient-to-r from-gold to-gold-dark group-hover:w-full transition-all duration-300"></span>
               </a>
             </li>
           ))}
         </ul>
-        
-        <!-- CTA Button -->
-        <a 
-          href={whatsappLink}
+        <a
+          href={whatsappLink('Olá, gostaria de agendar uma consultoria de visagismo em Campinas')}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Agendar consultoria via WhatsApp"
-          class="group relative bg-gradient-to-r from-gold to-gold-dark text-dark px-7 py-3 text-sm font-semibold tracking-wider rounded-full overflow-hidden transition-all hover:shadow-lg hover:shadow-gold/30"
+          class="bg-gradient-to-r from-gold to-gold-dark text-dark px-7 py-3 text-sm font-semibold tracking-wider rounded-full hover:shadow-lg hover:shadow-gold/30"
         >
-          <span class="relative z-10">Agendar</span>
+          Agendar
         </a>
       </div>
-      
-      <!-- Mobile Menu Button -->
-      <button 
-        class="md:hidden p-2 text-white"
-        id="mobile-menu-btn"
-        aria-label="Abrir menu"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+
+      <button class="md:hidden p-2 text-white" id="mobile-menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
     </div>
-    
-    <!-- Mobile Menu -->
+
     <div class="md:hidden hidden bg-dark-light/95 backdrop-blur-lg mt-4 rounded-2xl border border-dark-lighter" id="mobile-menu">
       <ul class="flex flex-col gap-2 p-6">
         {menuItems.map((item) => (
           <li>
-            <a 
-              href={item.href} 
-              class="block font-montserrat text-base text-gray hover:text-gold transition-colors py-3 border-b border-dark-lighter"
-            >
-              {item.label}
-            </a>
+            <a href={item.href} class="block font-montserrat text-base text-gray hover:text-gold transition-colors py-3 border-b border-dark-lighter">{item.label}</a>
           </li>
         ))}
         <li class="pt-4">
-          <a 
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="block bg-gradient-to-r from-gold to-gold-dark text-dark px-6 py-4 text-center text-sm font-semibold tracking-wider rounded-full"
-          >
+          <a href={whatsappLink('Olá, gostaria de agendar uma consultoria')} target="_blank" rel="noopener noreferrer" class="block bg-gradient-to-r from-gold to-gold-dark text-dark px-6 py-4 text-center text-sm font-semibold tracking-wider rounded-full">
             Agendar Consultoria
           </a>
         </li>
@@ -97,36 +75,23 @@ const menuItems = [
   const menuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
   const header = document.getElementById('header');
-  
   menuBtn?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
+    const isOpen = mobileMenu?.classList.toggle('hidden') === false;
+    menuBtn.setAttribute('aria-expanded', String(isOpen));
   });
-  
-  mobileMenu?.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu?.classList.add('hidden');
-    });
+  mobileMenu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => mobileMenu?.classList.add('hidden'));
   });
-  
-  // Header scroll effect - optimized to avoid forced reflow
   let lastScrollState = false;
   let ticking = false;
-  
   function updateHeader() {
     const isScrolled = window.scrollY > 50;
-    
     if (isScrolled !== lastScrollState) {
       lastScrollState = isScrolled;
-      
-      if (isScrolled) {
-        header?.classList.add('header-scrolled');
-      } else {
-        header?.classList.remove('header-scrolled');
-      }
+      header?.classList.toggle('header-scrolled', isScrolled);
     }
     ticking = false;
   }
-  
   window.addEventListener('scroll', () => {
     if (!ticking) {
       requestAnimationFrame(updateHeader);
@@ -136,15 +101,10 @@ const menuItems = [
 </script>
 
 <style>
-  #header {
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-  }
-  
+  #header { padding-top: 0.75rem; padding-bottom: 0.75rem; }
   #header.header-scrolled {
     background-color: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     box-shadow: 0 20px 25px -5px rgba(10, 10, 10, 0.5);

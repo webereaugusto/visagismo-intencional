@@ -1,0 +1,39 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import PageCta from '../../components/PageCta.astro';
+import { siteConfig } from '../../config/site';
+
+const path = '/guia/como-escolher-visagista-campinas/';
+const title = 'Como Escolher um Visagista em Campinas | Guia';
+const description = 'Saiba como escolher um visagista em Campinas: o que avaliar na consultoria, formação, portfólio e atendimento personalizado.';
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  path={path}
+  h1="Como escolher um visagista em Campinas"
+  subtitle="Critérios objetivos para comparar profissionais e encontrar a consultoria certa para sua transformação de imagem."
+  breadcrumbs={[
+    { name: 'Home', path: '/' },
+    { name: 'Guia', path: '/guia/como-escolher-visagista-campinas/' },
+    { name: 'Como escolher visagista', path },
+  ]}
+>
+  <section class="py-16 bg-dark-light">
+    <div class="max-w-3xl mx-auto px-5 font-montserrat text-gray-light leading-relaxed space-y-6">
+      <h2 class="font-playfair text-2xl text-white">1. Avalie a consultoria, não só o corte</h2>
+      <p>Um bom visagista explica o diagnóstico facial antes de executar qualquer mudança. Desconfie de atendimentos que pulam a análise.</p>
+      <h2 class="font-playfair text-2xl text-white">2. Verifique formação e portfólio</h2>
+      <p>Busque profissionais com formação contínua, resultados documentados e clareza sobre método de trabalho.</p>
+      <h2 class="font-playfair text-2xl text-white">3. Considere localização e experiência</h2>
+      <p>
+        Em Campinas, o bairro Cambuí concentra salões de alto padrão. O {siteConfig.brandLine} oferece estúdio dedicado ao
+        visagismo com {siteConfig.author} e atendimento por hora marcada.
+      </p>
+      <h2 class="font-playfair text-2xl text-white">4. Transparência de processo e valores</h2>
+      <p>Agende uma conversa inicial para entender duração, etapas da consultoria e investimento antes do atendimento.</p>
+    </div>
+  </section>
+  <PageCta message="Olá, gostaria de saber mais sobre consultoria de visagismo em Campinas" />
+</PageLayout>

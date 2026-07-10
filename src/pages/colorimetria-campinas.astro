@@ -1,0 +1,37 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import PageCta from '../components/PageCta.astro';
+
+const path = '/colorimetria-campinas/';
+const title = 'Colorimetria em Campinas | Visagismo Intencional';
+const description = 'Colorimetria e coloração personalizada em Campinas no Cambuí. Análise de tom de pele e cabelo com Ery Junior. Agende sua consultoria.';
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  path={path}
+  h1="Colorimetria em Campinas"
+  subtitle="Descubra as cores que valorizam seu tom de pele, olhos e cabelo com análise profissional de colorimetria."
+  image="/images/coloracao.webp"
+  breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Colorimetria', path }]}
+  serviceSchema={{ name: 'Colorimetria em Campinas', description, path }}
+>
+  <section class="py-16 bg-dark-light">
+    <div class="max-w-3xl mx-auto px-5 font-montserrat text-gray-light leading-relaxed space-y-6">
+      <p>
+        A colorimetria identifica a paleta ideal para você, evitando tons que apagam o rosto ou envelhecem a aparência.
+        No Visagismo Intencional, a cor é planejada junto com o corte e o projeto de imagem.
+      </p>
+      <h2 class="font-playfair text-2xl text-white">Quando fazer colorimetria</h2>
+      <ul class="list-disc pl-5 space-y-2">
+        <li>Antes de uma mudança significativa de cor</li>
+        <li>Para iluminar o rosto com mechas estratégicas</li>
+        <li>Para alinhar cabelo, pele e estilo pessoal</li>
+        <li>Em consultorias completas de visagismo</li>
+      </ul>
+      <img src="/images/coloracao.webp" alt="Coloração premium e colorimetria em Campinas" class="rounded-xl" loading="lazy" width="800" height="600" />
+    </div>
+  </section>
+  <PageCta message="Olá, quero uma consultoria de colorimetria em Campinas" />
+</PageLayout>

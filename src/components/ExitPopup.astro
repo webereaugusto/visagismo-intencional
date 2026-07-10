@@ -1,5 +1,7 @@
 ---
-const whatsappLink = "https://wa.me/5519991103018?text=Olá! Vi o novo endereço no Cambuí e gostaria de agendar uma consultoria";
+import { siteConfig } from '../config/site';
+
+const whatsappLink = `https://wa.me/${siteConfig.phoneClean}?text=${encodeURIComponent('Olá! Vi o novo endereço no Cambuí e gostaria de agendar uma consultoria')}`;
 ---
 
 <!-- Exit Intent Popup -->
@@ -74,7 +76,7 @@ const whatsappLink = "https://wa.me/5519991103018?text=Olá! Vi o novo endereço
         
         <!-- Message -->
         <p class="text-center text-white/60 font-montserrat text-xs mb-8 leading-relaxed">
-          Venha conhecer nosso novo espaço e viva uma experiência única de transformação com o maior especialista em Visagismo do Brasil.
+          Venha conhecer nosso novo espaço no Cambuí e viva uma experiência de consultoria de visagismo com {siteConfig.author}.
         </p>
         
         <!-- CTA Button -->

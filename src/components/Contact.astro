@@ -1,5 +1,7 @@
 ---
-const whatsappLink = "https://wa.me/5519991103018?text=Olá, gostaria de agendar uma consultoria";
+import { siteConfig, whatsappLink } from '../config/site';
+
+const message = 'Olá, gostaria de agendar uma consultoria de visagismo em Campinas';
 ---
 
 <section class="py-28 md:py-36 bg-dark" id="contato">
@@ -26,7 +28,7 @@ const whatsappLink = "https://wa.me/5519991103018?text=Olá, gostaria de agendar
     
     <!-- CTA -->
     <a 
-      href={whatsappLink}
+      href={whatsappLink(message)}
       target="_blank"
       rel="noopener noreferrer"
       class="group inline-flex items-center gap-4 bg-gradient-to-r from-gold via-gold-light to-gold text-dark px-12 py-6 text-sm font-semibold tracking-[0.2em] uppercase hover:shadow-2xl hover:shadow-gold/30 transition-all duration-500 rounded-full"
@@ -39,7 +41,7 @@ const whatsappLink = "https://wa.me/5519991103018?text=Olá, gostaria de agendar
     
     <!-- Phone -->
     <p class="mt-10 font-montserrat text-gray text-sm">
-      Ou ligue: <a href="tel:+5519991103018" class="text-gold hover:text-gold-light transition-colors font-medium">(19) 99110-3018</a>
+      Ou ligue: <a href={`tel:${siteConfig.phoneClean}`} class="text-gold hover:text-gold-light transition-colors font-medium">{siteConfig.phoneDisplay}</a>
     </p>
     
   </div>

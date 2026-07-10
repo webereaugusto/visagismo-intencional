@@ -1,0 +1,51 @@
+---
+import { siteConfig, whatsappLink } from '../config/site';
+---
+
+<section class="py-12 md:py-16 bg-dark-light border-b border-dark-lighter" id="resposta-local" aria-label="Resumo sobre visagismo em Campinas">
+  <div class="max-w-5xl mx-auto px-5 md:px-6">
+    <div class="card-glow rounded-2xl p-6 md:p-10">
+      <p class="text-gold text-xs tracking-[0.25em] uppercase font-montserrat mb-4">Resposta direta</p>
+      <h2 class="font-playfair text-2xl md:text-3xl text-white font-medium mb-4">
+        Onde fazer visagismo em Campinas?
+      </h2>
+      <p class="font-montserrat text-gray-light leading-relaxed mb-6">
+        O <strong class="text-white">{siteConfig.brandLine}</strong> é um estúdio no Cambuí dedicado à consultoria de visagismo,
+        conduzido por <strong class="text-gold">{siteConfig.author}</strong>, com mais de {siteConfig.experienceYears} anos de atuação em Campinas.
+        O atendimento inclui análise facial, colorimetria, projeto de imagem e execução de corte e coloração com hora marcada.
+      </p>
+      <dl class="grid sm:grid-cols-2 gap-4 text-sm font-montserrat">
+        <div>
+          <dt class="text-gold uppercase tracking-wider text-xs mb-1">Endereço</dt>
+          <dd class="text-white">{siteConfig.address.full}</dd>
+        </div>
+        <div>
+          <dt class="text-gold uppercase tracking-wider text-xs mb-1">Telefone</dt>
+          <dd class="text-white">{siteConfig.phoneDisplay}</dd>
+        </div>
+        <div>
+          <dt class="text-gold uppercase tracking-wider text-xs mb-1">Horário</dt>
+          <dd class="text-gray-light">{siteConfig.hours.weekdays}. {siteConfig.hours.saturday}.</dd>
+        </div>
+        <div>
+          <dt class="text-gold uppercase tracking-wider text-xs mb-1">Pagamento</dt>
+          <dd class="text-gray-light">{siteConfig.paymentMethods.join(' • ')}</dd>
+        </div>
+        <div class="sm:col-span-2">
+          <dt class="text-gold uppercase tracking-wider text-xs mb-1">Acesso</dt>
+          <dd class="text-gray-light">{siteConfig.parkingNote}</dd>
+        </div>
+      </dl>
+      <div class="mt-8">
+        <a
+          href={whatsappLink('Olá, gostaria de agendar uma consultoria de visagismo em Campinas')}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center bg-gradient-to-r from-gold to-gold-dark text-dark px-8 py-4 text-sm font-semibold tracking-wider uppercase hover:shadow-lg hover:shadow-gold/30 transition-all"
+        >
+          Agendar consultoria
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

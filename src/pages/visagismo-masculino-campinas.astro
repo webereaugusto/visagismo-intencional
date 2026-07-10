@@ -1,0 +1,40 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import PageCta from '../components/PageCta.astro';
+
+const path = '/visagismo-masculino-campinas/';
+const title = 'Visagismo Masculino em Campinas | Ery Junior';
+const description = 'Visagismo masculino em Campinas no Cambuí. Corte, barba e imagem executiva com análise facial personalizada. Agende com Ery Junior.';
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  path={path}
+  h1="Visagismo Masculino em Campinas"
+  subtitle="Corte, barba e sobrancelhas integrados para uma imagem de autoridade, credibilidade e presença executiva."
+  image="/images/visagismo-masculino-depois.webp"
+  breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Visagismo Masculino', path }]}
+  serviceSchema={{ name: 'Visagismo Masculino em Campinas', description, path }}
+>
+  <section class="py-16 bg-dark-light">
+    <div class="max-w-3xl mx-auto px-5 font-montserrat text-gray-light leading-relaxed space-y-6">
+      <p>
+        O visagismo masculino considera linhas do rosto, densidade da barba, contexto profissional e estilo de vida.
+        O objetivo é criar um visual que comunica com clareza quem você é e onde deseja chegar.
+      </p>
+      <h2 class="font-playfair text-2xl text-white">Serviços masculinos</h2>
+      <ul class="list-disc pl-5 space-y-2">
+        <li>Corte visagista personalizado</li>
+        <li>Design de barba e bigode</li>
+        <li>Harmonização de sobrancelhas</li>
+        <li>Consultoria de imagem executiva</li>
+      </ul>
+      <div class="grid sm:grid-cols-2 gap-4 pt-4">
+        <img src="/images/visagismo-masculino-antes.webp" alt="Antes - visagismo masculino Campinas" class="rounded-xl" loading="lazy" width="600" height="750" />
+        <img src="/images/visagismo-masculino-depois.webp" alt="Depois - visagismo masculino Campinas" class="rounded-xl" loading="lazy" width="600" height="750" />
+      </div>
+    </div>
+  </section>
+  <PageCta message="Olá, quero agendar visagismo masculino em Campinas" />
+</PageLayout>

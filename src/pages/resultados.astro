@@ -1,0 +1,48 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import PageCta from '../components/PageCta.astro';
+import { caseStudies } from '../config/cases';
+
+const path = '/resultados/';
+const title = 'Resultados de Visagismo em Campinas | Antes e Depois';
+const description = 'Veja resultados reais de visagismo em Campinas: estudos de caso com análise, abordagem e transformações do Visagismo Intencional no Cambuí.';
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  path={path}
+  h1="Resultados de Visagismo em Campinas"
+  subtitle="Estudos de caso com objetivo, abordagem técnica e transformação visual documentada no estúdio."
+  image="/images/depois2.webp"
+  breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Resultados', path }]}
+>
+  <section class="py-16 bg-dark-light">
+    <div class="max-w-5xl mx-auto px-5 space-y-12">
+      {caseStudies.map((item) => (
+        <article class="card-glow rounded-2xl p-6 md:p-8">
+          <h2 class="font-playfair text-2xl text-white mb-4">{item.title}</h2>
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <img src={item.imageBefore} alt={`Antes - ${item.alt}`} class="rounded-xl" loading="lazy" width="600" height="750" />
+            <img src={item.imageAfter} alt={`Depois - ${item.alt}`} class="rounded-xl" loading="lazy" width="600" height="750" />
+          </div>
+          <dl class="space-y-4 font-montserrat text-sm md:text-base">
+            <div>
+              <dt class="text-gold uppercase tracking-wider text-xs mb-1">Objetivo</dt>
+              <dd class="text-gray-light">{item.objective}</dd>
+            </div>
+            <div>
+              <dt class="text-gold uppercase tracking-wider text-xs mb-1">Abordagem</dt>
+              <dd class="text-gray-light">{item.approach}</dd>
+            </div>
+            <div>
+              <dt class="text-gold uppercase tracking-wider text-xs mb-1">Resultado</dt>
+              <dd class="text-gray-light">{item.result}</dd>
+            </div>
+          </dl>
+        </article>
+      ))}
+    </div>
+  </section>
+  <PageCta message="Olá, quero uma consultoria de visagismo em Campinas" label="Quero meu projeto de imagem" />
+</PageLayout>

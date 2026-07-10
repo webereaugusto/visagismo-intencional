@@ -1,5 +1,7 @@
 ---
-const whatsappLink = "https://wa.me/5519991103018?text=Olá, quero conhecer o Método Ery Junior";
+import { siteConfig, whatsappLink } from '../config/site';
+
+const link = whatsappLink('Olá, quero conhecer o Método Ery Junior');
 
 const steps = [
   {
@@ -29,7 +31,7 @@ const steps = [
   {
     number: "05",
     title: "Execução Artística",
-    description: "Aplicação das técnicas exclusivas desenvolvidas ao longo de 30 anos, com atenção a cada detalhe para um resultado impecável.",
+    description: "Aplicação das técnicas desenvolvidas ao longo de décadas, com atenção a cada detalhe para um resultado harmonioso.",
     duration: "40-60 min"
   }
 ];
@@ -54,9 +56,9 @@ const steps = [
       </h2>
       
       <p class="font-montserrat text-gray-light text-sm md:text-base lg:text-lg leading-relaxed animate-on-scroll animate-delay-200">
-        Uma metodologia única desenvolvida ao longo de <strong class="text-white">30 anos de experiência</strong>, 
-        combinando técnicas internacionais com sensibilidade artística brasileira para criar 
-        <strong class="text-gold">sua melhor versão</strong>.
+        Metodologia autoral desenvolvida ao longo de <strong class="text-white">{siteConfig.experienceYears} anos de experiência</strong>,
+        combinando técnicas internacionais com sensibilidade artística brasileira para um visual alinhado à
+        <strong class="text-gold">sua identidade</strong>.
       </p>
     </div>
     
@@ -118,7 +120,7 @@ const steps = [
           Agende sua consultoria e viva a experiência de uma transformação que vai além do visual.
         </p>
         <a 
-          href={whatsappLink}
+          href={link}
           target="_blank"
           rel="noopener noreferrer"
           class="inline-flex items-center gap-3 bg-gradient-to-r from-gold to-gold-dark text-dark px-8 md:px-10 py-4 md:py-5 font-montserrat text-xs md:text-sm font-bold tracking-wider uppercase hover:shadow-lg hover:shadow-gold/30 transition-all"

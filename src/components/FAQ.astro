@@ -1,66 +1,10 @@
 ---
-const faqs = [
-  {
-    question: "O que é visagismo e como funciona?",
-    answer: "Visagismo é a arte de harmonizar a imagem pessoal com as características físicas e psicológicas de cada indivíduo. Analisamos o formato do seu rosto, proporções faciais, tom de pele, cor dos olhos, estilo de vida e personalidade para criar um visual que comunique quem você realmente é. No Visagismo Intencional, utilizamos técnicas internacionais aprendidas em Londres, Nova York e Paris."
-  },
-  {
-    question: "Onde fazer visagismo em Campinas?",
-    answer: "O melhor lugar para fazer visagismo em Campinas é no Visagismo Intencional by Ery Junior, localizado no coração do Cambuí (Rua Cel. Quirino, 41). Somos referência na região com mais de 30 anos de experiência e técnicas internacionais exclusivas. Atendemos clientes de toda Campinas e região metropolitana."
-  },
-  {
-    question: "Quem é o melhor visagista de Campinas?",
-    answer: "Ery Junior é reconhecido como o principal especialista em visagismo de Campinas e região. Com formação internacional pela Vidal Sassoon de Londres, especializações em Nova York e certificações L'Oréal Paris, ele é pioneiro em trazer técnicas avançadas de visagismo para o interior paulista, tendo atendido mais de 10.000 clientes ao longo de 30 anos."
-  },
-  {
-    question: "Quanto custa uma consultoria de visagismo em Campinas?",
-    answer: "O investimento em uma consultoria de visagismo no Visagismo Intencional varia de acordo com o serviço escolhido. A primeira consultoria completa inclui análise facial, mapeamento de personalidade, colorimetria e projeto de imagem. Entre em contato pelo WhatsApp para conhecer nossos pacotes e valores atualizados."
-  },
-  {
-    question: "Quanto tempo dura uma consultoria de visagismo?",
-    answer: "A primeira consultoria completa dura em média 1h30 a 2 horas. Nela, fazemos uma análise detalhada do seu rosto, discutimos seus objetivos, estilo de vida e criamos juntos um plano de imagem personalizado seguindo o exclusivo Método Ery Junior."
-  },
-  {
-    question: "Preciso agendar com antecedência?",
-    answer: "Sim, recomendamos agendar com pelo menos 3 a 5 dias de antecedência. Para dias da noiva e ocasiões especiais, sugerimos agendar com 2 a 4 semanas de antecedência. O agendamento pode ser feito pelo WhatsApp (19) 99110-3018."
-  },
-  {
-    question: "Qual a diferença entre um corte normal e visagismo?",
-    answer: "Um corte normal geralmente segue tendências ou preferências superficiais. O visagismo considera a geometria do seu rosto, sua personalidade, objetivos de vida e profissão para criar um visual estratégico que comunica sua essência. É uma consultoria completa de imagem, não apenas um corte de cabelo."
-  },
-  {
-    question: "O visagismo funciona para homens também?",
-    answer: "Absolutamente! O visagismo masculino é uma das nossas especialidades em Campinas. Trabalhamos corte de cabelo, barba, bigode e sobrancelhas de forma harmônica para transmitir autoridade, credibilidade e uma imagem executiva de sucesso."
-  },
-  {
-    question: "Como funciona o serviço de Dia da Noiva?",
-    answer: "O Dia da Noiva é uma experiência completa e exclusiva. Inclui teste prévio (geralmente 30 dias antes), consultoria de visagismo para definir o visual ideal, e no grande dia: penteado, maquiagem e todos os ajustes necessários. Atendemos noivas de Campinas e toda região."
-  },
-  {
-    question: "O Visagismo Intencional fica em qual bairro de Campinas?",
-    answer: "O Visagismo Intencional está localizado no Cambuí, o bairro mais nobre e sofisticado de Campinas. O endereço é Rua Cel. Quirino, 41 - Cambuí. A localização é privilegiada, com fácil acesso, amplas vagas e estacionamentos ao redor."
-  },
-  {
-    question: "Vocês atendem clientes de outras cidades?",
-    answer: "Sim! Recebemos clientes de toda a região metropolitana de Campinas, incluindo Valinhos, Vinhedo, Paulínia, Americana, Sumaré, Indaiatuba, Jundiaí e outras cidades. Muitos clientes vêm de São Paulo capital especialmente para consultorias com Ery Junior."
-  },
-  {
-    question: "O que é o Método Ery Junior?",
-    answer: "O Método Ery Junior é uma técnica exclusiva desenvolvida ao longo de 30 anos que combina: análise facial científica, mapeamento de personalidade, colorimetria personalizada, projeto de imagem e execução artística. É uma abordagem completa que vai muito além do corte tradicional."
-  },
-  {
-    question: "Qual o horário de funcionamento?",
-    answer: "O Visagismo Intencional funciona de terça a sexta-feira das 9h às 19h, e aos sábados das 9h às 17h. Domingos e segundas-feiras não há atendimento. Recomendamos sempre agendar com antecedência pelo WhatsApp."
-  }
-];
-
-const whatsappLink = "https://wa.me/5519991103018?text=Olá, tenho uma dúvida sobre visagismo";
+import { faqs } from '../config/faq';
+import { whatsappLink } from '../config/site';
 ---
 
 <section class="py-28 md:py-36 bg-dark-light" id="faq">
   <div class="max-w-4xl mx-auto px-6">
-    
-    <!-- Section Header -->
     <div class="text-center mb-16">
       <span class="inline-flex items-center gap-2 text-gold text-xs tracking-[0.3em] uppercase font-montserrat font-medium justify-center">
         <span class="w-8 h-[1px] bg-gradient-to-r from-transparent to-gold"></span>
@@ -72,71 +16,61 @@ const whatsappLink = "https://wa.me/5519991103018?text=Olá, tenho uma dúvida s
         <span class="text-gradient-gold italic"> Frequentes</span>
       </h2>
     </div>
-    
-    <!-- FAQ Accordion -->
+
     <div class="space-y-4" id="faq-accordion">
       {faqs.map((faq, index) => (
         <div class="card-glow rounded-2xl overflow-hidden faq-item">
-          <button 
+          <button
             class="w-full px-8 py-6 flex items-center justify-between text-left group faq-trigger"
             data-index={index}
             aria-expanded="false"
+            aria-controls={`faq-panel-${index}`}
+            id={`faq-trigger-${index}`}
           >
             <span class="font-montserrat font-medium text-white pr-8 group-hover:text-gold transition-colors text-lg">
               {faq.question}
             </span>
-            <span class="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-gold/20 to-gold/5 flex items-center justify-center faq-icon transition-all duration-300 group-hover:from-gold/30 group-hover:to-gold/10">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gold transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <span class="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-gold/20 to-gold/5 flex items-center justify-center faq-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gold transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
               </svg>
             </span>
           </button>
-          <div class="faq-content hidden px-8 pb-6">
+          <div class="faq-content hidden px-8 pb-6" id={`faq-panel-${index}`} role="region" aria-labelledby={`faq-trigger-${index}`}>
             <div class="w-full h-[1px] bg-gradient-to-r from-gold/30 via-gold/10 to-transparent mb-6"></div>
-            <p class="font-montserrat text-gray leading-relaxed">
-              {faq.answer}
-            </p>
+            <p class="font-montserrat text-gray leading-relaxed">{faq.answer}</p>
           </div>
         </div>
       ))}
     </div>
-    
-    <!-- Bottom CTA -->
+
     <div class="mt-16 text-center">
-      <p class="font-montserrat text-gray text-base mb-8">
-        Ainda tem dúvidas? Estamos prontos para ajudar.
-      </p>
-      <a 
-        href={whatsappLink}
+      <p class="font-montserrat text-gray text-base mb-8">Ainda tem dúvidas? Estamos prontos para ajudar.</p>
+      <a
+        href={whatsappLink('Olá, tenho uma dúvida sobre visagismo em Campinas')}
         target="_blank"
         rel="noopener noreferrer"
         class="group inline-flex items-center gap-3 bg-gradient-to-r from-gold via-gold-light to-gold text-dark px-10 py-5 text-sm font-semibold tracking-wider uppercase hover:shadow-lg hover:shadow-gold/30 transition-all rounded-full"
       >
-        <span>Fale Conosco</span>
+        Fale Conosco
       </a>
     </div>
-    
   </div>
 </section>
 
 <script>
   const faqItems = document.querySelectorAll('.faq-item');
-  
-  faqItems.forEach(item => {
+  faqItems.forEach((item) => {
     const trigger = item.querySelector('.faq-trigger');
     const content = item.querySelector('.faq-content');
     const icon = item.querySelector('.faq-icon svg');
-    
     trigger?.addEventListener('click', () => {
       const isOpen = !content?.classList.contains('hidden');
-      
-      faqItems.forEach(otherItem => {
+      faqItems.forEach((otherItem) => {
         otherItem.querySelector('.faq-content')?.classList.add('hidden');
         otherItem.querySelector('.faq-trigger')?.setAttribute('aria-expanded', 'false');
-        const otherIcon = otherItem.querySelector('.faq-icon svg');
-        otherIcon?.classList.remove('rotate-45');
+        otherItem.querySelector('.faq-icon svg')?.classList.remove('rotate-45');
       });
-      
       if (!isOpen) {
         content?.classList.remove('hidden');
         trigger?.setAttribute('aria-expanded', 'true');

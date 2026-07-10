@@ -1,0 +1,29 @@
+---
+const gaId = import.meta.env.PUBLIC_GA_ID;
+---
+
+{gaId && (
+  <>
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+    <script define:vars={{ gaId }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', gaId, { anonymize_ip: true });
+      document.addEventListener('click', (event) => {
+        const target = event.target.closest('a[href*="wa.me"], a[href^="tel:"]');
+        if (!target) return;
+        const href = target.getAttribute('href') || '';
+        if (href.includes('wa.me')) {
+          gtag('event', 'whatsapp_click', { event_category: 'conversion', event_label: href });
+        }
+        if (href.startsWith('tel:')) {
+          gtag('event', 'phone_click', { event_category: 'conversion', event_label: href });
+        }
+        if (href.includes('google.com/maps')) {
+          gtag('event', 'maps_click', { event_category: 'conversion', event_label: href });
+        }
+      });
+    </script>
+  </>
+)}

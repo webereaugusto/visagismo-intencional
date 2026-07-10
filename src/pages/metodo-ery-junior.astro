@@ -1,0 +1,23 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import PageCta from '../components/PageCta.astro';
+import Metodo from '../components/Metodo.astro';
+
+const path = '/metodo-ery-junior/';
+const title = 'Método Ery Junior | Visagismo em Campinas';
+const description = 'Conheça o Método Ery Junior: análise facial, colorimetria, projeto de imagem e execução artística no Visagismo Intencional, Campinas.';
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  path={path}
+  h1="Método Ery Junior"
+  subtitle="Metodologia em etapas que combina análise facial, personalidade, colorimetria e execução técnica."
+  image="/images/ery-junior-hero.webp"
+  breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Método Ery Junior', path }]}
+  serviceSchema={{ name: 'Método Ery Junior', description, path }}
+>
+  <Metodo />
+  <PageCta message="Olá, quero conhecer o Método Ery Junior em Campinas" />
+</PageLayout>
