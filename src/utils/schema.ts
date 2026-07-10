@@ -1,4 +1,5 @@
 import { siteConfig, absoluteUrl } from '../config/site';
+import type { FaqItem } from '../config/faq';
 
 type SchemaPage = {
   title: string;
@@ -13,7 +14,7 @@ export function buildOrganizationSchema() {
     '@type': 'Organization',
     '@id': `${siteConfig.siteUrl}/#organization`,
     name: siteConfig.siteName,
-    alternateName: [siteConfig.brandLine, 'Visagismo em Campinas'],
+    alternateName: [siteConfig.brandLine, 'Visagismo em Campinas', 'Visagismo Campinas'],
     url: siteConfig.siteUrl,
     logo: `${siteConfig.siteUrl}/images/logo-branco-500-transparente-visagismo.png`,
     email: siteConfig.email,
@@ -40,7 +41,7 @@ export function buildHairSalonSchema(description: string) {
     '@type': 'HairSalon',
     '@id': `${siteConfig.siteUrl}/#hairsalon`,
     name: siteConfig.brandLine,
-    alternateName: 'Visagismo em Campinas',
+    alternateName: ['Visagismo em Campinas', 'Visagismo Campinas'],
     description,
     url: siteConfig.siteUrl,
     telephone: siteConfig.phone,
@@ -174,6 +175,21 @@ export function buildBreadcrumbSchema(items: { name: string; path: string }[]) {
       position: index + 1,
       name: item.name,
       item: absoluteUrl(item.path),
+    })),
+  };
+}
+
+export function buildFAQPageSchema(items: FaqItem[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
     })),
   };
 }

@@ -1,54 +1,37 @@
 ---
-import { siteConfig, mapsSearchUrl, whatsappLink } from '../config/site';
+import { siteConfig, mapsSearchUrl } from '../config/site';
 ---
 
-<section class="py-16 md:py-24 bg-dark" id="google-business">
+<section class="py-16 md:py-24 bg-dark" id="localizacao-maps">
   <div class="max-w-4xl mx-auto px-5 md:px-6 text-center">
     <span class="inline-flex items-center gap-3 text-gold text-xs tracking-[0.3em] uppercase font-montserrat mb-4">
       <span class="w-8 h-[1px] bg-gold"></span>
-      Perfil no Google
+      Localização
       <span class="w-8 h-[1px] bg-gold"></span>
     </span>
 
     <h2 class="font-playfair text-3xl md:text-4xl text-white font-medium mb-4">
-      Encontre-nos no <span class="text-gradient-gold italic">Google</span>
+      Visagismo Campinas no <span class="text-gradient-gold italic">Cambuí</span>
     </h2>
 
     <p class="font-montserrat text-gray-light max-w-2xl mx-auto mb-8 leading-relaxed">
-      Para aparecer no mapa e nas buscas locais de "visagismo Campinas", mantenha o Perfil da Empresa no Google
-      atualizado com o mesmo nome, endereço e telefone do site. Após seu atendimento, sua avaliação real fortalece
-      nossa presença no Cambuí.
+      O {siteConfig.brandLine} está em {siteConfig.address.street}, no Cambuí, Campinas.
+      Mesmo endereço e telefone em todas as nossas comunicações — confira no mapa antes de vir.
     </p>
 
-    <div class="card-glow rounded-2xl p-6 md:p-8 text-left mb-8">
-      <h3 class="font-playfair text-xl text-white mb-4">Dados para o Perfil da Empresa</h3>
-      <ul class="space-y-2 font-montserrat text-sm text-gray-light">
-        <li><strong class="text-white">Nome:</strong> {siteConfig.brandLine}</li>
-        <li><strong class="text-white">Categoria sugerida:</strong> Salão de beleza / Consultor de imagem</li>
-        <li><strong class="text-white">Endereço:</strong> {siteConfig.address.street}, {siteConfig.address.neighborhood}, {siteConfig.address.city} - {siteConfig.address.state}</li>
-        <li><strong class="text-white">Telefone:</strong> {siteConfig.phoneDisplay}</li>
-        <li><strong class="text-white">Site:</strong> {siteConfig.siteUrl}</li>
-        <li><strong class="text-white">Horários:</strong> {siteConfig.hours.weekdays}; {siteConfig.hours.saturday}; {siteConfig.hours.closed}</li>
-      </ul>
+    <div class="card-glow rounded-2xl p-6 md:p-8 text-left mb-8 font-montserrat text-sm text-gray-light space-y-2">
+      <p><strong class="text-white">Endereço:</strong> {siteConfig.address.full}</p>
+      <p><strong class="text-white">Telefone:</strong> {siteConfig.phoneDisplay}</p>
+      <p><strong class="text-white">Horários:</strong> {siteConfig.hours.weekdays}; {siteConfig.hours.saturday}</p>
     </div>
 
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a
-        href={mapsSearchUrl()}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center justify-center bg-gradient-to-r from-gold to-gold-dark text-dark px-8 py-4 text-sm font-semibold tracking-wider uppercase rounded-full"
-      >
-        Abrir no Google Maps
-      </a>
-      <a
-        href={whatsappLink('Olá! Gostaria de deixar minha avaliação sobre o atendimento no Visagismo Intencional')}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center justify-center border border-gold/50 text-gold px-8 py-4 text-sm font-medium tracking-wider uppercase rounded-full hover:bg-gold/10 transition-colors"
-      >
-        Falar sobre avaliação
-      </a>
-    </div>
+    <a
+      href={mapsSearchUrl()}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center justify-center bg-gradient-to-r from-gold to-gold-dark text-dark px-8 py-4 text-sm font-semibold tracking-wider uppercase rounded-full"
+    >
+      Abrir no Google Maps
+    </a>
   </div>
 </section>

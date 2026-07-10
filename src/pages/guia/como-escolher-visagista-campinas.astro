@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import PageCta from '../../components/PageCta.astro';
+import HubContext from '../../components/HubContext.astro';
 import { siteConfig } from '../../config/site';
 
 const path = '/guia/como-escolher-visagista-campinas/';
@@ -22,6 +23,7 @@ const description = 'Saiba como escolher um visagista em Campinas: o que avaliar
 >
   <section class="py-16 bg-dark-light">
     <div class="max-w-3xl mx-auto px-5 font-montserrat text-gray-light leading-relaxed space-y-6">
+      <HubContext />
       <h2 class="font-playfair text-2xl text-white">1. Avalie a consultoria, não só o corte</h2>
       <p>Um bom visagista explica o diagnóstico facial antes de executar qualquer mudança. Desconfie de atendimentos que pulam a análise.</p>
       <h2 class="font-playfair text-2xl text-white">2. Verifique formação e portfólio</h2>

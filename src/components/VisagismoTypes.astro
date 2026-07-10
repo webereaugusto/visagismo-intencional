@@ -1,5 +1,7 @@
 ---
-const whatsappLink = "https://wa.me/5519991103018?text=Olá, gostaria de agendar uma consultoria de visagismo";
+import { whatsappLink } from '../config/site';
+
+const waLink = whatsappLink('Olá, gostaria de agendar uma consultoria de visagismo em Campinas');
 ---
 
 <!-- Fundo claro -->
@@ -100,14 +102,22 @@ const whatsappLink = "https://wa.me/5519991103018?text=Olá, gostaria de agendar
             ))}
           </ul>
           
-          <a 
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 bg-accent text-white px-6 py-3 text-sm font-medium tracking-wider uppercase hover:bg-accent-light transition-all"
-          >
-            <span>Agendar</span>
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a 
+              href="/visagismo-masculino-campinas/"
+              class="inline-flex items-center gap-2 border border-accent/50 text-white px-6 py-3 text-sm font-medium tracking-wider uppercase hover:bg-accent/20 transition-all"
+            >
+              <span>Saiba mais</span>
+            </a>
+            <a 
+              href={waLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 bg-accent text-white px-6 py-3 text-sm font-medium tracking-wider uppercase hover:bg-accent-light transition-all"
+            >
+              <span>Agendar</span>
+            </a>
+          </div>
         </div>
       </article>
       
@@ -174,8 +184,8 @@ const whatsappLink = "https://wa.me/5519991103018?text=Olá, gostaria de agendar
           </h3>
           
           <p class="font-montserrat text-gray text-sm leading-relaxed mb-6 max-w-md">
-            Revele sua beleza única. Criamos o visual perfeito 
-            que expressa sua essência e feminilidade.
+            Valorize seus traços com corte e cor pensados para o seu formato de rosto,
+            tom de pele e personalidade.
           </p>
           
           <ul class="space-y-2 mb-6">
@@ -187,14 +197,22 @@ const whatsappLink = "https://wa.me/5519991103018?text=Olá, gostaria de agendar
             ))}
           </ul>
           
-          <a 
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 bg-accent text-white px-6 py-3 text-sm font-medium tracking-wider uppercase hover:bg-accent-light transition-all"
-          >
-            <span>Agendar</span>
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a 
+              href="/visagismo-feminino-campinas/"
+              class="inline-flex items-center gap-2 border border-accent/50 text-white px-6 py-3 text-sm font-medium tracking-wider uppercase hover:bg-accent/20 transition-all"
+            >
+              <span>Saiba mais</span>
+            </a>
+            <a 
+              href={waLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 bg-accent text-white px-6 py-3 text-sm font-medium tracking-wider uppercase hover:bg-accent-light transition-all"
+            >
+              <span>Agendar</span>
+            </a>
+          </div>
         </div>
       </article>
       

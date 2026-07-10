@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import PageCta from '../components/PageCta.astro';
+import HubContext from '../components/HubContext.astro';
 
 const path = '/corte-visagista-campinas/';
 const title = 'Corte Visagista em Campinas | Ery Junior no Cambuí';
@@ -19,6 +20,7 @@ const description = 'Corte visagista em Campinas com análise facial e design ca
 >
   <section class="py-16 bg-dark-light">
     <div class="max-w-3xl mx-auto px-5 font-montserrat text-gray-light leading-relaxed space-y-6">
+      <HubContext service="corte visagista" />
       <p>
         O corte visagista parte de um diagnóstico: formato do rosto, linha da mandíbula, testa, volume natural e estilo de vida.
         A partir disso, o corte é desenhado para equilibrar e valorizar seus traços.
@@ -28,7 +30,10 @@ const description = 'Corte visagista em Campinas com análise facial e design ca
         Enquanto o corte tradicional pode copiar uma referência da moda, o corte visagista responde à pergunta:
         qual visual comunica melhor quem você é hoje e para onde quer ir?
       </p>
-      <img src="/images/autoridade.webp" alt="Corte visagista em Campinas - Ery Junior" class="rounded-xl" loading="lazy" width="800" height="600" />
+      <p>
+        Leia o <a href="/guia/diferenca-corte-visagismo/" class="text-gold hover:underline">guia sobre corte vs visagismo</a> ou
+        agende uma <a href="/consultoria-de-visagismo-campinas/" class="text-gold hover:underline">consultoria completa</a>.
+      </p>
     </div>
   </section>
   <PageCta message="Olá, quero agendar um corte visagista em Campinas" />

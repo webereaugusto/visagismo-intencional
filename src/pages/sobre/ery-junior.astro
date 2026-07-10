@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import PageCta from '../../components/PageCta.astro';
+import HubContext from '../../components/HubContext.astro';
 import { siteConfig } from '../../config/site';
 
 const path = '/sobre/ery-junior/';
@@ -19,6 +20,7 @@ const description = `Conheça Ery Junior, visagista em Campinas com mais de ${si
 >
   <section class="py-16 bg-dark-light">
     <div class="max-w-3xl mx-auto px-5 font-montserrat text-gray-light leading-relaxed space-y-6">
+      <HubContext />
       <img src="/images/about-1.jpg" alt="Ery Junior - visagista em Campinas" class="rounded-xl mb-8" loading="lazy" width="800" height="1000" />
       <p>
         Ery Junior construiu sua trajetória em Campinas com foco em consultoria de imagem e visagismo, passando pela

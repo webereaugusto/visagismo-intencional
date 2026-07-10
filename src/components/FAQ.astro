@@ -39,6 +39,15 @@ import { whatsappLink } from '../config/site';
           <div class="faq-content hidden px-8 pb-6" id={`faq-panel-${index}`} role="region" aria-labelledby={`faq-trigger-${index}`}>
             <div class="w-full h-[1px] bg-gradient-to-r from-gold/30 via-gold/10 to-transparent mb-6"></div>
             <p class="font-montserrat text-gray leading-relaxed">{faq.answer}</p>
+            {faq.links && faq.links.length > 0 && (
+              <ul class="mt-4 space-y-2">
+                {faq.links.map((link) => (
+                  <li>
+                    <a href={link.href} class="text-gold text-sm hover:underline">{link.label}</a>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       ))}

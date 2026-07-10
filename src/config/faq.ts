@@ -3,6 +3,7 @@ import { siteConfig } from './site';
 export type FaqItem = {
   question: string;
   answer: string;
+  links?: { label: string; href: string }[];
 };
 
 export const faqs: FaqItem[] = [
@@ -10,14 +11,20 @@ export const faqs: FaqItem[] = [
     question: 'O que é visagismo e como funciona?',
     answer:
       'Visagismo é a harmonização da imagem pessoal com traços faciais, personalidade e objetivos de vida. No Visagismo Intencional, a consulta inclui análise facial, estudo de proporções, colorimetria e definição de um visual estratégico para cada cliente.',
+    links: [{ label: 'Guia: o que é visagismo', href: '/guia/o-que-e-visagismo/' }],
   },
   {
     question: 'Onde fazer visagismo em Campinas?',
     answer: `O Visagismo Intencional by Ery Junior fica no Cambuí, em ${siteConfig.address.street}, Campinas/SP. O espaço é dedicado à consultoria de visagismo, com atendimento por hora marcada e foco em transformação de imagem.`,
+    links: [
+      { label: 'Visagismo em Campinas (página principal)', href: '/' },
+      { label: 'Consultoria de visagismo', href: '/consultoria-de-visagismo-campinas/' },
+    ],
   },
   {
     question: 'Quem é Ery Junior?',
     answer: `Ery Junior é visagista com mais de ${siteConfig.experienceYears} anos de atuação em Campinas, com formação internacional e trajetória que inclui a evolução do Sofisticatto Hair para o Visagismo Intencional, estúdio focado em visagismo no Cambuí.`,
+    links: [{ label: 'Sobre Ery Junior', href: '/sobre/ery-junior/' }],
   },
   {
     question: 'Quanto custa uma consultoria de visagismo em Campinas?',
@@ -38,11 +45,16 @@ export const faqs: FaqItem[] = [
     question: 'Qual a diferença entre um corte normal e visagismo?',
     answer:
       'O corte comum costuma seguir tendência. O visagismo parte da leitura do rosto, da personalidade e dos objetivos profissionais e pessoais para criar um visual coerente, estratégico e duradouro.',
+    links: [
+      { label: 'Guia: corte vs visagismo', href: '/guia/diferenca-corte-visagismo/' },
+      { label: 'Corte visagista em Campinas', href: '/corte-visagista-campinas/' },
+    ],
   },
   {
     question: 'O visagismo funciona para homens também?',
     answer:
       'Sim. O visagismo masculino trabalha corte, barba, sobrancelhas e presença executiva de forma integrada, com foco em autoridade, credibilidade e identidade visual.',
+    links: [{ label: 'Visagismo masculino em Campinas', href: '/visagismo-masculino-campinas/' }],
   },
   {
     question: 'Como funciona o serviço de Dia da Noiva?',
@@ -62,6 +74,7 @@ export const faqs: FaqItem[] = [
     question: 'O que é o Método Ery Junior?',
     answer:
       'É a metodologia do estúdio, que combina análise facial, mapeamento de personalidade, colorimetria, projeto de imagem e execução artística em etapas definidas.',
+    links: [{ label: 'Conheça o Método Ery Junior', href: '/metodo-ery-junior/' }],
   },
   {
     question: 'Qual o horário de funcionamento?',

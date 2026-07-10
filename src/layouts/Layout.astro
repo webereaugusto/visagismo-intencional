@@ -11,7 +11,9 @@ import {
   buildWebPageSchema,
   buildBreadcrumbSchema,
   buildServiceSchema,
+  buildFAQPageSchema,
 } from '../utils/schema';
+import { faqs } from '../config/faq';
 
 interface Props {
   title?: string;
@@ -24,9 +26,9 @@ interface Props {
   serviceSchema?: { name: string; description: string; path: string };
 }
 
-const defaultTitle = 'Visagismo em Campinas | Ery Junior - Visagismo Intencional no Cambuí';
+const defaultTitle = 'Visagismo Campinas | Visagismo em Campinas no Cambuí | Ery Junior';
 const defaultDescription =
-  'Visagismo em Campinas no Cambuí com Ery Junior. Consultoria de imagem, análise facial, colorimetria e corte visagista no Visagismo Intencional. Agende pelo WhatsApp.';
+  'Visagismo Campinas e visagismo em Campinas no Cambuí com Ery Junior. Consultoria de imagem, análise facial, colorimetria e corte visagista. Agende pelo WhatsApp.';
 
 const {
   title = defaultTitle,
@@ -113,6 +115,9 @@ const breadcrumbItems = breadcrumbs ?? [{ name: 'Home', path: '/' }];
     <script type="application/ld+json" set:html={JSON.stringify(buildBreadcrumbSchema(breadcrumbItems))} />
     {serviceSchema && (
       <script type="application/ld+json" set:html={JSON.stringify(buildServiceSchema(serviceSchema.name, serviceSchema.description, serviceSchema.path))} />
+    )}
+    {path === '/' && (
+      <script type="application/ld+json" set:html={JSON.stringify(buildFAQPageSchema(faqs))} />
     )}
   </head>
   <body class="antialiased">

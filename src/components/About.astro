@@ -1,24 +1,19 @@
 ---
-const whatsappLink = "https://wa.me/5519991103018?text=Olá, gostaria de conhecer o trabalho do Ery Junior";
+import { siteConfig } from '../config/site';
 
 const trajectory = [
-  { year: "1995", event: "Início da carreira" },
-  { year: "2000", event: "Formação em Londres" },
-  { year: "2005", event: "Especialização NY" },
-  { year: "2010", event: "Certificação Paris" },
-  { year: "2015", event: "Sofisticatto Hair" },
-  { year: "2026", event: "Visagismo Intencional" },
+  { year: '1995', event: 'Início da carreira' },
+  { year: '2000', event: 'Formação em Londres' },
+  { year: '2005', event: 'Especialização NY' },
+  { year: '2010', event: 'Certificação Paris' },
+  { year: '2015', event: 'Sofisticatto Hair' },
+  { year: '2026', event: 'Visagismo Intencional' },
 ];
 ---
 
-<!-- Fundo claro -->
 <section class="py-28 md:py-36 bg-light" id="sobre">
   <div class="max-w-7xl mx-auto px-6">
-    
-    <!-- Main About Section -->
     <div class="grid lg:grid-cols-2 gap-16 items-center">
-      
-      <!-- Image Column -->
       <div class="relative order-2 lg:order-1 animate-on-scroll animate-fade-left">
         <div class="aspect-[4/5] overflow-hidden hover-zoom">
           <img 
@@ -31,25 +26,19 @@ const trajectory = [
             height="750"
           />
         </div>
-        <!-- Decorative border -->
         <div class="absolute -bottom-4 -left-4 w-full h-full border border-gold/30 -z-10"></div>
-        
-        <!-- Experience Badge -->
         <div class="absolute bottom-8 right-8 bg-gradient-to-br from-gold to-gold-dark text-dark p-6">
-          <span class="font-playfair text-4xl font-medium block">30+</span>
+          <span class="font-playfair text-4xl font-medium block">{siteConfig.experienceYears}+</span>
           <span class="font-montserrat text-xs tracking-wider uppercase font-semibold">Anos</span>
         </div>
       </div>
       
-      <!-- Content Column -->
       <div class="order-1 lg:order-2">
-        <!-- Section Label -->
         <span class="inline-flex items-center gap-3 text-gold text-xs tracking-[0.3em] uppercase font-montserrat font-medium animate-on-scroll">
           <span class="w-8 h-[1px] bg-gold"></span>
           Sobre o Especialista
         </span>
         
-        <!-- Title -->
         <h2 class="font-playfair text-4xl md:text-5xl font-medium mt-6 mb-4 leading-tight text-dark">
           Ery Junior
         </h2>
@@ -58,22 +47,19 @@ const trajectory = [
           Visagista em Campinas
         </p>
         
-        <!-- Bio -->
         <div class="space-y-5 text-gray-dark font-montserrat text-base leading-relaxed">
           <p>
             O nome <strong class="text-dark">Ery Junior</strong> está ligado ao desenvolvimento do visagismo em Campinas.
-            Com formação nas principais academias do mundo — Vidal Sassoon em Londres,
-            especializações em Nova York e certificações pela L'Oréal em Paris —
+            Com formação pela Vidal Sassoon em Londres, especializações em Nova York e certificações L'Oréal em Paris,
             Ery conduz consultorias que unem técnica e sensibilidade artística.
           </p>
           
           <p>
-            Como o primeiro profissional a trazer o visagismo estratégico para Campinas, 
-            ele entende que cada linha do rosto conta uma história que merece ser valorizada.
+            Sua trajetória inclui décadas de atuação no Cambuí e a inauguração do Visagismo Intencional,
+            estúdio dedicado à consultoria de imagem com atendimento por hora marcada.
           </p>
         </div>
         
-        <!-- Quote -->
         <blockquote class="mt-8 border-l-2 border-gold pl-6 py-2 animate-on-scroll">
           <p class="font-playfair text-lg italic text-gray-dark leading-relaxed">
             "A imagem pessoal é a primeira comunicação que fazemos com o mundo."
@@ -83,25 +69,30 @@ const trajectory = [
           </footer>
         </blockquote>
         
-        <!-- Credentials -->
         <div class="flex gap-12 mt-10 pt-8 border-t border-dark/10 animate-on-scroll">
           <div>
-            <span class="font-playfair text-3xl font-medium text-gradient-gold block">3</span>
-            <span class="font-montserrat text-xs text-gray-dark tracking-wider uppercase">Continentes</span>
+            <span class="font-playfair text-3xl font-medium text-gradient-gold block">{siteConfig.credentials.length}</span>
+            <span class="font-montserrat text-xs text-gray-dark tracking-wider uppercase">Formações</span>
           </div>
           <div>
-            <span class="font-playfair text-3xl font-medium text-gradient-gold block">10k+</span>
-            <span class="font-montserrat text-xs text-gray-dark tracking-wider uppercase">Clientes</span>
+            <span class="font-playfair text-3xl font-medium text-gradient-gold block">Cambuí</span>
+            <span class="font-montserrat text-xs text-gray-dark tracking-wider uppercase">Campinas</span>
           </div>
           <div>
-            <span class="font-playfair text-3xl font-medium text-gradient-gold block">1º</span>
-            <span class="font-montserrat text-xs text-gray-dark tracking-wider uppercase">Pioneiro</span>
+            <span class="font-playfair text-3xl font-medium text-gradient-gold block">{siteConfig.press.length}</span>
+            <span class="font-montserrat text-xs text-gray-dark tracking-wider uppercase">Imprensa</span>
           </div>
         </div>
+
+        <a href="/sobre/ery-junior/" class="inline-flex items-center gap-2 mt-8 text-gold font-montserrat text-sm font-medium tracking-wider uppercase hover:gap-3 transition-all">
+          <span>Conheça a trajetória completa</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
       </div>
     </div>
     
-    <!-- Timeline - Horizontal, elegante -->
     <div class="mt-24 pt-16 border-t border-dark/10">
       <div class="text-center mb-16 animate-on-scroll">
         <h3 class="font-playfair text-2xl md:text-3xl text-dark font-medium">
@@ -109,23 +100,16 @@ const trajectory = [
         </h3>
       </div>
       
-      <!-- Timeline Desktop -->
       <div class="hidden md:block">
         <div class="relative">
-          <!-- Container com padding para a linha -->
           <div class="relative pt-16">
-            <!-- Linha horizontal posicionada no topo do container -->
             <div class="absolute left-0 right-0 top-[6px] h-[2px] bg-gradient-to-r from-transparent via-gold/40 to-transparent"></div>
-            
             <div class="grid grid-cols-6">
               {trajectory.map((item, index) => (
                 <div class={`relative flex flex-col items-center animate-on-scroll animate-delay-${index * 100}`}>
-                  <!-- Dot com ring -->
                   <div class="absolute -top-16 left-1/2 -translate-x-1/2">
                     <div class="w-4 h-4 rounded-full bg-gold shadow-lg shadow-gold/30 ring-4 ring-light"></div>
                   </div>
-                  
-                  <!-- Content -->
                   <div class="text-center pt-4">
                     <span class="font-playfair text-2xl md:text-3xl font-medium text-gold block mb-2">{item.year}</span>
                     <p class="font-montserrat text-xs text-gray-dark leading-relaxed max-w-[120px] mx-auto">
@@ -139,21 +123,15 @@ const trajectory = [
         </div>
       </div>
       
-      <!-- Timeline Mobile - Cards -->
       <div class="md:hidden">
         <div class="relative">
-          <!-- Linha vertical -->
           <div class="absolute left-4 top-0 bottom-0 w-[2px] bg-gradient-to-b from-gold/40 via-gold/40 to-transparent"></div>
-          
           <div class="space-y-8">
             {trajectory.map((item, index) => (
               <div class={`relative flex items-center gap-6 animate-on-scroll animate-delay-${index * 100}`}>
-                <!-- Dot -->
                 <div class="relative z-10 flex-shrink-0">
                   <div class="w-4 h-4 rounded-full bg-gold shadow-lg shadow-gold/30 ring-4 ring-light"></div>
                 </div>
-                
-                <!-- Card -->
                 <div class="flex-1 bg-light-dark p-4 rounded-lg shadow-sm border border-gray-200">
                   <span class="font-playfair text-xl font-medium text-gold">{item.year}</span>
                   <p class="font-montserrat text-sm text-gray-dark mt-1">{item.event}</p>
@@ -164,6 +142,5 @@ const trajectory = [
         </div>
       </div>
     </div>
-    
   </div>
 </section>

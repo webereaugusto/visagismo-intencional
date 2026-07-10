@@ -1,6 +1,8 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import PageCta from '../components/PageCta.astro';
+import HubContext from '../components/HubContext.astro';
+import { siteConfig } from '../config/site';
 
 const path = '/visagismo-feminino-campinas/';
 const title = 'Visagismo Feminino em Campinas | Visagismo Intencional';
@@ -11,18 +13,22 @@ const description = 'Visagismo feminino em Campinas com análise facial, colorim
   title={title}
   description={description}
   path={path}
-  h1="Visagismo Feminino em Campinas"
-  subtitle="Corte, cor e estilo pensados para valorizar seus traços, tom de pele e personalidade."
+  h1="Visagismo Feminino"
+  subtitle="Corte, cor e estilo pensados para valorizar traços, tom de pele e personalidade no Cambuí."
   image="/images/visagismo-feminino-depois.webp"
   breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Visagismo Feminino', path }]}
-  serviceSchema={{ name: 'Visagismo Feminino em Campinas', description, path }}
+  serviceSchema={{ name: 'Visagismo Feminino', description, path }}
 >
   <section class="py-16 bg-dark-light">
     <div class="max-w-3xl mx-auto px-5 font-montserrat text-gray-light leading-relaxed space-y-6">
+      <HubContext service="visagismo feminino" />
+
       <p>
-        O visagismo feminino trabalha proporções faciais, movimento do cabelo e paleta de cores para revelar a melhor
-        versão de cada mulher, sem seguir modismos de forma automática.
+        O visagismo feminino trabalha proporções faciais, movimento do cabelo e paleta de cores para harmonizar
+        a imagem com a personalidade de cada mulher — sem seguir modismos de forma automática. Atendimento no
+        {siteConfig.address.neighborhood}, Campinas.
       </p>
+
       <h2 class="font-playfair text-2xl text-white">Benefícios</h2>
       <ul class="list-disc pl-5 space-y-2">
         <li>Corte que valoriza o formato do rosto</li>
@@ -30,10 +36,22 @@ const description = 'Visagismo feminino em Campinas com análise facial, colorim
         <li>Penteados para ocasiões especiais</li>
         <li>Consultoria de imagem completa</li>
       </ul>
+
+      <h2 class="font-playfair text-2xl text-white">Para quem é indicado</h2>
+      <p>
+        Para mulheres que buscam mudança intencional de imagem — profissional, pessoal, noivas ou momentos especiais —
+        com diagnóstico facial e colorimetria antes de qualquer execução.
+      </p>
+
       <div class="grid sm:grid-cols-2 gap-4 pt-4">
         <img src="/images/visagismo-feminino-antes.webp" alt="Antes - visagismo feminino Campinas" class="rounded-xl" loading="lazy" width="600" height="750" />
         <img src="/images/visagismo-feminino-depois.webp" alt="Depois - visagismo feminino Campinas" class="rounded-xl" loading="lazy" width="600" height="750" />
       </div>
+
+      <p>
+        Conheça a <a href="/colorimetria-campinas/" class="text-gold hover:underline">colorimetria em Campinas</a> e veja
+        <a href="/resultados/" class="text-gold hover:underline">resultados documentados</a> no estúdio.
+      </p>
     </div>
   </section>
   <PageCta message="Olá, quero agendar visagismo feminino em Campinas" />

@@ -1,10 +1,11 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import PageCta from '../components/PageCta.astro';
+import HubContext from '../components/HubContext.astro';
 import { caseStudies } from '../config/cases';
 
 const path = '/resultados/';
-const title = 'Resultados de Visagismo em Campinas | Antes e Depois';
+const title = 'Antes e Depois Visagismo Campinas | Estudos de Caso';
 const description = 'Veja resultados reais de visagismo em Campinas: estudos de caso com análise, abordagem e transformações do Visagismo Intencional no Cambuí.';
 ---
 
@@ -12,13 +13,15 @@ const description = 'Veja resultados reais de visagismo em Campinas: estudos de 
   title={title}
   description={description}
   path={path}
-  h1="Resultados de Visagismo em Campinas"
-  subtitle="Estudos de caso com objetivo, abordagem técnica e transformação visual documentada no estúdio."
+  h1="Resultados e estudos de caso"
+  subtitle="Transformações documentadas no estúdio do Cambuí, com objetivo, abordagem técnica e resultado visual."
   image="/images/depois2.webp"
   breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Resultados', path }]}
 >
   <section class="py-16 bg-dark-light">
     <div class="max-w-5xl mx-auto px-5 space-y-12">
+      <HubContext />
+
       {caseStudies.map((item) => (
         <article class="card-glow rounded-2xl p-6 md:p-8">
           <h2 class="font-playfair text-2xl text-white mb-4">{item.title}</h2>

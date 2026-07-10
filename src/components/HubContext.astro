@@ -1,0 +1,22 @@
+---
+interface Props {
+  service?: string;
+}
+
+const { service } = Astro.props;
+---
+
+<p class="font-montserrat text-sm text-gray-light border-l-2 border-gold/40 pl-4">
+  {service ? (
+    <>
+      Este conteúdo complementa a página principal de{' '}
+      <a href="/" class="text-gold hover:underline">visagismo em Campinas</a>
+      {' '}do {service}.
+    </>
+  ) : (
+    <>
+      Para visagismo em Campinas com atendimento completo no Cambuí, veja nossa{' '}
+      <a href="/" class="text-gold hover:underline">página principal de visagismo em Campinas</a>.
+    </>
+  )}
+</p>

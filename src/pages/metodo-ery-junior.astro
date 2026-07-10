@@ -1,11 +1,35 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import PageCta from '../components/PageCta.astro';
-import Metodo from '../components/Metodo.astro';
+import HubContext from '../components/HubContext.astro';
+import { siteConfig } from '../config/site';
 
 const path = '/metodo-ery-junior/';
 const title = 'Método Ery Junior | Visagismo em Campinas';
 const description = 'Conheça o Método Ery Junior: análise facial, colorimetria, projeto de imagem e execução artística no Visagismo Intencional, Campinas.';
+
+const phases = [
+  {
+    title: 'Diagnóstico facial e de imagem',
+    body: 'Leitura do formato do rosto, proporções, linhas e ângulos. Identificamos o que valorizar e o que harmonizar antes de qualquer corte ou cor.',
+    duration: '35 min',
+  },
+  {
+    title: 'Personalidade e objetivos',
+    body: 'Entendemos rotina, profissão e a imagem que você deseja projetar. O visual precisa ser sustentável no dia a dia, não só na cadeira do salão.',
+    duration: '20 min',
+  },
+  {
+    title: 'Colorimetria aplicada',
+    body: 'Paleta de cores alinhada ao tom de pele, olhos e cabelo natural. A cor certa amplifica o resultado do corte e da consultoria.',
+    duration: '15 min',
+  },
+  {
+    title: 'Projeto e execução',
+    body: 'Plano de corte, coloração e manutenção. A execução segue as técnicas desenvolvidas por Ery Junior ao longo de décadas em Campinas.',
+    duration: '40–60 min',
+  },
+];
 ---
 
 <PageLayout
@@ -18,6 +42,39 @@ const description = 'Conheça o Método Ery Junior: análise facial, colorimetri
   breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Método Ery Junior', path }]}
   serviceSchema={{ name: 'Método Ery Junior', description, path }}
 >
-  <Metodo />
+  <section class="py-16 bg-dark-light">
+    <div class="max-w-3xl mx-auto px-5 font-montserrat text-gray-light leading-relaxed space-y-8">
+      <HubContext service="Método Ery Junior" />
+
+      <p>
+        O Método Ery Junior é a forma como o {siteConfig.brandLine} conduz cada consultoria de visagismo em Campinas.
+        Diferente de um corte por tendência, o processo começa com diagnóstico e termina com um visual alinhado à
+        identidade da pessoa — com etapas documentadas e tempo reservado para cada fase.
+      </p>
+
+      <h2 class="font-playfair text-2xl text-white">As quatro fases do método</h2>
+      <div class="space-y-6">
+        {phases.map((phase, index) => (
+          <article class="card-glow rounded-xl p-6">
+            <p class="text-gold text-xs uppercase tracking-wider mb-2">Fase {index + 1} • {phase.duration}</p>
+            <h3 class="font-playfair text-xl text-white mb-2">{phase.title}</h3>
+            <p class="text-sm">{phase.body}</p>
+          </article>
+        ))}
+      </div>
+
+      <h2 class="font-playfair text-2xl text-white">Por que o método importa</h2>
+      <p>
+        Clientes que passam pelo método relatam mais clareza sobre o visual ideal e menos arrependimento após a mudança.
+        A consultoria completa dura em média 1h30 a 2 horas na primeira visita. Para conhecer o estúdio e a equipe,
+        veja também a página <a href="/sobre/ery-junior/" class="text-gold hover:underline">sobre Ery Junior</a>.
+      </p>
+
+      <p>
+        Na home você encontra um resumo visual das etapas. Esta página detalha o processo para quem quer entender
+        o método antes de agendar.
+      </p>
+    </div>
+  </section>
   <PageCta message="Olá, quero conhecer o Método Ery Junior em Campinas" />
 </PageLayout>

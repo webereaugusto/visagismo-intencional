@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import PageCta from '../components/PageCta.astro';
+import HubContext from '../components/HubContext.astro';
 
 const path = '/colorimetria-campinas/';
 const title = 'Colorimetria em Campinas | Visagismo Intencional';
@@ -19,6 +20,7 @@ const description = 'Colorimetria e coloração personalizada em Campinas no Cam
 >
   <section class="py-16 bg-dark-light">
     <div class="max-w-3xl mx-auto px-5 font-montserrat text-gray-light leading-relaxed space-y-6">
+      <HubContext service="colorimetria" />
       <p>
         A colorimetria identifica a paleta ideal para você, evitando tons que apagam o rosto ou envelhecem a aparência.
         No Visagismo Intencional, a cor é planejada junto com o corte e o projeto de imagem.
@@ -30,7 +32,10 @@ const description = 'Colorimetria e coloração personalizada em Campinas no Cam
         <li>Para alinhar cabelo, pele e estilo pessoal</li>
         <li>Em consultorias completas de visagismo</li>
       </ul>
-      <img src="/images/coloracao.webp" alt="Coloração premium e colorimetria em Campinas" class="rounded-xl" loading="lazy" width="800" height="600" />
+      <p>
+        Parte da <a href="/consultoria-de-visagismo-campinas/" class="text-gold hover:underline">consultoria de visagismo</a> ou
+        pode ser agendada em conjunto com <a href="/corte-visagista-campinas/" class="text-gold hover:underline">corte visagista</a>.
+      </p>
     </div>
   </section>
   <PageCta message="Olá, quero uma consultoria de colorimetria em Campinas" />
