@@ -1,0 +1,238 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import PageCta from '../components/PageCta.astro';
+import HubContext from '../components/HubContext.astro';
+import { siteConfig, whatsappLink } from '../config/site';
+
+const path = '/dicas-de-visagismo-campinas/';
+const title = 'Dicas de Visagismo em Campinas | Ery Junior no Cambuí';
+const description = `Dicas práticas de visagismo em Campinas com ${siteConfig.author}, cabeleireiro e visagista no Cambuí. Aprenda a escolher corte, cor e imagem com critério técnico.`;
+
+const tips = [
+  {
+    title: 'Comece pela análise do rosto, não pela foto de referência',
+    body: 'Antes de pedir um corte igual ao de uma celebridade, observe formato do rosto, linha da mandíbula e proporção da testa. O visagismo parte do seu rosto — não da tendência do momento.',
+    image: '/images/autoridade.webp',
+    alt: 'Corte visagista em Campinas - análise facial',
+  },
+  {
+    title: 'A cor certa ilumina mais do que um corte perfeito',
+    body: 'Tom de pele, cor dos olhos e cabelo natural definem quais mechas, reflexos e colorações valorizam o rosto. Uma colorimetria bem feita evita tons que apagam ou envelhecem a aparência.',
+    image: '/images/coloracao.webp',
+    alt: 'Colorimetria e coloração em Campinas',
+  },
+  {
+    title: 'Pense na rotina antes de definir o comprimento',
+    body: 'Um visual lindo que exige uma hora de finalização diária pode frustrar na segunda-feira. O corte precisa caber no seu estilo de vida, não só no espelho do salão.',
+    image: '/images/galeria/visagismo-campinas-ery-junior-08.webp',
+    alt: 'Corte prático para o dia a dia em Campinas',
+  },
+  {
+    title: 'Visagismo masculino também é estratégia de imagem',
+    body: 'Corte, barba e sobrancelhas precisam trabalhar juntos para transmitir autoridade e credibilidade. Homens em Campinas que buscam presença executiva se beneficiam de um diagnóstico integrado.',
+    image: '/images/visagismo-masculino-depois.webp',
+    alt: 'Visagismo masculino em Campinas - Ery Junior',
+  },
+  {
+    title: 'Visagismo feminino valoriza traços, não esconde',
+    body: 'O objetivo não é padronizar, mas harmonizar: movimento do cabelo, franja, volume e cor alinhados ao formato do rosto e à personalidade de cada mulher.',
+    image: '/images/visagismo-feminino-depois.webp',
+    alt: 'Visagismo feminino no Cambuí, Campinas',
+  },
+  {
+    title: 'Agende com antecedência no Cambuí',
+    body: `No ${siteConfig.brandLine}, o atendimento é por hora marcada em ${siteConfig.address.street}, no Cambuí. Para consultorias completas, reserve com 3 a 5 dias de antecedência.`,
+    image: '/images/about-1.jpg',
+    alt: 'Ery Junior - cabeleireiro e visagista em Campinas',
+  },
+];
+
+const waLink = whatsappLink('Olá, li as dicas de visagismo e gostaria de agendar uma consultoria em Campinas');
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  path={path}
+  h1="Dicas de visagismo em Campinas"
+  subtitle={`Orientações práticas de ${siteConfig.author}, cabeleireiro e visagista no Cambuí, com mais de ${siteConfig.experienceYears} anos de atuação em Campinas.`}
+  image="/images/baner.webp"
+  breadcrumbs={[
+    { name: 'Home', path: '/' },
+    { name: 'Dicas de visagismo', path },
+  ]}
+>
+  <!-- Intro visual -->
+  <section class="py-12 md:py-16 bg-dark-light border-b border-dark-lighter">
+    <div class="max-w-6xl mx-auto px-5 md:px-6">
+      <HubContext service="dicas de visagismo" />
+
+      <div class="grid lg:grid-cols-2 gap-10 items-center mt-8">
+        <div class="font-montserrat text-gray-light leading-relaxed space-y-4">
+          <p>
+            Estas dicas reúnem o que {siteConfig.author} aplica diariamente no estúdio do Cambuí: visagismo como
+            ferramenta de imagem, não apenas estética. Se você busca <strong class="text-white">visagismo em Campinas</strong>
+            com critério técnico, comece por aqui e depois conheça a
+            <a href="/consultoria-de-visagismo-campinas/" class="text-gold hover:underline">consultoria completa</a>.
+          </p>
+          <p>
+            {siteConfig.author} é cabeleireiro e visagista em Campinas, com formação internacional e estúdio dedicado
+            ao visagismo na {siteConfig.address.neighborhood}. {siteConfig.parkingNote}
+          </p>
+        </div>
+        <div class="relative overflow-hidden rounded-2xl border border-gold/20">
+          <img
+            src="/images/baner.webp"
+            alt="Visagismo em Campinas no Cambuí - Visagismo Intencional by Ery Junior"
+            class="w-full aspect-[16/10] object-cover"
+            loading="eager"
+            width="800"
+            height="500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent pointer-events-none"></div>
+          <p class="absolute bottom-4 left-4 right-4 font-montserrat text-sm text-white/90">
+            Estúdio no Cambuí • Campinas/SP
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dicas em cards alternados -->
+  <section class="py-16 md:py-24 bg-dark">
+    <div class="max-w-6xl mx-auto px-5 md:px-6">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="inline-flex items-center gap-3 text-gold text-xs tracking-[0.3em] uppercase font-montserrat mb-4">
+          <span class="w-8 h-[1px] bg-gold"></span>
+          Guia prático
+          <span class="w-8 h-[1px] bg-gold"></span>
+        </span>
+        <h2 class="font-playfair text-3xl md:text-4xl text-white font-medium">
+          6 dicas antes de mudar o visual
+        </h2>
+      </div>
+
+      <div class="space-y-16">
+        {tips.map((tip, index) => (
+          <article class={`grid md:grid-cols-2 gap-8 lg:gap-12 items-center ${index % 2 === 1 ? 'md:direction-rtl' : ''}`}>
+            <div class={`${index % 2 === 1 ? 'md:direction-ltr' : ''}`}>
+              <span class="text-gold font-montserrat text-xs tracking-[0.2em] uppercase mb-3 block">
+                Dica {String(index + 1).padStart(2, '0')}
+              </span>
+              <h3 class="font-playfair text-2xl md:text-3xl text-white font-medium mb-4 leading-tight">
+                {tip.title}
+              </h3>
+              <p class="font-montserrat text-gray-light leading-relaxed">{tip.body}</p>
+            </div>
+            <div class={`overflow-hidden rounded-2xl card-glow ${index % 2 === 1 ? 'md:direction-ltr' : ''}`}>
+              <img
+                src={tip.image}
+                alt={tip.alt}
+                class="w-full aspect-[4/5] object-cover hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                width="600"
+                height="750"
+              />
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Bloco Ery Junior / autoridade local -->
+  <section class="py-16 md:py-24 bg-dark-light">
+    <div class="max-w-6xl mx-auto px-5 md:px-6">
+      <div class="grid lg:grid-cols-2 gap-12 items-center card-glow rounded-2xl p-8 md:p-12">
+        <img
+          src="/images/about-1.jpg"
+          alt="Ery Junior - cabeleireiro e visagista em Campinas, Cambuí"
+          class="rounded-xl w-full aspect-[4/5] object-cover"
+          loading="lazy"
+          width="600"
+          height="750"
+        />
+        <div class="font-montserrat text-gray-light leading-relaxed space-y-5">
+          <h2 class="font-playfair text-3xl text-white font-medium">
+            Por que seguir as dicas de <span class="text-gradient-gold italic">Ery Junior</span>?
+          </h2>
+          <p>
+            {siteConfig.author} atua como cabeleireiro e visagista em Campinas há mais de {siteConfig.experienceYears} anos.
+            Com formação Vidal Sassoon (Londres), especializações em Nova York e certificações L'Oréal (Paris), conduz
+            consultorias no {siteConfig.brandLine}, estúdio no Cambuí focado em projeto de imagem.
+          </p>
+          <ul class="list-disc pl-5 space-y-2 text-sm">
+            {siteConfig.credentials.map((item) => <li>{item}</li>)}
+          </ul>
+          <p class="text-sm">
+            Matéria no <a href={siteConfig.press[0].url} target="_blank" rel="noopener noreferrer" class="text-gold hover:underline">{siteConfig.press[0].outlet}</a>:
+            cobertura local sobre a trajetória do cabeleireiro em Campinas.
+          </p>
+          <div class="flex flex-wrap gap-4 pt-2">
+            <a href="/sobre/ery-junior/" class="text-gold text-sm font-medium uppercase tracking-wider hover:underline">
+              Sobre Ery Junior
+            </a>
+            <a href="/metodo-ery-junior/" class="text-gold text-sm font-medium uppercase tracking-wider hover:underline">
+              Método Ery Junior
+            </a>
+            <a href="/resultados/" class="text-gold text-sm font-medium uppercase tracking-wider hover:underline">
+              Ver resultados
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Checklist rápido -->
+  <section class="py-16 bg-dark">
+    <div class="max-w-3xl mx-auto px-5">
+      <h2 class="font-playfair text-2xl md:text-3xl text-white font-medium text-center mb-10">
+        Checklist antes da consulta no Cambuí
+      </h2>
+      <ul class="space-y-4 font-montserrat text-gray-light">
+        {[
+          'Leve referências, mas esteja aberto ao que o rosto pede',
+          'Pense em quanto tempo pode dedicar à manutenção diária',
+          'Informe mudanças profissionais ou pessoais que motivam a consulta',
+          'Se for colorir, mencione histórico químico recente',
+          'Agende com antecedência — atendimento por hora marcada',
+        ].map((item) => (
+          <li class="flex items-start gap-3 card-glow rounded-xl p-4">
+            <span class="w-2 h-2 rounded-full bg-gold mt-2 flex-shrink-0"></span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+
+      <div class="mt-12 text-center space-y-4">
+        <p class="font-montserrat text-gray text-sm">
+          Endereço: {siteConfig.address.full} • {siteConfig.phoneDisplay}
+        </p>
+        <a
+          href={waLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center bg-gradient-to-r from-gold to-gold-dark text-dark px-10 py-5 text-sm font-semibold tracking-wider uppercase rounded-full hover:shadow-lg hover:shadow-gold/30 transition-all"
+        >
+          Agendar consultoria no Cambuí
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Links relacionados -->
+  <section class="py-12 bg-dark-light border-t border-dark-lighter">
+    <div class="max-w-3xl mx-auto px-5 font-montserrat text-sm text-gray-light">
+      <h2 class="font-playfair text-xl text-white mb-4">Continue lendo</h2>
+      <ul class="grid sm:grid-cols-2 gap-3">
+        <li><a href="/guia/o-que-e-visagismo/" class="text-gold hover:underline">O que é visagismo?</a></li>
+        <li><a href="/guia/diferenca-corte-visagismo/" class="text-gold hover:underline">Corte comum vs visagismo</a></li>
+        <li><a href="/guia/como-escolher-visagista-campinas/" class="text-gold hover:underline">Como escolher visagista em Campinas</a></li>
+        <li><a href="/" class="text-gold hover:underline">Visagismo em Campinas (home)</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <PageCta message="Olá, li as dicas de visagismo e quero agendar em Campinas" label="Falar com Ery Junior" />
+</PageLayout>
