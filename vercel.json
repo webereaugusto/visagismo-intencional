@@ -1,4 +1,5 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
       "source": "/sitemap_index.xml",
@@ -6,9 +7,9 @@
       "statusCode": 301
     },
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [{ "type": "host", "value": "visagismocampinas.com.br" }],
-      "destination": "https://www.visagismocampinas.com.br/:path*",
+      "destination": "https://www.visagismocampinas.com.br/$1",
       "statusCode": 301
     }
   ],
