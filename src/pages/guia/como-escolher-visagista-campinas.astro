@@ -5,8 +5,42 @@ import HubContext from '../../components/HubContext.astro';
 import { siteConfig } from '../../config/site';
 
 const path = '/guia/como-escolher-visagista-campinas/';
-const title = 'Como Escolher um Visagista em Campinas | Guia';
-const description = 'Saiba como escolher um visagista em Campinas: o que avaliar na consultoria, formação, portfólio e atendimento personalizado.';
+const title = 'Como Escolher um Visagista em Campinas | Checklist e Perguntas Certas';
+const description = 'Critérios objetivos para escolher um visagista em Campinas: o que perguntar antes de agendar, sinais de alerta e checklist para comparar profissionais.';
+
+const redFlags = [
+  'Marca o corte sem fazer nenhuma pergunta sobre rotina, rosto ou objetivo',
+  'Não explica por que está sugerindo aquele corte ou cor específicos',
+  'Ignora seu histórico químico recente antes de sugerir coloração',
+  'Não tem portfólio de resultados reais, só fotos de banco de imagem',
+  'Promete "milagre" sem avaliar seu cabelo e couro cabeludo pessoalmente',
+];
+
+const questions = [
+  'Como funciona a consultoria antes do corte ou coloração?',
+  'Você faz análise de formato de rosto e colorimetria?',
+  'Posso ver resultados reais de clientes atendidos aqui?',
+  'Qual sua formação e desde quando atua com visagismo?',
+  'Quanto tempo dura o atendimento e qual o investimento estimado?',
+];
+
+const faqs = [
+  {
+    question: 'Preciso agendar uma consulta só para "conhecer" o profissional?',
+    answer: 'Não é obrigatório, mas é recomendado para mudanças significativas. Uma conversa inicial por telefone ou WhatsApp já revela se o profissional explica processo e valores com transparência.',
+  },
+  {
+    question: 'Formação internacional faz diferença real no resultado?',
+    answer: 'Formação contínua indica atualização técnica, mas o mais importante é a metodologia aplicada no dia a dia: análise facial, colorimetria e acompanhamento pós-atendimento.',
+  },
+  {
+    question: 'Como saber se o portfólio de um visagista é real?',
+    answer: 'Prefira profissionais que mostram antes e depois com consentimento do cliente e contexto do caso (objetivo, diagnóstico, resultado) — não apenas fotos isoladas sem explicação.',
+  },
+];
+
+const datePublished = '2026-03-05';
+const dateModified = '2026-07-11';
 ---
 
 <PageLayout
@@ -14,27 +48,87 @@ const description = 'Saiba como escolher um visagista em Campinas: o que avaliar
   description={description}
   path={path}
   h1="Como escolher um visagista em Campinas"
-  subtitle="Critérios objetivos para comparar profissionais e encontrar a consultoria certa para sua transformação de imagem."
+  subtitle="Critérios objetivos, perguntas certas e sinais de alerta para encontrar a consultoria de visagismo certa para sua transformação de imagem."
+  image="/images/about-1.jpg"
   breadcrumbs={[
     { name: 'Home', path: '/' },
     { name: 'Guia', path: '/guia/como-escolher-visagista-campinas/' },
     { name: 'Como escolher visagista', path },
   ]}
+  faqs={faqs}
+  article={{ datePublished, dateModified }}
 >
   <section class="py-16 bg-dark-light">
     <div class="max-w-3xl mx-auto px-5 font-montserrat text-gray-light leading-relaxed space-y-6">
       <HubContext />
-      <h2 class="font-playfair text-2xl text-white">1. Avalie a consultoria, não só o corte</h2>
-      <p>Um bom visagista explica o diagnóstico facial antes de executar qualquer mudança. Desconfie de atendimentos que pulam a análise.</p>
-      <h2 class="font-playfair text-2xl text-white">2. Verifique formação e portfólio</h2>
-      <p>Busque profissionais com formação contínua, resultados documentados e clareza sobre método de trabalho.</p>
-      <h2 class="font-playfair text-2xl text-white">3. Considere localização e experiência</h2>
+
       <p>
-        Em Campinas, o bairro Cambuí concentra salões de alto padrão. O {siteConfig.brandLine} oferece estúdio dedicado ao
-        visagismo com {siteConfig.author} e atendimento por hora marcada.
+        Campinas tem uma boa concentração de salões e profissionais de imagem, especialmente no Cambuí. Isso é bom para
+        quem busca opções, mas dificulta a escolha. Os critérios abaixo ajudam a comparar profissionais de forma objetiva,
+        sem depender só de indicação ou preço.
       </p>
-      <h2 class="font-playfair text-2xl text-white">4. Transparência de processo e valores</h2>
-      <p>Agende uma conversa inicial para entender duração, etapas da consultoria e investimento antes do atendimento.</p>
+
+      <h2 class="font-playfair text-2xl text-white">1. Avalie a consultoria, não só o corte</h2>
+      <p>
+        Um bom visagista explica o diagnóstico facial antes de executar qualquer mudança. Se o profissional já vai
+        cortando sem perguntar sobre formato de rosto, rotina ou histórico capilar, é sinal de que não há método —
+        só repetição de técnica genérica.
+      </p>
+
+      <h2 class="font-playfair text-2xl text-white">2. Verifique formação e portfólio real</h2>
+      <p>
+        Busque profissionais com formação contínua, resultados documentados com contexto (não só fotos soltas) e
+        clareza sobre o método de trabalho. Peça para ver casos parecidos com o seu objetivo — mudança de cor, corte
+        estrutural, preparação para evento.
+      </p>
+
+      <h2 class="font-playfair text-2xl text-white">3. Perguntas para fazer antes de agendar</h2>
+      <ul class="space-y-3">
+        {questions.map((q) => (
+          <li class="flex items-start gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold mt-2 flex-shrink-0"></span>
+            <span>{q}</span>
+          </li>
+        ))}
+      </ul>
+
+      <h2 class="font-playfair text-2xl text-white">4. Sinais de alerta (red flags)</h2>
+      <ul class="space-y-3">
+        {redFlags.map((flag) => (
+          <li class="flex items-start gap-3 text-gray-light">
+            <span class="text-gold/70 mt-0.5">✕</span>
+            <span>{flag}</span>
+          </li>
+        ))}
+      </ul>
+
+      <h2 class="font-playfair text-2xl text-white">5. Localização e experiência em Campinas</h2>
+      <p>
+        Em Campinas, o bairro Cambuí concentra salões de alto padrão e fácil acesso. O {siteConfig.brandLine} oferece
+        estúdio dedicado ao visagismo com {siteConfig.author}, formado pela Vidal Sassoon (Londres), com especializações
+        em Nova York e certificações L'Oréal (Paris), e mais de {siteConfig.experienceYears} anos de atuação na cidade.
+      </p>
+
+      <h2 class="font-playfair text-2xl text-white">6. Transparência de processo e valores</h2>
+      <p>
+        Agende uma conversa inicial para entender duração, etapas da consultoria e investimento antes do atendimento
+        presencial. Profissionais transparentes não têm problema em explicar isso antes de você se deslocar até o estúdio.
+      </p>
+
+      <p>
+        Depois de escolher, entenda melhor <a href="/guia/o-que-e-visagismo/" class="text-gold hover:underline">o que é visagismo</a>
+        ou agende diretamente uma <a href="/consultoria-de-visagismo-campinas/" class="text-gold hover:underline">consultoria de visagismo em Campinas</a>.
+      </p>
+
+      <h2 class="font-playfair text-2xl text-white">Perguntas frequentes</h2>
+      <dl class="space-y-4 text-sm">
+        {faqs.map((item) => (
+          <div>
+            <dt class="text-white font-medium">{item.question}</dt>
+            <dd>{item.answer}</dd>
+          </div>
+        ))}
+      </dl>
     </div>
   </section>
   <PageCta message="Olá, gostaria de saber mais sobre consultoria de visagismo em Campinas" />

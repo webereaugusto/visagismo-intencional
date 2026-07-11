@@ -2,10 +2,43 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import PageCta from '../../components/PageCta.astro';
 import HubContext from '../../components/HubContext.astro';
+import { siteConfig } from '../../config/site';
 
 const path = '/guia/o-que-e-visagismo/';
-const title = 'O Que é Visagismo? Guia Completo | Campinas';
-const description = 'Entenda o que é visagismo, como funciona a consultoria e por que é diferente de um corte comum. Guia do Visagismo Intencional em Campinas.';
+const title = 'O Que é Visagismo? Guia Completo (Definição, Análise Facial, Colorimetria)';
+const description = 'Visagismo é a técnica de harmonização de imagem baseada no formato do rosto, colorimetria e personalidade. Entenda como funciona, os tipos de rosto e a diferença de um corte comum.';
+
+const faceShapes = [
+  { shape: 'Rosto oval', trait: 'Proporções equilibradas, testa e mandíbula com larguras próximas.', tip: 'Aceita a maioria dos cortes; o foco vai para textura e movimento.' },
+  { shape: 'Rosto redondo', trait: 'Largura e altura próximas, linhas suaves, mandíbula pouco definida.', tip: 'Cortes com volume no topo e camadas que alongam visualmente o rosto.' },
+  { shape: 'Rosto quadrado', trait: 'Mandíbula marcada e testa larga, ângulos bem definidos.', tip: 'Camadas suaves e franjas laterais equilibram os ângulos.' },
+  { shape: 'Rosto retangular', trait: 'Rosto alongado, testa e mandíbula estreitas.', tip: 'Volume lateral e franjas quebram o comprimento excessivo.' },
+  { shape: 'Rosto triangular / coração', trait: 'Testa mais larga que a mandíbula, queixo afinado.', tip: 'Comprimento na altura do queixo equilibra a parte inferior do rosto.' },
+  { shape: 'Rosto diamante', trait: 'Maçãs do rosto largas, testa e mandíbula mais estreitas.', tip: 'Franjas e volume na altura da mandíbula suavizam as maçãs do rosto.' },
+];
+
+const faqs = [
+  {
+    question: 'Visagismo é a mesma coisa que corte de cabelo?',
+    answer: 'Não. O corte é uma execução técnica; o visagismo é o diagnóstico que precede essa execução, considerando formato de rosto, colorimetria, personalidade e estilo de vida antes de qualquer tesoura.',
+  },
+  {
+    question: 'Quanto tempo dura uma consultoria de visagismo?',
+    answer: 'Em média, de 1h30 a 2 horas na primeira consulta completa, incluindo análise facial, colorimetria e definição do projeto de imagem.',
+  },
+  {
+    question: 'Visagismo funciona para qualquer formato de rosto?',
+    answer: 'Sim. O visagismo não impõe um padrão único — ele identifica o que cada formato de rosto já tem de proporção favorável e ajusta corte, cor e volume para valorizar essas características.',
+  },
+  {
+    question: 'Onde fazer visagismo em Campinas?',
+    answer: `O ${siteConfig.brandLine} realiza consultoria de visagismo completa no Cambuí, Campinas, com análise facial, colorimetria e projeto de imagem personalizado.`,
+    links: [{ label: 'Consultoria de visagismo em Campinas', href: '/consultoria-de-visagismo-campinas/' }],
+  },
+];
+
+const datePublished = '2026-01-15';
+const dateModified = '2026-07-11';
 ---
 
 <PageLayout
@@ -13,30 +46,134 @@ const description = 'Entenda o que é visagismo, como funciona a consultoria e p
   description={description}
   path={path}
   h1="O que é visagismo?"
-  subtitle="Guia prático para entender a consultoria de imagem que harmoniza rosto, personalidade e estilo de vida."
+  subtitle="Guia completo sobre a técnica que harmoniza rosto, personalidade e estilo de vida — com tipos de rosto, colorimetria e como funciona a consultoria."
+  image="/images/coloracao.webp"
   breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Guia', path: '/guia/o-que-e-visagismo/' }, { name: 'O que é visagismo', path }]}
+  faqs={faqs}
+  article={{ datePublished, dateModified }}
 >
   <section class="py-16 bg-dark-light">
     <div class="max-w-3xl mx-auto px-5 font-montserrat text-gray-light leading-relaxed space-y-6">
       <HubContext />
+
       <p>
-        Visagismo é a disciplina que estuda a relação entre traços faciais, personalidade e imagem externa. O objetivo é
-        criar um visual coerente, valorizando proporções naturais e comunicando quem a pessoa realmente é.
+        <strong class="text-white">Visagismo</strong> é a técnica que estuda a relação entre traços faciais, proporções,
+        personalidade e estilo de vida para definir corte, cor e volume de cabelo — em vez de aplicar uma tendência genérica
+        ao acaso. O termo vem do francês <em>visage</em> (rosto) e foi sistematizado pelo cabeleireiro francês Fernand Aubry
+        na década de 1970, ao unir observação facial, princípios de design e psicologia da imagem em um método replicável.
       </p>
-      <h2 class="font-playfair text-2xl text-white">Como funciona na prática</h2>
+
       <p>
-        Uma consultoria de visagismo inclui análise do formato do rosto, leitura de estilo de vida, colorimetria e definição
-        de corte, cor e cuidados. Em Campinas, o Visagismo Intencional conduz esse processo com atendimento personalizado no Cambuí.
+        Na prática, o visagismo responde a uma pergunta simples: <strong class="text-white">o que valoriza este rosto específico</strong>,
+        e não "qual é o corte da moda". Por isso, duas pessoas com o mesmo pedido de referência podem receber recomendações
+        de corte e cor completamente diferentes — porque seus formatos de rosto, proporções e contextos de vida são diferentes.
       </p>
-      <h2 class="font-playfair text-2xl text-white">Para quem é indicado</h2>
+
+      <h2 class="font-playfair text-2xl text-white">Como funciona a análise de visagismo</h2>
       <p>
-        Para quem busca mudança intencional de imagem — profissional, pessoal ou para um momento especial — com critério técnico
-        e acompanhamento especializado. Veja também nossas
-        <a href="/dicas-de-visagismo-campinas/" class="text-gold hover:underline">dicas de visagismo em Campinas</a>
-        ou a
+        A consultoria de visagismo segue etapas técnicas, não intuição. No <a href="/metodo-ery-junior/" class="text-gold hover:underline">Método Ery Junior</a>,
+        aplicado no {siteConfig.brandLine} em Campinas, o processo inclui:
+      </p>
+      <ol class="list-decimal pl-5 space-y-3">
+        <li><strong class="text-white">Análise de formato de rosto:</strong> medição de proporções entre testa, maçãs do rosto, mandíbula e comprimento facial.</li>
+        <li><strong class="text-white">Leitura de linhas e ângulos:</strong> rostos com ângulos marcados pedem suavização; rostos com linhas suaves podem ganhar definição.</li>
+        <li><strong class="text-white">Colorimetria:</strong> subtom de pele (quente, frio ou neutro), cor natural dos olhos e do cabelo definem a paleta que ilumina — e não apaga — o rosto.</li>
+        <li><strong class="text-white">Leitura de personalidade e rotina:</strong> um visual tecnicamente perfeito, mas incompatível com a rotina do cliente, tende a ser abandonado em semanas.</li>
+        <li><strong class="text-white">Projeto de imagem:</strong> síntese de tudo isso em um plano de corte, cor e manutenção, explicado antes da execução.</li>
+      </ol>
+
+      <h2 class="font-playfair text-2xl text-white">Os principais formatos de rosto no visagismo</h2>
+      <p>
+        Não existe formato de rosto "ideal" — existe o formato de cada pessoa e as técnicas que o valorizam. Os seis formatos
+        mais usados como referência no visagismo são:
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="border-b border-gold/30 text-left">
+              <th class="py-2 pr-4 text-gold uppercase text-xs tracking-wider">Formato</th>
+              <th class="py-2 pr-4 text-gold uppercase text-xs tracking-wider">Características</th>
+              <th class="py-2 text-gold uppercase text-xs tracking-wider">O que valoriza</th>
+            </tr>
+          </thead>
+          <tbody>
+            {faceShapes.map((row) => (
+              <tr class="border-b border-dark-lighter">
+                <td class="py-3 pr-4 text-white font-medium whitespace-nowrap">{row.shape}</td>
+                <td class="py-3 pr-4 text-gray-light">{row.trait}</td>
+                <td class="py-3 text-gray-light">{row.tip}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-gray">
+        Estas são referências gerais — a consultoria presencial considera também textura do fio, densidade capilar e
+        assimetrias naturais, que uma análise por foto não captura com precisão.
+      </p>
+
+      <h2 class="font-playfair text-2xl text-white">Colorimetria: a segunda metade do diagnóstico</h2>
+      <p>
+        Corte sem cor alinhada resolve só metade do problema. A colorimetria identifica se o subtom de pele é quente, frio
+        ou neutro, e recomenda tons de coloração, mechas e reflexos que iluminam o rosto — evitando cores que empalidecem,
+        envelhecem ou criam contraste desfavorável com os olhos. Veja mais em
+        <a href="/colorimetria-campinas/" class="text-gold hover:underline">colorimetria em Campinas</a>.
+      </p>
+
+      <h2 class="font-playfair text-2xl text-white">Visagismo é diferente para cada perfil</h2>
+      <p>
+        Embora os princípios técnicos sejam os mesmos, a aplicação varia conforme o objetivo:
+      </p>
+      <ul class="list-disc pl-5 space-y-2">
+        <li><a href="/visagismo-masculino-campinas/" class="text-gold hover:underline">Visagismo masculino</a>: integra corte, barba e sobrancelhas para transmitir autoridade e credibilidade.</li>
+        <li><a href="/visagismo-feminino-campinas/" class="text-gold hover:underline">Visagismo feminino</a>: equilibra corte, cor e penteado com a personalidade e rotina de cada mulher.</li>
+        <li><a href="/dia-da-noiva-campinas/" class="text-gold hover:underline">Visagismo para noivas</a>: soma o diagnóstico facial ao contexto do vestido, véu e maquiagem do casamento.</li>
+      </ul>
+
+      <h2 class="font-playfair text-2xl text-white">Visagismo x corte comum: a diferença prática</h2>
+      <p>
+        Um corte comum parte de uma referência visual — foto, tendência, o que "está na moda". O visagismo parte de um
+        diagnóstico individual. Isso significa mais tempo na consulta, mas resultado mais consistente ao longo do tempo,
+        porque o visual é desenhado para o rosto e a rotina reais do cliente, não para uma média genérica. Veja o
+        <a href="/guia/diferenca-corte-visagismo/" class="text-gold hover:underline">comparativo completo entre corte comum e visagismo</a>.
+      </p>
+
+      <h2 class="font-playfair text-2xl text-white">Quanto custa e quanto tempo dura</h2>
+      <p>
+        O investimento varia conforme os serviços incluídos (corte, coloração, tratamentos). A consultoria completa de
+        visagismo — com análise facial, colorimetria e projeto de imagem — dura de 1h30 a 2 horas na primeira visita.
+        Valores atualizados são informados diretamente pelo WhatsApp, já que dependem do diagnóstico de cada cliente.
+      </p>
+
+      <h2 class="font-playfair text-2xl text-white">Visagismo em Campinas</h2>
+      <p>
+        Em Campinas, a consultoria de visagismo completa é realizada no {siteConfig.brandLine}, estúdio no
+        {' '}{siteConfig.address.neighborhood} conduzido por {siteConfig.author}, com mais de {siteConfig.experienceYears} anos
+        de experiência e formação internacional. Veja também nossas
+        <a href="/dicas-de-visagismo-campinas/" class="text-gold hover:underline">dicas práticas de visagismo em Campinas</a>
+        ou agende diretamente uma
         <a href="/consultoria-de-visagismo-campinas/" class="text-gold hover:underline">consultoria de visagismo em Campinas</a>.
       </p>
+
+      <h2 class="font-playfair text-2xl text-white">Perguntas frequentes</h2>
+      <dl class="space-y-4 text-sm">
+        {faqs.map((item) => (
+          <div>
+            <dt class="text-white font-medium">{item.question}</dt>
+            <dd>
+              {item.answer}
+              {item.links && (
+                <span class="block mt-1">
+                  {item.links.map((link) => (
+                    <a href={link.href} class="text-gold hover:underline">{link.label}</a>
+                  ))}
+                </span>
+              )}
+            </dd>
+          </div>
+        ))}
+      </dl>
     </div>
   </section>
-  <PageCta />
+  <PageCta message="Olá, li o guia de visagismo e quero agendar uma consultoria em Campinas" />
 </PageLayout>

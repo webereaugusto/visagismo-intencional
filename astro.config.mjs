@@ -8,6 +8,10 @@ export default defineConfig({
   integrations: [
     sitemap({
       filter: (page) => !page.includes('/404'),
+      serialize(item) {
+        item.lastmod = new Date().toISOString();
+        return item;
+      },
     }),
   ],
   vite: {

@@ -186,6 +186,35 @@ export function buildFAQPageSchema(items: FaqItem[]) {
   };
 }
 
+export function buildArticleSchema(article: {
+  title: string;
+  description: string;
+  path: string;
+  image?: string;
+  datePublished: string;
+  dateModified?: string;
+}) {
+  const pageUrl = absoluteUrl(article.path);
+  const image = article.image?.startsWith('http')
+    ? article.image
+    : `${siteConfig.siteUrl}${article.image ?? siteConfig.defaultImage}`;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': `${pageUrl}#article`,
+    mainEntityOfPage: { '@id': `${pageUrl}#webpage` },
+    headline: article.title,
+    description: article.description,
+    image,
+    datePublished: article.datePublished,
+    dateModified: article.dateModified ?? article.datePublished,
+    inLanguage: 'pt-BR',
+    author: { '@id': `${siteConfig.siteUrl}/#person` },
+    publisher: { '@id': `${siteConfig.siteUrl}/#organization` },
+  };
+}
+
 export function buildServiceSchema(name: string, description: string, path: string) {
   return {
     '@context': 'https://schema.org',

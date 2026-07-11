@@ -2,43 +2,130 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import PageCta from '../../components/PageCta.astro';
 import HubContext from '../../components/HubContext.astro';
+import { siteConfig } from '../../config/site';
 
 const path = '/guia/diferenca-corte-visagismo/';
-const title = 'Diferença entre Corte Comum e Visagismo | Guia Campinas';
-const description = 'Entenda a diferença entre corte de cabelo comum e visagismo. Guia do Visagismo Intencional em Campinas com Ery Junior.';
+const title = 'Corte Comum ou Visagismo? Diferenças, Comparativo e Quando Escolher Cada Um';
+const description = 'Entenda a diferença entre um corte de cabelo comum e uma consultoria de visagismo: o que muda no processo, no resultado e no investimento. Guia com comparativo.';
+
+const comparison = [
+  { criteria: 'Ponto de partida', common: 'Foto de referência ou tendência do momento', visagismo: 'Diagnóstico do formato de rosto, pele e personalidade' },
+  { criteria: 'Análise facial', common: 'Raramente feita', visagismo: 'Etapa obrigatória antes de qualquer corte' },
+  { criteria: 'Colorimetria', common: 'Cor escolhida por preferência pessoal', visagismo: 'Cor definida por subtom de pele e tom dos olhos' },
+  { criteria: 'Duração da consulta', common: '15 a 30 minutos', visagismo: '1h30 a 2 horas na primeira visita' },
+  { criteria: 'Durabilidade do resultado', common: 'Depende de repetir a tendência', visagismo: 'Projeto pensado para durar além da moda do momento' },
+  { criteria: 'Risco de insatisfação', common: 'Maior — nem toda tendência serve para todo rosto', visagismo: 'Menor — o corte é desenhado para o rosto específico' },
+];
+
+const faqs = [
+  {
+    question: 'Corte comum é pior que visagismo?',
+    answer: 'Não necessariamente pior, mas menos previsível. Um bom cabeleireiro pode acertar por experiência, mas sem diagnóstico formal o resultado depende mais de sorte e menos de método.',
+  },
+  {
+    question: 'Visagismo é mais caro que um corte comum?',
+    answer: 'A consultoria completa tende a ter investimento maior porque inclui diagnóstico, colorimetria e projeto de imagem — não apenas a execução do corte.',
+  },
+  {
+    question: 'Posso pedir visagismo e ainda levar minha foto de referência?',
+    answer: 'Sim. A referência ajuda a entender seu gosto estético, mas o profissional vai adaptá-la ao que o seu rosto e sua rotina realmente pedem.',
+  },
+  {
+    question: 'Quando um corte comum é suficiente?',
+    answer: 'Para manutenção de um projeto já definido anteriormente (aparar pontas, manter o mesmo corte), um retorno direto sem nova consultoria completa costuma ser suficiente.',
+  },
+];
+
+const datePublished = '2026-02-10';
+const dateModified = '2026-07-11';
 ---
 
 <PageLayout
   title={title}
   description={description}
   path={path}
-  h1="Diferença entre corte comum e visagismo"
-  subtitle="Por que uma consultoria de visagismo entrega resultados mais estratégicos do que um corte baseado apenas em tendência."
+  h1="Corte comum ou visagismo: qual escolher?"
+  subtitle="Comparativo prático entre um corte baseado em tendência e uma consultoria de visagismo baseada em diagnóstico facial."
+  image="/images/autoridade.webp"
   breadcrumbs={[
     { name: 'Home', path: '/' },
     { name: 'Guia', path: '/guia/diferenca-corte-visagismo/' },
     { name: 'Corte vs visagismo', path },
   ]}
+  faqs={faqs}
+  article={{ datePublished, dateModified }}
 >
   <section class="py-16 bg-dark-light">
     <div class="max-w-3xl mx-auto px-5 font-montserrat text-gray-light leading-relaxed space-y-6">
       <HubContext />
+
       <p>
-        O corte comum geralmente replica uma referência visual da moda. O visagismo parte de um diagnóstico individual:
-        rosto, personalidade, rotina e objetivos de imagem.
+        A dúvida é comum: "eu preciso de visagismo ou só de um corte?" A resposta depende do que você está buscando.
+        Um <strong class="text-white">corte comum</strong> geralmente replica uma referência visual da moda — uma foto,
+        uma tendência, o que "está bombando" no momento. Já o <strong class="text-white">visagismo</strong> parte de um
+        diagnóstico individual: formato de rosto, colorimetria, personalidade e rotina, para só então definir corte e cor.
       </p>
-      <h2 class="font-playfair text-2xl text-white">Corte comum</h2>
+
+      <h2 class="font-playfair text-2xl text-white">Comparativo direto</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="border-b border-gold/30 text-left">
+              <th class="py-2 pr-4 text-gold uppercase text-xs tracking-wider">Critério</th>
+              <th class="py-2 pr-4 text-gold uppercase text-xs tracking-wider">Corte comum</th>
+              <th class="py-2 text-gold uppercase text-xs tracking-wider">Visagismo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparison.map((row) => (
+              <tr class="border-b border-dark-lighter">
+                <td class="py-3 pr-4 text-white font-medium whitespace-nowrap">{row.criteria}</td>
+                <td class="py-3 pr-4 text-gray-light">{row.common}</td>
+                <td class="py-3 text-gray-light">{row.visagismo}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="font-playfair text-2xl text-white">Corte comum: quando faz sentido</h2>
       <ul class="list-disc pl-5 space-y-2">
-        <li>Foco na tendência do momento</li>
-        <li>Pouca ou nenhuma análise facial</li>
-        <li>Resultado pode não valorizar proporções pessoais</li>
+        <li>Manutenção de um corte e projeto já definidos anteriormente</li>
+        <li>Aparar pontas ou ajustes rápidos sem mudança estrutural</li>
+        <li>Situações em que o cliente já conhece bem o que funciona para seu rosto</li>
       </ul>
-      <h2 class="font-playfair text-2xl text-white">Visagismo</h2>
+
+      <h2 class="font-playfair text-2xl text-white">Visagismo: quando faz sentido</h2>
       <ul class="list-disc pl-5 space-y-2">
-        <li>Análise facial e colorimetria</li>
-        <li>Projeto de imagem alinhado à personalidade</li>
-        <li>Visual estratégico e sustentável no tempo</li>
+        <li>Mudança significativa de visual (comprimento, cor ou estrutura)</li>
+        <li>Transição de carreira ou reposicionamento de imagem profissional</li>
+        <li>Insatisfação recorrente com cortes anteriores que não valorizam o rosto</li>
+        <li>Momentos especiais: casamento, formatura, eventos importantes</li>
+        <li>Primeira visita a um novo profissional ou estúdio</li>
       </ul>
+
+      <h2 class="font-playfair text-2xl text-white">Caso prático</h2>
+      <p>
+        Cliente buscava "o corte da Bruna Marquezine" trazendo apenas uma foto de referência. Na análise, identificamos
+        rosto retangular (a referência tinha rosto oval) — replicar o corte exato alongaria ainda mais o rosto. A solução
+        de visagismo manteve a inspiração estética da referência, mas ajustou o comprimento e adicionou volume lateral
+        para equilibrar as proporções do rosto real da cliente.
+      </p>
+
+      <p>
+        Veja também a <a href="/consultoria-de-visagismo-campinas/" class="text-gold hover:underline">consultoria de visagismo em Campinas</a>
+        ou entenda melhor <a href="/guia/o-que-e-visagismo/" class="text-gold hover:underline">o que é visagismo</a> antes de agendar.
+      </p>
+
+      <h2 class="font-playfair text-2xl text-white">Perguntas frequentes</h2>
+      <dl class="space-y-4 text-sm">
+        {faqs.map((item) => (
+          <div>
+            <dt class="text-white font-medium">{item.question}</dt>
+            <dd>{item.answer}</dd>
+          </div>
+        ))}
+      </dl>
     </div>
   </section>
   <PageCta message="Olá, quero uma consultoria de visagismo em Campinas" />

@@ -1,0 +1,61 @@
+---
+const guides = [
+  {
+    title: 'O que é visagismo?',
+    description: 'Definição, tipos de rosto, colorimetria e como funciona a consultoria completa.',
+    href: '/guia/o-que-e-visagismo/',
+  },
+  {
+    title: 'Corte comum ou visagismo?',
+    description: 'Comparativo direto e quando escolher cada abordagem para o seu objetivo.',
+    href: '/guia/diferenca-corte-visagismo/',
+  },
+  {
+    title: 'Como escolher um visagista em Campinas',
+    description: 'Checklist, perguntas certas e sinais de alerta antes de agendar.',
+    href: '/guia/como-escolher-visagista-campinas/',
+  },
+  {
+    title: 'Dicas de visagismo em Campinas',
+    description: 'Orientações práticas de Ery Junior antes de mudar o visual.',
+    href: '/dicas-de-visagismo-campinas/',
+  },
+];
+---
+
+<section class="py-20 md:py-28 bg-dark-light" id="guias">
+  <div class="max-w-6xl mx-auto px-5 md:px-6">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="inline-flex items-center gap-3 text-gold text-xs tracking-[0.3em] uppercase font-montserrat mb-4">
+        <span class="w-8 h-[1px] bg-gold"></span>
+        Aprenda mais
+        <span class="w-8 h-[1px] bg-gold"></span>
+      </span>
+      <h2 class="font-playfair text-3xl md:text-4xl text-white font-medium">
+        Guias sobre <span class="text-gradient-gold italic">visagismo</span>
+      </h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-5">
+      {guides.map((guide) => (
+        <a
+          href={guide.href}
+          class="card-glow rounded-2xl p-6 md:p-8 hover-lift block group"
+        >
+          <h3 class="font-playfair text-xl text-white font-medium mb-2 group-hover:text-gold transition-colors">
+            {guide.title}
+          </h3>
+          <p class="font-montserrat text-sm text-gray-light leading-relaxed">
+            {guide.description}
+          </p>
+          <span class="inline-flex items-center gap-2 mt-4 text-gold text-xs font-medium uppercase tracking-wider">
+            Ler guia
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

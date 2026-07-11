@@ -60,6 +60,7 @@ export const faqs: FaqItem[] = [
     question: 'Como funciona o serviço de Dia da Noiva?',
     answer:
       'O pacote inclui teste prévio, consultoria de visagismo, definição do visual e atendimento exclusivo no dia do evento, com penteado e ajustes finais.',
+    links: [{ label: 'Dia da noiva em Campinas', href: '/dia-da-noiva-campinas/' }],
   },
   {
     question: 'O Visagismo Intencional fica em qual bairro de Campinas?',

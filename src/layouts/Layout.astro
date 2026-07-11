@@ -12,6 +12,7 @@ import {
   buildBreadcrumbSchema,
   buildServiceSchema,
   buildFAQPageSchema,
+  buildArticleSchema,
 } from '../utils/schema';
 import { faqs } from '../config/faq';
 import type { FaqItem } from '../config/faq';
@@ -26,6 +27,7 @@ interface Props {
   breadcrumbs?: { name: string; path: string }[];
   serviceSchema?: { name: string; description: string; path: string };
   faqs?: FaqItem[];
+  article?: { datePublished: string; dateModified?: string };
 }
 
 const defaultTitle = 'Visagismo Campinas | Visagismo em Campinas no Cambuí | Ery Junior';
@@ -42,6 +44,7 @@ const {
   breadcrumbs,
   serviceSchema,
   faqs: pageFaqs,
+  article,
 } = Astro.props;
 
 const canonicalUrl = absoluteUrl(path);
@@ -126,6 +129,9 @@ const faqSchemaItems = pageFaqs ?? (path === '/' ? faqs : undefined);
     )}
     {faqSchemaItems && faqSchemaItems.length > 0 && (
       <script type="application/ld+json" set:html={JSON.stringify(buildFAQPageSchema(faqSchemaItems))} />
+    )}
+    {article && (
+      <script type="application/ld+json" set:html={JSON.stringify(buildArticleSchema({ title, description, path, image, ...article }))} />
     )}
   </head>
   <body class="antialiased">
