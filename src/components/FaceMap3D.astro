@@ -1,0 +1,428 @@
+---
+import { siteConfig, whatsappLink } from '../config/site';
+import { SHAPES, SHAPE_ORDER, contourPath, type ShapeKey } from '../scripts/face-shapes';
+
+interface ShapeInfo {
+  label: string;
+  recognize: string;
+  enhance: string;
+  avoid: string;
+}
+
+const info: Record<ShapeKey, ShapeInfo> = {
+  oval: {
+    label: 'Oval',
+    recognize: 'Rosto um pouco mais longo que largo, testa levemente mais larga que o queixo e contorno suave.',
+    enhance: 'É o formato mais versátil. Aqui o visagismo foca em realçar traços marcantes e traduzir a sua personalidade no corte.',
+    avoid: 'Franjas muito pesadas que escondem a testa e “achatam” a proporção natural.',
+  },
+  redondo: {
+    label: 'Redondo',
+    recognize: 'Largura e comprimento parecidos, maçãs cheias e mandíbula com linhas suaves.',
+    enhance: 'Volume no topo, repartição lateral e comprimentos abaixo do queixo para alongar visualmente.',
+    avoid: 'Volume nas laterais e cortes retos na altura das bochechas.',
+  },
+  quadrado: {
+    label: 'Quadrado',
+    recognize: 'Testa, maçãs e mandíbula com larguras próximas e ângulo da mandíbula bem marcado.',
+    enhance: 'Camadas e ondas suaves, franja lateral e movimento que quebre as linhas retas.',
+    avoid: 'Cortes retos terminando exatamente na linha da mandíbula.',
+  },
+  coracao: {
+    label: 'Coração',
+    recognize: 'Testa mais larga, maçãs evidentes e queixo fino, às vezes pontudo.',
+    enhance: 'Franja cortina ou lateral e volume da altura do queixo para baixo, equilibrando a base.',
+    avoid: 'Excesso de volume no topo e nas têmporas.',
+  },
+  diamante: {
+    label: 'Diamante',
+    recognize: 'Maçãs do rosto como parte mais larga, com testa e queixo mais estreitos.',
+    enhance: 'Franja para preencher a testa e volume próximo ao queixo, suavizando as maçãs.',
+    avoid: 'Volume lateral concentrado na altura das maçãs do rosto.',
+  },
+  triangular: {
+    label: 'Triangular',
+    recognize: 'Mandíbula mais larga que a testa, com a base do rosto mais marcada.',
+    enhance: 'Volume no topo e nas têmporas, com camadas acima do queixo para equilibrar.',
+    avoid: 'Volume concentrado na linha da mandíbula.',
+  },
+};
+
+const initial: ShapeKey = 'oval';
+const cta = whatsappLink('Olá! Vi o mapa do rosto 3D no site e quero descobrir meu formato de rosto numa consultoria de visagismo.');
+---
+
+<section id="mapa-do-rosto" class="relative py-16 md:py-24 lg:py-32 bg-dark overflow-clip" data-face-map>
+  <div class="absolute top-1/3 left-1/4 w-[520px] h-[520px] bg-gold/[0.06] rounded-full blur-[120px] pointer-events-none"></div>
+
+  <!-- Ordem no celular: título → 3D → controles. No desktop o 3D fica fixo à esquerda. -->
+  <div class="relative max-w-7xl mx-auto px-5 md:px-6 grid lg:grid-cols-2 gap-y-8 lg:gap-x-16 items-start">
+    <!-- Visual 3D -->
+    <div class="relative lg:col-start-1 lg:row-start-1 lg:row-span-2 lg:sticky lg:top-28">
+      <div class="relative mx-auto w-full max-w-[520px] aspect-square rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-transparent">
+        <!-- Contorno estático: aparece antes do 3D carregar e quando não há WebGL -->
+        <svg data-face-fallback viewBox="0 0 100 100" class="absolute inset-0 w-full h-full p-12 transition-opacity duration-700" aria-hidden="true">
+          {SHAPE_ORDER.map((key) => (
+            <path
+              d={contourPath(SHAPES[key], 36)}
+              data-shape-path={key}
+              class:list={['fill-none stroke-gold transition-opacity duration-500', key === initial ? 'opacity-100' : 'opacity-0']}
+              stroke-width="0.6"
+            />
+          ))}
+          <line x1="50" y1="8" x2="50" y2="92" class="stroke-gold/40" stroke-width="0.3" stroke-dasharray="1.5 1.2" />
+        </svg>
+
+        <canvas
+          data-face-canvas
+          class="absolute inset-0 w-full h-full opacity-0 transition-opacity duration-700 cursor-grab active:cursor-grabbing touch-pan-y"
+          aria-label="Modelo 3D interativo de um rosto mostrando o formato selecionado"
+          role="img"
+        ></canvas>
+
+        <!-- Legenda -->
+        <ul class="absolute bottom-3 left-3 right-3 flex flex-wrap justify-center gap-x-4 gap-y-1 font-montserrat text-[10px] md:text-[11px] text-gray">
+          <li class="flex items-center gap-1.5"><span class="w-4 h-[2px] bg-gold-light"></span>Contorno</li>
+          <li class="flex items-center gap-1.5"><span class="w-4 h-[2px] bg-white"></span>Testa · maçãs · mandíbula</li>
+          <li class="flex items-center gap-1.5"><span class="w-4 border-t border-dashed border-gold"></span>Terços faciais</li>
+        </ul>
+        <p class="absolute top-3 left-0 right-0 text-center font-montserrat text-[10px] tracking-[0.2em] uppercase text-gray-dark" data-face-hint hidden>
+          Arraste para girar
+        </p>
+      </div>
+    </div>
+
+    <!-- Introdução -->
+    <div class="order-first lg:order-none lg:col-start-2 lg:row-start-1">
+      <div class="flex items-center gap-3 mb-4 md:mb-6 animate-on-scroll">
+        <span class="w-8 md:w-12 h-[1px] bg-gold animate-line"></span>
+        <span class="text-gold text-[10px] md:text-xs tracking-[0.2em] md:tracking-[0.3em] uppercase font-montserrat font-medium">
+          Mapa do rosto 3D
+        </span>
+      </div>
+      <h2 class="font-playfair text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-4 md:mb-6 animate-on-scroll animate-delay-100">
+        Qual é o <span class="text-gradient-gold italic">formato</span> do seu rosto?
+      </h2>
+      <p class="font-montserrat text-gray text-sm md:text-base leading-relaxed animate-on-scroll animate-delay-200">
+        No visagismo, a análise começa pelas proporções: largura da testa, das maçãs e da mandíbula, comprimento
+        do rosto e os terços faciais. Escolha um formato e veja como cada linha muda.
+      </p>
+    </div>
+
+    <!-- Controles e explicação -->
+    <div class="lg:col-start-2 lg:row-start-2">
+      <div class="grid grid-cols-3 gap-2 md:gap-3 mb-8" role="group" aria-label="Formatos de rosto">
+        {SHAPE_ORDER.map((key) => (
+          <button
+            type="button"
+            data-shape={key}
+            aria-pressed={key === initial ? 'true' : 'false'}
+            aria-controls={`formato-${key}`}
+            class="group flex flex-col items-center gap-2 py-3 px-2 rounded-xl border border-white/10 bg-white/[0.03] text-gray transition-all hover:border-gold/50 hover:text-white aria-pressed:border-gold aria-pressed:bg-gold/10 aria-pressed:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold"
+          >
+            <svg viewBox="0 0 100 100" class="w-8 h-8 md:w-10 md:h-10" aria-hidden="true">
+              <path d={contourPath(SHAPES[key], 38)} class="fill-none stroke-current" stroke-width="5" />
+            </svg>
+            <span class="font-montserrat text-xs md:text-sm font-medium">{info[key].label}</span>
+          </button>
+        ))}
+      </div>
+
+      <!-- Análise pela foto (processada só no aparelho do visitante) -->
+      <div
+        data-photo
+        data-wa-base={siteConfig.whatsappBase}
+        data-labels={JSON.stringify(Object.fromEntries(SHAPE_ORDER.map((k) => [k, info[k].label])))}
+        class="mb-10 rounded-2xl border border-gold/30 bg-gradient-to-br from-gold/[0.08] via-white/[0.02] to-transparent p-5 md:p-6"
+      >
+        <input id="foto-rosto" type="file" accept="image/*" class="sr-only" data-photo-input />
+
+        <div data-photo-intro>
+          <div class="flex items-start gap-4">
+            <span class="shrink-0 w-11 h-11 rounded-full bg-gold/15 text-gold flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.8 7.2l1.3-2.1A1.5 1.5 0 019.4 4.4h5.2a1.5 1.5 0 011.3.7l1.3 2.1H19a2 2 0 012 2v8.6a2 2 0 01-2 2H5a2 2 0 01-2-2V9.2a2 2 0 012-2h1.8z" /><circle cx="12" cy="13" r="3.6" /></svg>
+            </span>
+            <div>
+              <h3 class="font-playfair text-xl md:text-2xl text-white leading-snug">Analise o formato do seu rosto pela foto</h3>
+              <p class="font-montserrat text-sm text-gray mt-1">Envie uma selfie e veja suas proporções medidas na hora.</p>
+            </div>
+          </div>
+          <ul class="grid grid-cols-2 gap-x-4 gap-y-1.5 mt-4 font-montserrat text-xs text-gray-light">
+            {['De frente para a câmera', 'Cabelo preso, testa à mostra', 'Sem óculos', 'Boa iluminação'].map((tip) => (
+              <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-gold shrink-0"></span>{tip}</li>
+            ))}
+          </ul>
+          <label
+            for="foto-rosto"
+            class="mt-5 inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gold text-gold font-montserrat font-semibold text-sm cursor-pointer hover:bg-gold hover:text-dark transition-colors focus-within:outline focus-within:outline-2 focus-within:outline-gold"
+          >
+            Analisar minha foto
+          </label>
+          <p class="mt-4 flex items-start gap-2 font-montserrat text-[11px] leading-relaxed text-gray-dark">
+            <svg class="w-3.5 h-3.5 mt-0.5 shrink-0 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2" /><path stroke-linecap="round" d="M8 11V8a4 4 0 018 0v3" /></svg>
+            Sua foto é analisada no seu próprio aparelho. Ela não é enviada para nenhum servidor nem fica salva.
+          </p>
+        </div>
+
+        <div data-photo-loading hidden class="flex items-center gap-4 py-4" aria-live="polite">
+          <span class="w-8 h-8 rounded-full border-2 border-gold/30 border-t-gold animate-spin shrink-0"></span>
+          <div>
+            <p class="font-montserrat text-sm text-white" data-photo-status>Preparando o analisador…</p>
+            <p class="font-montserrat text-[11px] text-gray-dark mt-0.5">Na primeira vez o analisador é baixado (cerca de 8 MB).</p>
+          </div>
+        </div>
+
+        <div data-photo-error hidden role="alert" class="py-2">
+          <p class="font-montserrat text-sm text-gray-light" data-photo-error-text></p>
+          <label for="foto-rosto" class="mt-4 inline-flex px-5 py-2.5 rounded-full border border-gold text-gold font-montserrat font-semibold text-sm cursor-pointer hover:bg-gold hover:text-dark transition-colors">
+            Tentar outra foto
+          </label>
+        </div>
+
+        <div data-photo-result hidden>
+          <canvas data-photo-canvas class="w-full h-auto rounded-xl border border-white/10" aria-label="Sua foto com as linhas de análise do rosto" role="img"></canvas>
+          <p class="mt-5 text-gold text-[10px] md:text-xs tracking-[0.2em] uppercase font-montserrat font-medium">Resultado da análise</p>
+          <h3 class="font-playfair text-2xl text-white mt-1">
+            Seu rosto se aproxima do formato <span class="text-gradient-gold italic" data-result-shape></span>
+          </h3>
+          <ul class="mt-4 space-y-2.5" data-result-bars></ul>
+          <p class="mt-4 font-montserrat text-xs text-gray" data-result-thirds></p>
+          <ul class="mt-3 space-y-1 font-montserrat text-xs text-gold-light" data-result-warnings></ul>
+          <p class="mt-4 font-montserrat text-[11px] leading-relaxed text-gray-dark">
+            Estimativa automática a partir das proporções da foto. Ângulo, luz e cabelo influenciam a leitura — use como ponto
+            de partida. A análise completa considera também personalidade, estilo e colorimetria.
+          </p>
+          <div class="mt-5 flex flex-col sm:flex-row sm:flex-wrap gap-3">
+            <a
+              data-result-whatsapp
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex justify-center items-center gap-2 px-6 py-3 rounded-full bg-gold text-dark font-montserrat font-semibold text-sm hover:bg-gold-light transition-colors"
+            >
+              Enviar minha foto para o Ery
+            </a>
+            <label for="foto-rosto" class="inline-flex justify-center px-5 py-3 rounded-full border border-white/20 text-gray-light font-montserrat text-sm cursor-pointer hover:border-gold hover:text-gold transition-colors">
+              Analisar outra foto
+            </label>
+            <button type="button" data-photo-clear class="inline-flex justify-center px-5 py-3 rounded-full text-gray-dark font-montserrat text-sm hover:text-gray-light transition-colors">
+              Apagar foto
+            </button>
+          </div>
+          <p class="mt-3 font-montserrat text-[11px] text-gray-dark">No WhatsApp, anexe a sua foto na conversa para o Ery fazer a análise completa.</p>
+        </div>
+      </div>
+
+      <div class="min-h-[220px] md:min-h-[200px]">
+        {SHAPE_ORDER.map((key) => (
+          <div id={`formato-${key}`} data-shape-panel={key} hidden={key !== initial} class="space-y-4">
+            <h3 class="font-playfair text-2xl text-white">Rosto {info[key].label.toLowerCase()}</h3>
+            <dl class="space-y-3 font-montserrat text-sm leading-relaxed">
+              <div>
+                <dt class="text-gold text-xs uppercase tracking-[0.15em] mb-1">Como reconhecer</dt>
+                <dd class="text-gray-light">{info[key].recognize}</dd>
+              </div>
+              <div>
+                <dt class="text-gold text-xs uppercase tracking-[0.15em] mb-1">O que costuma valorizar</dt>
+                <dd class="text-gray-light">{info[key].enhance}</dd>
+              </div>
+              <div>
+                <dt class="text-gold text-xs uppercase tracking-[0.15em] mb-1">Com cautela</dt>
+                <dd class="text-gray-light">{info[key].avoid}</dd>
+              </div>
+            </dl>
+          </div>
+        ))}
+      </div>
+
+      <p class="font-montserrat text-xs text-gray-dark leading-relaxed mt-6 mb-8">
+        O formato é só o ponto de partida. No visagismo intencional, personalidade, estilo de vida e colorimetria
+        pesam tanto quanto a geometria — e a maioria dos rostos mistura mais de um formato.
+      </p>
+
+      <a
+        href={cta}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 px-7 py-4 rounded-full bg-gold text-dark font-montserrat font-semibold text-sm md:text-base hover:bg-gold-light transition-colors"
+      >
+        Descobrir meu formato na consultoria
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  import type { ShapeKey, ShapeParams } from '../scripts/face-shapes';
+  import type { FaceMapController } from '../scripts/face-map-3d';
+
+  const root = document.querySelector<HTMLElement>('[data-face-map]');
+  if (root) {
+    const canvas = root.querySelector<HTMLCanvasElement>('[data-face-canvas]')!;
+    const fallback = root.querySelector<SVGElement>('[data-face-fallback]')!;
+    const hint = root.querySelector<HTMLElement>('[data-face-hint]')!;
+    const buttons = root.querySelectorAll<HTMLButtonElement>('[data-shape]');
+    const panels = root.querySelectorAll<HTMLElement>('[data-shape-panel]');
+    const paths = root.querySelectorAll<SVGPathElement>('[data-shape-path]');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let active: ShapeKey = 'oval';
+    let controller: FaceMapController | null = null;
+    let pendingParams: ShapeParams | null = null;
+
+    const track = (event: string, label: string) => {
+      const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
+      gtag?.('event', event, { event_category: 'engagement', event_label: label });
+    };
+
+    const select = (key: ShapeKey, custom?: ShapeParams) => {
+      active = key;
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.shape === key)));
+      panels.forEach((p) => (p.hidden = p.dataset.shapePanel !== key));
+      paths.forEach((p) => {
+        p.classList.toggle('opacity-100', p.dataset.shapePath === key);
+        p.classList.toggle('opacity-0', p.dataset.shapePath !== key);
+      });
+      if (custom) {
+        if (controller) controller.setParams(custom);
+        else pendingParams = custom;
+      } else {
+        pendingParams = null;
+        controller?.setShape(key);
+        track('face_shape_select', key);
+      }
+    };
+
+    buttons.forEach((b) => b.addEventListener('click', () => select(b.dataset.shape as ShapeKey)));
+
+    const hasWebGL = () => {
+      try {
+        const c = document.createElement('canvas');
+        return Boolean(c.getContext('webgl2') || c.getContext('webgl'));
+      } catch {
+        return false;
+      }
+    };
+
+    const load = async () => {
+      if (!hasWebGL()) return;
+      try {
+        const { initFaceMap } = await import('../scripts/face-map-3d');
+        controller = initFaceMap(canvas, {
+          shape: active,
+          reducedMotion,
+          onReady: () => {
+            canvas.classList.remove('opacity-0');
+            fallback.classList.add('opacity-0');
+            hint.hidden = false;
+          },
+        });
+        if (pendingParams) controller.setParams(pendingParams);
+      } catch (err) {
+        console.warn('Mapa do rosto 3D indisponível', err);
+      }
+    };
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          io.disconnect();
+          load();
+        }
+      },
+      { rootMargin: '400px 0px' }
+    );
+    io.observe(root);
+
+    /* ---------------- Análise pela foto ---------------- */
+    const photo = root.querySelector<HTMLElement>('[data-photo]')!;
+    const input = photo.querySelector<HTMLInputElement>('[data-photo-input]')!;
+    const views = {
+      intro: photo.querySelector<HTMLElement>('[data-photo-intro]')!,
+      loading: photo.querySelector<HTMLElement>('[data-photo-loading]')!,
+      error: photo.querySelector<HTMLElement>('[data-photo-error]')!,
+      result: photo.querySelector<HTMLElement>('[data-photo-result]')!,
+    };
+    const status = photo.querySelector<HTMLElement>('[data-photo-status]')!;
+    const errorText = photo.querySelector<HTMLElement>('[data-photo-error-text]')!;
+    const photoCanvas = photo.querySelector<HTMLCanvasElement>('[data-photo-canvas]')!;
+    const resultShape = photo.querySelector<HTMLElement>('[data-result-shape]')!;
+    const resultBars = photo.querySelector<HTMLElement>('[data-result-bars]')!;
+    const resultThirds = photo.querySelector<HTMLElement>('[data-result-thirds]')!;
+    const resultWarnings = photo.querySelector<HTMLElement>('[data-result-warnings]')!;
+    const whatsapp = photo.querySelector<HTMLAnchorElement>('[data-result-whatsapp]')!;
+    const labels = JSON.parse(photo.dataset.labels || '{}') as Record<ShapeKey, string>;
+    const waBase = photo.dataset.waBase || '';
+
+    const show = (name: keyof typeof views) => {
+      (Object.keys(views) as (keyof typeof views)[]).forEach((k) => (views[k].hidden = k !== name));
+    };
+
+    const el = <K extends keyof HTMLElementTagNameMap>(tag: K, cls: string, text?: string) => {
+      const node = document.createElement(tag);
+      node.className = cls;
+      if (text) node.textContent = text;
+      return node;
+    };
+
+    input.addEventListener('change', async () => {
+      const file = input.files?.[0];
+      input.value = '';
+      if (!file) return;
+      show('loading');
+      status.textContent = 'Preparando o analisador…';
+      try {
+        const mod = await import('../scripts/face-photo-analysis');
+        await mod.loadAnalyzer();
+        status.textContent = 'Analisando as proporções do seu rosto…';
+        const source = await mod.fileToCanvas(file);
+        const result = await mod.analyzeCanvas(source);
+        mod.drawOverlay(photoCanvas, source, result);
+        source.width = source.height = 0;
+
+        const best = result.scores[0];
+        resultShape.textContent = labels[best.shape].toLowerCase();
+        resultBars.replaceChildren(
+          ...result.scores.slice(0, 3).map((s, i) => {
+            const li = el('li', 'font-montserrat text-xs');
+            const row = el('div', 'flex justify-between mb-1');
+            row.append(el('span', i === 0 ? 'text-white font-medium' : 'text-gray', labels[s.shape]), el('span', 'text-gray', `${s.pct}%`));
+            const bar = el('div', 'h-1.5 rounded-full bg-white/10 overflow-hidden');
+            const fill = el('div', `h-full rounded-full ${i === 0 ? 'bg-gold' : 'bg-gold/40'} transition-all duration-700`);
+            fill.style.width = '0%';
+            requestAnimationFrame(() => requestAnimationFrame(() => (fill.style.width = `${s.pct}%`)));
+            bar.append(fill);
+            li.append(row, bar);
+            return li;
+          })
+        );
+        const [med, inf] = result.thirds;
+        resultThirds.textContent = `Terço médio ${med}% · terço inferior ${inf}% (o equilíbrio clássico é perto de 50/50). O terço superior depende da linha do cabelo e é avaliado na consultoria.`;
+        resultWarnings.replaceChildren(...result.warnings.map((w) => el('li', '', w)));
+
+        const msg = `Olá! Fiz a análise de rosto no site e deu formato ${labels[best.shape].toLowerCase()} (${best.pct}%). Quero a análise completa de visagismo — vou enviar minha foto aqui.`;
+        whatsapp.href = `${waBase}?text=${encodeURIComponent(msg)}`;
+
+        select(best.shape, result.params);
+        show('result');
+        track('face_photo_analyzed', best.shape);
+      } catch (err) {
+        const known = err instanceof Error && err.name === 'AnalysisError';
+        errorText.textContent = known
+          ? (err as Error).message
+          : 'Não foi possível analisar a foto agora. Verifique a conexão e tente novamente.';
+        if (!known) console.warn('Falha na análise da foto', err);
+        show('error');
+      }
+    });
+
+    photo.querySelector('[data-photo-clear]')!.addEventListener('click', () => {
+      photoCanvas.width = photoCanvas.height = 0;
+      resultBars.replaceChildren();
+      resultWarnings.replaceChildren();
+      show('intro');
+      select(active);
+    });
+  }
+</script>

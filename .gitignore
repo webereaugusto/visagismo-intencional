@@ -27,3 +27,6 @@ pnpm-debug.log*
 .env*.local
 .idea/
 sofisticatto/
+
+# runtime do MediaPipe (copiado de node_modules no predev/prebuild)
+public/mediapipe/wasm/
