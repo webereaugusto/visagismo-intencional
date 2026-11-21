@@ -1,43 +1,46 @@
-# Astro Starter Kit: Minimal
+# Visagismo Campinas — Ery Junior
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Site institucional e de SEO local do **Visagismo Intencional by Ery Junior** (Cambuí, Campinas – SP).
+Produção: https://www.visagismocampinas.com.br/
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Stack
 
-## 🚀 Project Structure
+- [Astro 5](https://docs.astro.build) (site estático) + Tailwind CSS 4
+- `@astrojs/sitemap` para `sitemap-index.xml`
+- Deploy na Vercel (redirects e cabeçalhos de cache em `vercel.json`)
 
-Inside of your Astro project, you'll see the following folders and files:
+## Comandos
+
+| Comando           | Ação                                         |
+| :---------------- | :------------------------------------------- |
+| `npm install`     | Instala as dependências                      |
+| `npm run dev`     | Servidor local em `localhost:4321`           |
+| `npm run build`   | Gera o site em `./dist/`                     |
+| `npm run preview` | Pré-visualiza o build localmente             |
+
+## Estrutura
 
 ```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+src/
+├── config/      # Dados do negócio (site.ts), FAQ, casos, metas de SEO e medição
+├── layouts/     # Layout.astro (head, SEO, schema) e PageLayout.astro (páginas internas)
+├── components/  # Seções da home e blocos reutilizáveis
+├── pages/       # Rotas: home, páginas de serviço, guias e 404
+├── utils/       # schema.ts — JSON-LD (Organization, HairSalon, Person, FAQ, Article…)
+└── styles/      # global.css (tema Tailwind)
+public/          # Imagens otimizadas (WebP), favicons e robots.txt
+docs/            # Documentos de estratégia do projeto
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Nome, endereço, telefones, horários e redes sociais ficam **somente** em `src/config/site.ts` —
+mantenha esses dados idênticos ao Google Business Profile.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+As pastas `galeria/` e `images/` na raiz guardam os originais das fotos e não entram no build.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Variáveis de ambiente
 
-## 🧞 Commands
+Configure na Vercel (veja `.env.example` para o checklist pós-deploy):
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- `PUBLIC_GA_ID` — Google Analytics 4 (eventos `whatsapp_click`, `phone_click`, `maps_click`)
+- `PUBLIC_GSC_VERIFICATION` — verificação do Search Console (opcional)
+- `PUBLIC_GBP_PLACE_ID` / `PUBLIC_GBP_PROFILE_URL` — Google Business Profile

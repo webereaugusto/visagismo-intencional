@@ -28,6 +28,8 @@ interface Props {
   serviceSchema?: { name: string; description: string; path: string };
   faqs?: FaqItem[];
   article?: { datePublished: string; dateModified?: string };
+  /** Imagem LCP a pré-carregar. Padrão: banner apenas na home. */
+  preloadImage?: string | null;
 }
 
 const defaultTitle = 'Visagismo Campinas | Visagismo em Campinas no Cambuí | Ery Junior';
@@ -45,6 +47,7 @@ const {
   serviceSchema,
   faqs: pageFaqs,
   article,
+  preloadImage = path === '/' ? '/images/baner.webp' : null,
 } = Astro.props;
 
 const canonicalUrl = absoluteUrl(path);
@@ -110,7 +113,7 @@ const faqSchemaItems = pageFaqs ?? (path === '/' ? faqs : undefined);
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="image" href="/images/baner.webp" type="image/webp" fetchpriority="high" />
+    {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400&family=Outfit:wght@400;500;600;700&display=swap" />
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript>
