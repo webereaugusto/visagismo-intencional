@@ -21,8 +21,11 @@ import { siteConfig, whatsappLink } from '../config/site';
           <dd class="text-white">{siteConfig.address.full}</dd>
         </div>
         <div>
-          <dt class="text-gold uppercase tracking-wider text-xs mb-1">Telefone</dt>
-          <dd class="text-white">{siteConfig.phoneDisplay}</dd>
+          <dt class="text-gold uppercase tracking-wider text-xs mb-1">WhatsApp</dt>
+          <dd class="text-white space-y-1">
+            <a href={`tel:${siteConfig.phoneClean}`} class="block hover:text-gold transition-colors">{siteConfig.phoneDisplay}</a>
+            <a href={`tel:${siteConfig.phoneSecondaryClean}`} class="block hover:text-gold transition-colors">{siteConfig.phoneSecondaryDisplay}</a>
+          </dd>
         </div>
         <div>
           <dt class="text-gold uppercase tracking-wider text-xs mb-1">Horário</dt>

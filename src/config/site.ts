@@ -7,11 +7,16 @@ export const siteConfig = {
   themeColor: '#D4A853',
   author: 'Ery Junior',
   experienceYears: 30,
-  phoneDisplay: '(19) 99110-3018',
-  phone: '+55 19 99110-3018',
-  phoneClean: '5519991103018',
+  /** WhatsApp principal — usado em botões e CTAs */
+  phoneDisplay: '(19) 99132-7905',
+  phone: '+55 19 99132-7905',
+  phoneClean: '5519991327905',
+  whatsappBase: 'https://wa.me/5519991327905',
+  /** WhatsApp secundário — exibido nas áreas de contato */
+  phoneSecondaryDisplay: '(19) 99219-4915',
+  phoneSecondary: '+55 19 99219-4915',
+  phoneSecondaryClean: '5519992194915',
   email: 'contato@visagismointencional.com.br',
-  whatsappBase: 'https://wa.me/5519991103018',
   address: {
     street: 'Rua Cel. Quirino, 41',
     neighborhood: 'Cambuí',

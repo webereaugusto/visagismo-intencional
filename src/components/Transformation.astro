@@ -1,5 +1,6 @@
 ---
-const whatsappLink = "https://wa.me/5519991103018?text=Olá, quero dar o primeiro passo para minha transformação";
+import { whatsappLink as buildWhatsappLink } from '../config/site';
+const whatsappLink = buildWhatsappLink('Olá, quero dar o primeiro passo para minha transformação');
 ---
 
 <section class="relative py-40 md:py-52 overflow-hidden bg-dark">

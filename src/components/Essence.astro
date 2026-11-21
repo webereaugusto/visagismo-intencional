@@ -1,5 +1,6 @@
 ---
-const whatsappLink = "https://wa.me/5519991103018?text=Olá, gostaria de agendar uma consultoria exclusiva";
+import { whatsappLink as buildWhatsappLink } from '../config/site';
+const whatsappLink = buildWhatsappLink('Olá, gostaria de agendar uma consultoria exclusiva');
 ---
 
 <section class="relative bg-dark py-16 md:py-20 lg:py-0 lg:min-h-screen overflow-hidden" id="essencia">

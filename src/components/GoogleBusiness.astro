@@ -32,7 +32,7 @@ const hasGbp = hasGoogleBusinessProfile();
 
     <div class="card-glow rounded-2xl p-6 md:p-8 text-left mb-8 font-montserrat text-sm text-gray-light space-y-2">
       <p><strong class="text-white">Endereço:</strong> {siteConfig.address.full}</p>
-      <p><strong class="text-white">Telefone:</strong> {siteConfig.phoneDisplay}</p>
+      <p><strong class="text-white">WhatsApp:</strong> {siteConfig.phoneDisplay} · {siteConfig.phoneSecondaryDisplay}</p>
       <p><strong class="text-white">Horários:</strong> {siteConfig.hours.weekdays}; {siteConfig.hours.saturday}</p>
       {hasGbp && (
         <p><strong class="text-white">Google:</strong> Perfil verificado — mesmo NAP do site.</p>

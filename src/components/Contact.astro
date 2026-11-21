@@ -41,7 +41,10 @@ const message = 'Olá, gostaria de agendar uma consultoria de visagismo em Campi
     
     <!-- Phone -->
     <p class="mt-10 font-montserrat text-gray text-sm">
-      Ou ligue: <a href={`tel:${siteConfig.phoneClean}`} class="text-gold hover:text-gold-light transition-colors font-medium">{siteConfig.phoneDisplay}</a>
+      Ou ligue:
+      <a href={`tel:${siteConfig.phoneClean}`} class="text-gold hover:text-gold-light transition-colors font-medium">{siteConfig.phoneDisplay}</a>
+      {' · '}
+      <a href={`tel:${siteConfig.phoneSecondaryClean}`} class="text-gold hover:text-gold-light transition-colors font-medium">{siteConfig.phoneSecondaryDisplay}</a>
     </p>
     
   </div>

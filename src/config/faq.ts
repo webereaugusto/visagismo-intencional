@@ -39,7 +39,7 @@ export const faqs: FaqItem[] = [
   {
     question: 'Preciso agendar com antecedência?',
     answer:
-      'Sim. Recomendamos agendar com 3 a 5 dias de antecedência. Para noivas e datas especiais, o ideal é reservar com 2 a 4 semanas. Agendamentos pelo WhatsApp (19) 99110-3018.',
+      `Sim. Recomendamos agendar com 3 a 5 dias de antecedência. Para noivas e datas especiais, o ideal é reservar com 2 a 4 semanas. Agendamentos pelo WhatsApp ${siteConfig.phoneDisplay}.`,
   },
   {
     question: 'Qual a diferença entre um corte normal e visagismo?',
