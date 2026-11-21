@@ -117,6 +117,10 @@ export function mapsEmbedUrl() {
 export function absoluteUrl(path = '/') {
   const normalized = path.startsWith('/') ? path : `/${path}`;
   if (normalized === '/') return `${siteConfig.siteUrl}/`;
+  // Arquivos (imagens, pdf, etc.) não devem ganhar barra final
+  if (/\.[a-zA-Z0-9]{2,5}$/.test(normalized)) {
+    return `${siteConfig.siteUrl}${normalized}`;
+  }
   const withSlash = normalized.endsWith('/') ? normalized : `${normalized}/`;
   return `${siteConfig.siteUrl}${withSlash}`;
 }

@@ -6,7 +6,6 @@ import {
   hasGoogleBusinessProfile,
   mapsEmbedUrl,
 } from '../config/site';
-import { seoLaunchConfig } from '../config/seo-launch';
 
 const profileUrl = googleBusinessProfileUrl();
 const reviewUrl = googleReviewUrl();
@@ -38,21 +37,6 @@ const hasGbp = hasGoogleBusinessProfile();
         <p><strong class="text-white">Google:</strong> Perfil verificado — mesmo NAP do site.</p>
       )}
     </div>
-
-  {!hasGbp && (
-    <div class="card-glow rounded-2xl p-6 md:p-8 text-left mb-8 border border-gold/20">
-      <h3 class="font-playfair text-xl text-white mb-4">Checklist: Google Business Profile</h3>
-      <p class="font-montserrat text-sm text-gray-light mb-4">
-        O perfil no Google é o principal fator para aparecer no Local Pack de "visagismo Campinas".
-        Após criar e verificar, configure as variáveis na Vercel para o site exibir o link correto.
-      </p>
-      <ol class="space-y-2 font-montserrat text-sm text-gray-light list-decimal list-inside">
-        {seoLaunchConfig.gbpChecklist.map((step) => (
-          <li>{step}</li>
-        ))}
-      </ol>
-    </div>
-  )}
 
     <div class="rounded-2xl overflow-hidden mb-8 aspect-video">
       <iframe

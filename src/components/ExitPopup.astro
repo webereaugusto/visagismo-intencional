@@ -164,22 +164,7 @@ const whatsappLink = `https://wa.me/${siteConfig.phoneClean}?text=${encodeURICom
     }
   });
   
-  // Mobile: Show after 30 seconds of inactivity or scroll up
-  let lastScrollY = window.scrollY;
-  let scrollUpCount = 0;
-  
-  window.addEventListener('scroll', () => {
-    if (window.scrollY < lastScrollY) {
-      scrollUpCount++;
-      // Show popup after user scrolls up 3 times (indicating exit intent)
-      if (scrollUpCount >= 5 && window.scrollY < 200 && !hasShown && !popupShown) {
-        showPopup();
-      }
-    } else {
-      scrollUpCount = 0;
-    }
-    lastScrollY = window.scrollY;
-  }, { passive: true });
+  // Mobile: não dispara popup por scroll (prejudica UX e Core Web Vitals)
   
   // Close handlers
   exitPopupClose?.addEventListener('click', hidePopup);
