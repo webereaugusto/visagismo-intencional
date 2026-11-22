@@ -4,6 +4,7 @@ import { siteConfig, whatsappLink } from '../config/site';
 const menuItems = [
   { label: 'Visagismo Campinas', href: '/#resposta-local' },
   { label: 'Serviços', href: '/#servicos' },
+  { label: 'Análise facial', href: '/qual-o-formato-do-meu-rosto/' },
   { label: 'Sobre', href: '/sobre/ery-junior/' },
   { label: 'Resultados', href: '/resultados/' },
   { label: 'Contato', href: '/#contato' },
@@ -24,11 +25,11 @@ const menuItems = [
         />
       </a>
 
-      <div class="hidden md:flex items-center gap-10">
-        <ul class="flex items-center gap-8">
+      <div class="hidden lg:flex items-center gap-8 xl:gap-10">
+        <ul class="flex items-center gap-6 xl:gap-8">
           {menuItems.map((item) => (
             <li>
-              <a href={item.href} class="font-montserrat text-sm font-medium text-gray hover:text-gold transition-colors relative group">
+              <a href={item.href} class="font-montserrat text-sm font-medium text-gray hover:text-gold transition-colors relative group whitespace-nowrap">
                 {item.label}
                 <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-gradient-to-r from-gold to-gold-dark group-hover:w-full transition-all duration-300"></span>
               </a>
@@ -46,14 +47,14 @@ const menuItems = [
         </a>
       </div>
 
-      <button class="md:hidden p-2 text-white" id="mobile-menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+      <button class="lg:hidden p-2 text-white" id="mobile-menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
     </div>
 
-    <div class="md:hidden hidden bg-dark-light/95 backdrop-blur-lg mt-4 rounded-2xl border border-dark-lighter" id="mobile-menu">
+    <div class="lg:hidden hidden bg-dark-light/95 backdrop-blur-lg mt-4 rounded-2xl border border-dark-lighter" id="mobile-menu">
       <ul class="flex flex-col gap-2 p-6">
         {menuItems.map((item) => (
           <li>
