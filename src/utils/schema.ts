@@ -231,3 +231,29 @@ export function buildServiceSchema(name: string, description: string, path: stri
     url: absoluteUrl(path),
   };
 }
+
+export function buildWebApplicationSchema(app: {
+  name: string;
+  description: string;
+  path: string;
+  featureList: string[];
+}) {
+  const url = absoluteUrl(app.path);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    '@id': `${url}#app`,
+    name: app.name,
+    description: app.description,
+    url,
+    applicationCategory: 'LifestyleApplication',
+    operatingSystem: 'Qualquer (navegador)',
+    browserRequirements: 'Requer JavaScript; o modelo 3D usa WebGL',
+    isAccessibleForFree: true,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'BRL' },
+    featureList: app.featureList,
+    inLanguage: 'pt-BR',
+    creator: { '@id': `${siteConfig.siteUrl}/#person` },
+    publisher: { '@id': `${siteConfig.siteUrl}/#organization` },
+  };
+}

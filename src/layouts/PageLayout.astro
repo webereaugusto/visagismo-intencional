@@ -17,12 +17,13 @@ interface Props {
   faqs?: FaqItem[];
   article?: { datePublished: string; dateModified?: string };
   preloadImage?: string | null;
+  extraSchemas?: Record<string, unknown>[];
 }
 
-const { title, description, path, h1, subtitle, image, serviceSchema, breadcrumbs, faqs, article, preloadImage } = Astro.props;
+const { title, description, path, h1, subtitle, image, serviceSchema, breadcrumbs, faqs, article, preloadImage, extraSchemas } = Astro.props;
 ---
 
-<Layout title={title} description={description} path={path} image={image} breadcrumbs={breadcrumbs} serviceSchema={serviceSchema} faqs={faqs} article={article} preloadImage={preloadImage}>
+<Layout title={title} description={description} path={path} image={image} breadcrumbs={breadcrumbs} serviceSchema={serviceSchema} faqs={faqs} article={article} preloadImage={preloadImage} extraSchemas={extraSchemas}>
   <Header />
   <main id="conteudo-principal">
     <section class="pt-32 pb-16 md:pt-40 md:pb-20 bg-dark">

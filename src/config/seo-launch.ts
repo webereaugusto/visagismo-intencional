@@ -14,6 +14,7 @@ export const seoLaunchConfig = {
     'https://www.visagismocampinas.com.br/resultados/',
     'https://www.visagismocampinas.com.br/dicas-de-visagismo-campinas/',
     'https://www.visagismocampinas.com.br/dia-da-noiva-campinas/',
+    'https://www.visagismocampinas.com.br/qual-o-formato-do-meu-rosto/',
   ],
   gbpChecklist: [
     'Acesse business.google.com e crie o perfil com o nome exato do siteConfig.brandLine',

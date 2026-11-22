@@ -1,0 +1,306 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import PageCta from '../components/PageCta.astro';
+import FaceMap3D from '../components/FaceMap3D.astro';
+import { siteConfig } from '../config/site';
+import { buildWebApplicationSchema } from '../utils/schema';
+import type { FaqItem } from '../config/faq';
+
+const path = '/qual-o-formato-do-meu-rosto/';
+const title = 'Qual o Formato do Meu Rosto? Análise Facial Online Grátis';
+const description =
+  'Descubra o formato do seu rosto pela foto: a análise facial online do Visagismo Intencional mede testa, maçãs e mandíbula na hora, de graça e sem enviar sua imagem.';
+
+const shapes = [
+  {
+    name: 'Oval',
+    recognize: 'Comprimento um pouco maior que a largura, testa levemente mais larga que o queixo, contorno suave.',
+    measure: 'Maçãs como a parte mais larga; mandíbula mais estreita que a testa.',
+  },
+  {
+    name: 'Redondo',
+    recognize: 'Largura e comprimento parecidos, bochechas cheias e mandíbula sem ângulos marcados.',
+    measure: 'Comprimento próximo da largura das maçãs; queixo arredondado.',
+  },
+  {
+    name: 'Quadrado',
+    recognize: 'Testa, maçãs e mandíbula com larguras próximas e ângulo da mandíbula bem definido.',
+    measure: 'As três larguras quase iguais; queixo reto.',
+  },
+  {
+    name: 'Coração',
+    recognize: 'Testa larga, maçãs evidentes e queixo fino, às vezes pontudo.',
+    measure: 'Testa maior que a mandíbula; queixo estreito.',
+  },
+  {
+    name: 'Diamante',
+    recognize: 'Maçãs do rosto bem marcadas, com testa e queixo mais estreitos.',
+    measure: 'Maçãs claramente a maior largura; testa e mandíbula menores.',
+  },
+  {
+    name: 'Triangular',
+    recognize: 'Base do rosto mais marcada, com a mandíbula mais larga que a testa.',
+    measure: 'Mandíbula maior que testa e maçãs.',
+  },
+];
+
+const comparison = [
+  { item: 'Formato e proporções do rosto', online: 'Estimativa a partir de uma foto frontal', consult: 'Medição presencial, em vários ângulos' },
+  { item: 'Terço superior e linha do cabelo', online: 'Não avalia com precisão', consult: 'Avalia, incluindo entradas e redemoinhos' },
+  { item: 'Colorimetria e subtom de pele', online: 'Não avalia', consult: 'Análise de subtom, olhos e cor natural do cabelo' },
+  { item: 'Textura, densidade e caimento do fio', online: 'Não avalia', consult: 'Avalia ao vivo, com o cabelo solto e preso' },
+  { item: 'Personalidade, rotina e objetivo', online: 'Não avalia', consult: 'É parte central do diagnóstico' },
+  { item: 'Resultado', online: 'Formato mais provável e orientações gerais', consult: 'Projeto de corte, cor e manutenção, com execução' },
+];
+
+const faqs: FaqItem[] = [
+  {
+    question: 'A análise do formato do rosto online é confiável?',
+    answer:
+      'Ela é uma boa estimativa quando a foto está de frente, bem iluminada e com a testa à mostra. Como depende de uma única imagem, ângulo, lente e cabelo influenciam o resultado — por isso mostramos a proximidade com cada formato em porcentagem, e não um rótulo absoluto.',
+  },
+  {
+    question: 'Minha foto é enviada ou fica salva em algum lugar?',
+    answer:
+      'Não. A análise roda inteira no seu navegador: a foto é processada no seu próprio celular ou computador e não é enviada para nenhum servidor nem armazenada pelo site. Ao fechar ou recarregar a página, ela some.',
+  },
+  {
+    question: 'Posso ter mais de um formato de rosto?',
+    answer:
+      'Sim, e é o mais comum. Muitos rostos combinam características de dois formatos, como oval com traços de coração. É por isso que a ferramenta mostra os três formatos mais próximos e a porcentagem de cada um.',
+  },
+  {
+    question: 'Por que o resultado mudou entre duas fotos?',
+    answer:
+      'Pequenas diferenças de ângulo, distância da câmera, expressão e cabelo cobrindo a testa ou a mandíbula alteram as medidas. Para comparar, use fotos tiradas do mesmo jeito: de frente, a um braço de distância, rosto relaxado e cabelo preso.',
+  },
+  {
+    question: 'A ferramenta funciona para rostos masculinos?',
+    answer:
+      'Funciona. As medidas são as mesmas. Barba cheia pode esconder o contorno real da mandíbula e do queixo, então o resultado tende a ser mais preciso com a barba curta ou aparada.',
+  },
+  {
+    question: 'Qual a diferença entre descobrir o formato do rosto e fazer visagismo?',
+    answer:
+      'Descobrir o formato é só o primeiro passo. O visagismo soma a esse diagnóstico a colorimetria, a textura do cabelo, a personalidade e a rotina da pessoa para definir um corte e uma cor que façam sentido para ela.',
+    links: [{ label: 'Guia: o que é visagismo', href: '/guia/o-que-e-visagismo/' }],
+  },
+  {
+    question: 'Onde fazer uma análise de visagismo completa em Campinas?',
+    answer: `No ${siteConfig.brandLine}, no ${siteConfig.address.neighborhood}, em Campinas. A consultoria inclui análise facial presencial, colorimetria e um projeto de imagem feito por ${siteConfig.author}.`,
+    links: [{ label: 'Consultoria de visagismo em Campinas', href: '/consultoria-de-visagismo-campinas/' }],
+  },
+];
+
+const appSchema = buildWebApplicationSchema({
+  name: 'Análise do formato do rosto — Visagismo Intencional',
+  description,
+  path,
+  featureList: [
+    'Detecção facial no próprio navegador, sem envio da foto',
+    'Medição da largura da testa, das maçãs do rosto e da mandíbula',
+    'Proximidade com seis formatos de rosto em porcentagem',
+    'Linhas de análise desenhadas sobre a foto',
+    'Modelo 3D interativo dos formatos de rosto',
+  ],
+});
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  path={path}
+  h1="Qual é o formato do meu rosto?"
+  subtitle="Análise facial online e gratuita: envie uma selfie, veja suas proporções medidas na hora e descubra o que tende a valorizar o seu rosto — sem que a foto saia do seu aparelho."
+  breadcrumbs={[
+    { name: 'Home', path: '/' },
+    { name: 'Análise do formato do rosto', path },
+  ]}
+  faqs={faqs}
+  extraSchemas={[appSchema]}
+>
+  <FaceMap3D variant="page" />
+
+  <section class="py-16 bg-dark-light">
+    <div class="max-w-3xl mx-auto px-5 font-montserrat text-gray-light leading-relaxed space-y-6">
+      <p>
+        Saber o <strong class="text-white">formato do rosto</strong> é o ponto de partida do visagismo: é a partir das
+        proporções entre testa, maçãs, mandíbula e comprimento que se decide onde um corte deve ter volume, onde a franja
+        ajuda e qual comprimento equilibra o conjunto. Esta ferramenta foi criada pelo visagista {siteConfig.author}, com
+        mais de {siteConfig.experienceYears} anos de experiência, para que você faça essa primeira leitura em casa.
+      </p>
+
+      <h2 class="font-playfair text-2xl text-white">Como funciona a análise facial online</h2>
+      <ol class="list-decimal pl-5 space-y-3">
+        <li>
+          <strong class="text-white">Detecção do rosto:</strong> um modelo de visão computacional identifica cerca de 470
+          pontos de referência do rosto — contorno, sobrancelhas, olhos, nariz, boca e queixo.
+        </li>
+        <li>
+          <strong class="text-white">Medição das proporções:</strong> a ferramenta mede a largura da testa, das maçãs do rosto,
+          da mandíbula e do queixo, além do comprimento facial, corrigindo a inclinação da cabeça.
+        </li>
+        <li>
+          <strong class="text-white">Comparação com os seis formatos:</strong> as medidas são comparadas com as proporções de
+          referência de cada formato, e o resultado mostra a proximidade com cada um em porcentagem.
+        </li>
+        <li>
+          <strong class="text-white">Visualização:</strong> as linhas de análise são desenhadas sobre a sua foto e o modelo 3D
+          assume uma forma próxima à do seu rosto.
+        </li>
+      </ol>
+
+      <h2 class="font-playfair text-2xl text-white">Como tirar a foto certa para a análise</h2>
+      <ul class="list-disc pl-5 space-y-2">
+        <li><strong class="text-white">De frente para a câmera</strong>, com o rosto reto — sem virar nem inclinar a cabeça.</li>
+        <li>
+          <strong class="text-white">A um braço de distância:</strong> muito perto, a lente da câmera frontal aumenta o centro
+          do rosto e distorce as proporções. Se puder, use o temporizador ou peça para alguém fotografar.
+        </li>
+        <li><strong class="text-white">Cabelo preso</strong>, com testa, orelhas e linha da mandíbula à mostra.</li>
+        <li><strong class="text-white">Sem óculos</strong> e com expressão neutra, sem sorriso aberto.</li>
+        <li><strong class="text-white">Luz frontal e uniforme</strong>, de preferência natural, sem sombras fortes de um lado.</li>
+      </ul>
+
+      <h2 class="font-playfair text-2xl text-white">Os 6 formatos de rosto e como reconhecer cada um</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="border-b border-gold/30 text-left">
+              <th class="py-2 pr-4 text-gold uppercase text-xs tracking-wider">Formato</th>
+              <th class="py-2 pr-4 text-gold uppercase text-xs tracking-wider">Como reconhecer</th>
+              <th class="py-2 text-gold uppercase text-xs tracking-wider">Nas medidas</th>
+            </tr>
+          </thead>
+          <tbody>
+            {shapes.map((row) => (
+              <tr class="border-b border-dark-lighter">
+                <td class="py-3 pr-4 text-white font-medium whitespace-nowrap">{row.name}</td>
+                <td class="py-3 pr-4">{row.recognize}</td>
+                <td class="py-3">{row.measure}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-gray">
+        Alguns métodos também usam o formato <strong class="text-gray-light">retangular (ou oblongo)</strong>: rosto bem
+        mais comprido que largo, com testa, maçãs e mandíbula parecidas. Na ferramenta, ele tende a aparecer como uma
+        mistura de oval e quadrado. Veja quais cortes costumam valorizar cada formato no
+        <a href="/guia/o-que-e-visagismo/" class="text-gold hover:underline">guia completo de visagismo</a>.
+      </p>
+
+      <h2 class="font-playfair text-2xl text-white">Como descobrir o formato do rosto sem aplicativo</h2>
+      <p>
+        Se preferir fazer à moda antiga, basta uma fita métrica flexível e um espelho. Com o cabelo preso, anote quatro
+        medidas:
+      </p>
+      <ol class="list-decimal pl-5 space-y-2">
+        <li><strong class="text-white">Testa:</strong> a maior largura, de uma lateral à outra, no meio da testa.</li>
+        <li><strong class="text-white">Maçãs do rosto:</strong> de uma maçã à outra, logo abaixo do canto externo dos olhos.</li>
+        <li>
+          <strong class="text-white">Mandíbula:</strong> da ponta do queixo até o ângulo da mandíbula, logo abaixo da orelha —
+          multiplique por dois.
+        </li>
+        <li><strong class="text-white">Comprimento:</strong> do meio da linha do cabelo até a ponta do queixo.</li>
+      </ol>
+      <p>
+        Depois compare: se o comprimento é a maior medida e a testa é um pouco mais larga que a mandíbula, o rosto tende ao
+        oval; se as três larguras são parecidas e a mandíbula é angulosa, ao quadrado; se a testa é a maior largura e o
+        queixo é fino, ao coração; se as maçãs se destacam sobre testa e mandíbula, ao diamante; se a mandíbula é a maior
+        largura, ao triangular; e se comprimento e largura são parecidos, com linhas suaves, ao redondo.
+      </p>
+
+      <h2 class="font-playfair text-2xl text-white">Análise online x consultoria de visagismo</h2>
+      <p>
+        Ferramentas de análise facial são ótimas para começar, mas enxergam só uma parte do que importa. Veja o que cada
+        uma cobre:
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="border-b border-gold/30 text-left">
+              <th class="py-2 pr-4 text-gold uppercase text-xs tracking-wider">O que é avaliado</th>
+              <th class="py-2 pr-4 text-gold uppercase text-xs tracking-wider">Análise online</th>
+              <th class="py-2 text-gold uppercase text-xs tracking-wider">Consultoria</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparison.map((row) => (
+              <tr class="border-b border-dark-lighter">
+                <td class="py-3 pr-4 text-white font-medium">{row.item}</td>
+                <td class="py-3 pr-4">{row.online}</td>
+                <td class="py-3">{row.consult}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="font-playfair text-2xl text-white">Ferramentas de análise de rosto: o que observar antes de usar</h2>
+      <p>
+        Existem vários tipos de ferramenta para descobrir o formato do rosto — testes de perguntas, aplicativos de selfie,
+        filtros que simulam cortes e softwares profissionais usados em salões. Antes de enviar uma foto, vale checar:
+      </p>
+      <ul class="list-disc pl-5 space-y-2">
+        <li>
+          <strong class="text-white">Para onde vai a sua foto.</strong> A imagem do rosto é um dado pessoal sensível. Prefira
+          ferramentas que processam a foto no próprio aparelho ou que deixam claro como ela é guardada e por quanto tempo.
+        </li>
+        <li>
+          <strong class="text-white">Se as medidas são mostradas.</strong> Uma boa ferramenta explica o que mediu, em vez de só
+          entregar um rótulo.
+        </li>
+        <li>
+          <strong class="text-white">Se indica a proximidade com mais de um formato.</strong> Rostos reais raramente se
+          encaixam em um único formato.
+        </li>
+        <li>
+          <strong class="text-white">Se deixa claro o que fica de fora.</strong> Colorimetria, textura do cabelo e estilo de
+          vida pedem avaliação presencial.
+        </li>
+      </ul>
+
+      <h2 class="font-playfair text-2xl text-white">Sua foto fica com você</h2>
+      <p>
+        Esta análise foi construída para funcionar sem servidor: o modelo de detecção facial é baixado para o seu navegador
+        e a foto é processada ali mesmo. O site não recebe, não envia e não armazena a imagem. Se quiser a avaliação de
+        {' '}{siteConfig.author}, você escolhe enviar a foto pelo WhatsApp depois de ver o resultado.
+      </p>
+
+      <h2 class="font-playfair text-2xl text-white">Do formato do rosto ao corte certo</h2>
+      <p>
+        Com o formato em mãos, o próximo passo é transformar a leitura em decisão: comprimento, volume, franja, cor. É o que
+        fazemos no <a href="/corte-visagista-campinas/" class="text-gold hover:underline">corte visagista</a> e na
+        {' '}<a href="/colorimetria-campinas/" class="text-gold hover:underline">colorimetria</a>, sempre a partir de uma
+        {' '}<a href="/consultoria-de-visagismo-campinas/" class="text-gold hover:underline">consultoria de visagismo em Campinas</a>.
+        Veja também as <a href="/dicas-de-visagismo-campinas/" class="text-gold hover:underline">dicas práticas de visagismo</a>
+        {' '}e <a href="/resultados/" class="text-gold hover:underline">resultados reais de clientes</a>.
+      </p>
+
+      <h2 class="font-playfair text-2xl text-white">Perguntas frequentes</h2>
+      <dl class="space-y-4 text-sm">
+        {faqs.map((item) => (
+          <div>
+            <dt class="text-white font-medium">{item.question}</dt>
+            <dd>
+              {item.answer}
+              {item.links && (
+                <span class="block mt-1">
+                  {item.links.map((link) => (
+                    <a href={link.href} class="text-gold hover:underline">{link.label}</a>
+                  ))}
+                </span>
+              )}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <PageCta
+    message="Olá! Usei a análise do formato do rosto no site e quero agendar uma consultoria de visagismo."
+    label="Quero a análise completa"
+  />
+</PageLayout>

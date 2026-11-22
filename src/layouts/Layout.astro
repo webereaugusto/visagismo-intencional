@@ -30,6 +30,8 @@ interface Props {
   article?: { datePublished: string; dateModified?: string };
   /** Imagem LCP a pré-carregar. Padrão: banner apenas na home. */
   preloadImage?: string | null;
+  /** JSON-LD adicional específico da página (ex.: WebApplication). */
+  extraSchemas?: Record<string, unknown>[];
 }
 
 const defaultTitle = 'Visagismo Campinas | Visagismo em Campinas no Cambuí | Ery Junior';
@@ -48,6 +50,7 @@ const {
   faqs: pageFaqs,
   article,
   preloadImage = path === '/' ? '/images/baner.webp' : null,
+  extraSchemas = [],
 } = Astro.props;
 
 const canonicalUrl = absoluteUrl(path);
@@ -132,6 +135,9 @@ const faqSchemaItems = pageFaqs ?? (path === '/' ? faqs : undefined);
     {faqSchemaItems && faqSchemaItems.length > 0 && (
       <script type="application/ld+json" set:html={JSON.stringify(buildFAQPageSchema(faqSchemaItems))} />
     )}
+    {extraSchemas.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
     {article && (
       <script type="application/ld+json" set:html={JSON.stringify(buildArticleSchema({ title, description, path, image, ...article }))} />
     )}

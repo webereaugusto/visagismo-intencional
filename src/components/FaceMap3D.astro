@@ -48,12 +48,28 @@ const info: Record<ShapeKey, ShapeInfo> = {
   },
 };
 
+interface Props {
+  /** "home": seção da página inicial (com link para a página da ferramenta). "page": dentro da página da ferramenta. */
+  variant?: 'home' | 'page';
+}
+
+const { variant = 'home' } = Astro.props;
+const isPage = variant === 'page';
+const TOOL_PATH = '/qual-o-formato-do-meu-rosto/';
+
 const initial: ShapeKey = 'oval';
 const cta = whatsappLink('Olá! Vi o mapa do rosto 3D no site e quero descobrir meu formato de rosto numa consultoria de visagismo.');
 ---
 
-<section id="mapa-do-rosto" class="relative py-16 md:py-24 lg:py-32 bg-dark overflow-clip" data-face-map>
-  <div class="absolute top-1/3 left-1/4 w-[520px] h-[520px] bg-gold/[0.06] rounded-full blur-[120px] pointer-events-none"></div>
+<section
+  id="mapa-do-rosto"
+  class:list={['relative bg-dark overflow-clip', isPage ? 'pt-4 pb-16 md:pb-24' : 'py-16 md:py-24 lg:py-32']}
+  data-face-map
+>
+  <!-- Brilho decorativo recortado na própria camada (não depende de overflow:clip, que navegadores antigos ignoram) -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+    <div class="absolute top-1/3 left-1/4 w-[520px] max-w-[90vw] h-[520px] bg-gold/[0.06] rounded-full blur-[120px]"></div>
+  </div>
 
   <!-- Ordem no celular: título → 3D → controles. No desktop o 3D fica fixo à esquerda. -->
   <div class="relative max-w-7xl mx-auto px-5 md:px-6 grid lg:grid-cols-2 gap-y-8 lg:gap-x-16 items-start">
@@ -97,16 +113,28 @@ const cta = whatsappLink('Olá! Vi o mapa do rosto 3D no site e quero descobrir 
       <div class="flex items-center gap-3 mb-4 md:mb-6 animate-on-scroll">
         <span class="w-8 md:w-12 h-[1px] bg-gold animate-line"></span>
         <span class="text-gold text-[10px] md:text-xs tracking-[0.2em] md:tracking-[0.3em] uppercase font-montserrat font-medium">
-          Mapa do rosto 3D
+          {isPage ? 'Ferramenta gratuita' : 'Mapa do rosto 3D'}
         </span>
       </div>
-      <h2 class="font-playfair text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-4 md:mb-6 animate-on-scroll animate-delay-100">
-        Qual é o <span class="text-gradient-gold italic">formato</span> do seu rosto?
-      </h2>
-      <p class="font-montserrat text-gray text-sm md:text-base leading-relaxed animate-on-scroll animate-delay-200">
-        No visagismo, a análise começa pelas proporções: largura da testa, das maçãs e da mandíbula, comprimento
-        do rosto e os terços faciais. Escolha um formato e veja como cada linha muda.
-      </p>
+      {isPage ? (
+        <h2 class="font-playfair text-3xl md:text-4xl font-medium text-white mb-4 md:mb-6">
+          Faça sua <span class="text-gradient-gold italic">análise facial</span> agora
+        </h2>
+        <p class="font-montserrat text-gray text-sm md:text-base leading-relaxed">
+          Envie uma selfie no cartão abaixo para medir suas proporções, ou explore os seis formatos de referência no
+          modelo 3D e veja como cada linha do rosto muda.
+        </p>
+      ) : (
+        <>
+          <h2 class="font-playfair text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-4 md:mb-6 animate-on-scroll animate-delay-100">
+            Qual é o <span class="text-gradient-gold italic">formato</span> do seu rosto?
+          </h2>
+          <p class="font-montserrat text-gray text-sm md:text-base leading-relaxed animate-on-scroll animate-delay-200">
+            No visagismo, a análise começa pelas proporções: largura da testa, das maçãs e da mandíbula, comprimento
+            do rosto e os terços faciais. Escolha um formato e veja como cada linha muda.
+          </p>
+        </>
+      )}
     </div>
 
     <!-- Controles e explicação -->
@@ -249,6 +277,12 @@ const cta = whatsappLink('Olá! Vi o mapa do rosto 3D no site e quero descobrir 
         Descobrir meu formato na consultoria
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
       </a>
+      {!isPage && (
+        <p class="mt-5 font-montserrat text-sm text-gray">
+          Quer entender como a análise funciona e como medir o rosto em casa?
+          <a href={TOOL_PATH} class="text-gold hover:underline">Veja o guia da análise do formato do rosto</a>.
+        </p>
+      )}
     </div>
   </div>
 </section>
